@@ -25,7 +25,7 @@ void GPIO_base::output( int port, uint8_t value, uint8_t mask )
 
 void GPIO_base::output( uint8_t *vp )
 {
-	all_reg_w8( out_reg, vp );
+	all_port_w8( out_reg, vp );
 }
 
 uint8_t GPIO_base::input( int port )
@@ -35,7 +35,7 @@ uint8_t GPIO_base::input( int port )
 
 void GPIO_base::input( uint8_t *vp )
 {
-	all_reg_r8( in_reg, vp );
+	all_port_r8( in_reg, vp );
 }
 
 void GPIO_base::config( int port, uint8_t config, uint8_t mask )
@@ -48,26 +48,26 @@ void GPIO_base::config( int port, uint8_t config, uint8_t mask )
 
 void GPIO_base::config( uint8_t* vp )
 {
-	all_reg_w8( cfg_reg, vp );	
+	all_port_w8( cfg_reg, vp );	
 }
 
-void GPIO_base::all_reg_w8( int reg, uint8_t* vp )
+void GPIO_base::all_port_w8( int reg, uint8_t* vp )
 {
 	reg_w( reg, vp, N_BITS );
 }
 
-void GPIO_base::all_reg_w16( int reg, uint16_t* vp )
+void GPIO_base::all_port_w16( int reg, uint16_t* vp )
 {
 	//	Expecting little endian
 	reg_w( reg, (uint8_t*)vp, N_BITS * 2 );
 }
 
-void GPIO_base::all_reg_r8( int reg, uint8_t* vp )
+void GPIO_base::all_port_r8( int reg, uint8_t* vp )
 {
 	reg_r( reg, vp, N_BITS );
 }
 
-void GPIO_base::all_reg_r16( int reg, uint16_t* vp )
+void GPIO_base::all_port_r16( int reg, uint16_t* vp )
 {
 	//	Expecting little endian
 	reg_r( reg, (uint8_t*)vp, N_BITS * 2 );	

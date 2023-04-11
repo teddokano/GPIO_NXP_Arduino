@@ -54,10 +54,10 @@ public:
 	void config( uint8_t* vp );
 
 protected:
-	void all_reg_w8( int reg, uint8_t* vp );
-	void all_reg_w16( int reg, uint16_t* vp );
-	void all_reg_r8( int reg, uint8_t* vp );
-	void all_reg_r16( int reg, uint16_t* vp );
+	void all_port_w8( int reg, uint8_t* vp );
+	void all_port_w16( int reg, uint16_t* vp );
+	void all_port_r8( int reg, uint8_t* vp );
+	void all_port_r16( int reg, uint16_t* vp );
 
 private:
 	const uint8_t in_reg;
