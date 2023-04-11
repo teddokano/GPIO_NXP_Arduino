@@ -1,34 +1,34 @@
-/** PCA9955B LED driver operation sample
+/** PCAL6534 GPIO operation sample
  *  
- *  This sample code is showing PCA9955B LED driver operation with PWM value setting change.
- *  The ledd.pwm() takes channel number and PWM ratio. 
+ *  This sample code is showing PCAL6534 GPIO operation.
  *
  *  @author  Tedd OKANO
  *
  *  Released under the MIT license License
  *
- *  About PCA9955B:
- *    https://www.nxp.jp/products/power-management/lighting-driver-and-controller-ics/led-drivers/24-channel-spi-serial-bus-32-ma-5-5-v-constant-current-led-driver:PCA9955B
+ *  About PCAL6534:
+ *    https://www.nxp.jp/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534
  */
 
-#include "LEDDriver.h"
+#include "GPIO_NXP.h"
 
-PCA9955B ledd;
+PCAL6534 gpio;
 
 void setup() {
   Serial.begin(9600);
   Serial.println("\n***** Hello, PCA9955B! *****");
 
   Wire.begin();
-  ledd.begin(1.0, PCA9955B::ARDUINO_SHIELD);
+  gpio.config(0, 0x00); // Configure as OUTPUT
+  gpio.config(1, 0x00); // Configure as OUTPUT
+  gpio.config(2, 0x00); // Configure as OUTPUT
+  gpio.config(3, 0xFF); // Configure as INPUT
+  gpio.config(4, 0xFF); // Configure as INPUT
 }
 
 void loop() {
-  ledd.pwm(0, 1.0);
-  Serial.println("ON ");
-  delay(100);
+  static int count = 0;
 
-  ledd.pwm(0, 0.0);
-  Serial.println("OFF");
+  gpio.output(2, count++);
   delay(100);
 }
