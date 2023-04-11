@@ -19,13 +19,17 @@ void setup() {
   Serial.println("\n***** Hello, PCA9955B! *****");
 
   Wire.begin();
-  gpio.config(0, 0x00); // Configure as OUTPUT
-  gpio.config(1, 0x00); // Configure as OUTPUT
-  gpio.config(2, 0x00); // Configure as OUTPUT
-  gpio.config(3, 0xFF); // Configure as INPUT
-  gpio.config(4, 0xFF); // Configure as INPUT
-}
 
+  uint8_t config_and_int_setting[] = {
+    0x00,  // Configure as OUTPUT
+    0x00,  // Configure as OUTPUT
+    0x00,  // Configure as OUTPUT
+    0xE0,  // Configure as INPUT for bit 7~5
+    0x03,  // Configure as INPUT for bit 1 and 0
+  };
+
+  gpio.config( config_and_int_setting );
+}
 void loop() {
   static int count = 0;
 

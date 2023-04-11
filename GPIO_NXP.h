@@ -158,6 +158,16 @@ public:
 		Switch_debounce_enable_0,
 		Switch_debounce_enable_1,
 		Switch_debounce_count,
+		
+		IN			= Input_Port_0,
+		OUT			= Output_Port_0,
+		POLARITY	= Polarity_Inversion_port_0,
+		CONFIG		= Configuration_port_0,
+		LATCH		= Input_latch_register_port_0,
+		PUD_ENABLE	= Pull_up_pull_down_enable_register_port_0,
+		PUD_SELECT	= Pull_up_pull_down_selection_register_port_0,
+		INT_MASK	= Interrupt_mask_register_port_0,
+		INT_STATUS	= Interrupt_status_register_port_0,
 	};
 	
 	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0, int n_bits = 34, uint8_t in_r = Input_Port_0, uint8_t out_r = Output_Port_0, uint8_t cfg_r = Configuration_port_0 );
