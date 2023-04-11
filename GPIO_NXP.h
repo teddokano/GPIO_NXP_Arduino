@@ -30,20 +30,26 @@ public:
 		NONE,
 		ARDUINO_SHIELD,
 	};
+	enum io_config {
 #ifdef OUTPUT
 #undef OUTPUT
 #endif
 #ifdef INPUT
 #undef INPUT
 #endif
-	enum io_config {
 		OUTPUT,
 		INPUT,
 	};
 
 	const	uint8_t N_BITS;
 	
-	GPIO_base( uint8_t i2c_address, uint8_t n_bits, uint8_t in_r, uint8_t out_r, uint8_t cfg_r  );
+	GPIO_base( 
+				uint8_t i2c_address, 
+			  	int n_bits, 
+			  	uint8_t in_r, 
+				uint8_t out_r, 
+				uint8_t cfg_r
+			  );
 	virtual ~GPIO_base();
 
 	void output( int port, uint8_t value, uint8_t mask = 0 );
@@ -65,8 +71,34 @@ private:
 	const uint8_t cfg_reg;
 };
 
+class PCAL6xxx_base : public GPIO_base
+{
+public:
+	PCAL6xxx_base( 
+				  uint8_t i2c_address, 
+				  int n_bits, 
+				  uint8_t in_r, 
+				  uint8_t out_r, 
+				  uint8_t cfg_r,
+				  uint8_t latch_r,
+				  uint8_t pud_en_r,
+				  uint8_t pud_sel_r,
+				  uint8_t int_mask_r,
+				  uint8_t int_status_r
+				  );
+	virtual ~PCAL6xxx_base();
 
-class PCAL6534 : public GPIO_base
+protected:
+	const uint8_t latch_reg;
+	const uint8_t pud_en_reg;
+	const uint8_t pud_sel_reg;
+	const uint8_t int_mask_reg;
+	const uint8_t int_status_reg;
+};
+
+
+
+class PCAL6534 : public PCAL6xxx_base
 {
 public:
 	/** Number of channels */
@@ -160,7 +192,18 @@ public:
 		Switch_debounce_count,
 	};
 	
-	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0, int n_bits = 34, uint8_t in_r = Input_Port_0, uint8_t out_r = Output_Port_0, uint8_t cfg_r = Configuration_port_0 );
+	PCAL6534(
+			 	uint8_t i2c_address = (0x44 >> 1) + 0, 
+				int n_bits = 34, 
+			 	uint8_t in_r = Input_Port_0, 
+			 	uint8_t out_r = Output_Port_0, 
+				uint8_t cfg_r = Configuration_port_0,
+				uint8_t latch_r = Input_latch_register_port_0,
+				uint8_t pud_en_r = Pull_up_pull_down_enable_register_port_0,
+				uint8_t pud_sel_r = Pull_up_pull_down_selection_register_port_0,
+				uint8_t int_mask_r = Interrupt_mask_register_port_0,
+				uint8_t int_status_r = Interrupt_status_register_port_0
+			 );
 	virtual ~PCAL6534();
 };
 
