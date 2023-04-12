@@ -55,7 +55,7 @@ public:
 
 	const int	n_bits;
 	
-	GPIO_base( uint8_t i2c_address, int nbits, const reg_references* prpty );
+	GPIO_base( uint8_t i2c_address, const int nbits, const reg_references* prpty );
 	virtual ~GPIO_base();
 
 	void begin( board env );
@@ -79,8 +79,17 @@ private:
 	static constexpr int ADDR_PIN	= 9;
 };
 
+class PCAL6xxx_base : public GPIO_base
+{
+public:
+	PCAL6xxx_base( uint8_t i2c_address, const int nbits, const reg_references* prpty );
+	virtual ~PCAL6xxx_base();
 
-class PCAL6534 : public GPIO_base
+	
+};
+
+
+class PCAL6534 : public PCAL6xxx_base
 {
 public:
 	/** Number of channels */

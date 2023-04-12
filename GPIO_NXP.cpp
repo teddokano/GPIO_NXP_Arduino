@@ -2,7 +2,7 @@
 
 /* LEDDriver class ******************************************/
 
-GPIO_base::GPIO_base( uint8_t i2c_address, int nbits, const reg_references* rr ) :
+GPIO_base::GPIO_base( uint8_t i2c_address, const int nbits, const reg_references* rr ) :
 	I2C_device( i2c_address ), 
 	n_bits( nbits ),
 	rrp( rr )
@@ -91,8 +91,18 @@ void GPIO_base::all_port_r16( int reg, uint16_t* vp )
 	reg_r( 0x80 | reg, (uint8_t*)vp, n_bits * 2 );	
 }
 
+PCAL6xxx_base::PCAL6xxx_base( uint8_t i2c_address, const int nbits, const reg_references* rrp ) :
+	GPIO_base( i2c_address, nbits, rrp )
+{
+}
+
+PCAL6xxx_base::~PCAL6xxx_base()
+{
+}
+
+
 PCAL6534::PCAL6534( uint8_t i2c_address ) :
-	GPIO_base( i2c_address, 34, &rr )
+	PCAL6xxx_base( i2c_address, 34, &rr )
 {
 }
 
