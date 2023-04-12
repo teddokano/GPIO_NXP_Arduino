@@ -75,8 +75,8 @@ public:
 private:
 	const reg_references*	rrp;
 	
-	static const int RESET_PIN	= 8;
-	static const int ADDR_PIN	= 9;
+	static constexpr int RESET_PIN	= 8;
+	static constexpr int ADDR_PIN	= 9;
 };
 
 
@@ -117,7 +117,7 @@ public:
 		Switch_debounce_count,
 	};
 	
-	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 1 );
+	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6534();
 
 	static constexpr reg_references rr = {

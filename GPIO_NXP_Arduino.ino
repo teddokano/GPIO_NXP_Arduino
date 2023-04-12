@@ -33,7 +33,9 @@ void setup() {
 
   Wire.begin();
 
-  gpio.begin(GPIO_base::ARDUINO_SHIELD);
+  I2C_device::scan();
+
+  //gpio.begin(GPIO_base::ARDUINO_SHIELD);
 
   uint8_t io_config_and_pull_up[] = {
     0x00,  // Configure port0 as OUTPUT
