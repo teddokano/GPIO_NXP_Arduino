@@ -46,17 +46,8 @@ void setup() {
   };
   gpio.config(io_config_and_pull_up);
 
-
-  gpio.output(2, 0xFF);
-
-
-
-
-
-
-
-  gpio.write_ports(PULL_UD_EN, io_config_and_pull_up);
-  gpio.write_ports(PULL_UD_SEL, io_config_and_pull_up);
+  gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
+  gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
 
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_3, (uint8_t)(~0xE0));
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_4, (uint8_t)(~0x03));
@@ -66,7 +57,6 @@ void setup() {
 
   Serial.println("size");
   Serial.println(NUM_access_word);
-
 }
 
 void loop() {

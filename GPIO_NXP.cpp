@@ -49,7 +49,7 @@ void GPIO_base::output( int port, uint8_t value, uint8_t mask )
 
 void GPIO_base::output( uint8_t *vp )
 {
-	write_ports( *(arp + OUT), vp );
+	write_port( (access_word)(*(arp + OUT)), vp );
 }
 
 uint8_t GPIO_base::input( int port )
@@ -59,7 +59,7 @@ uint8_t GPIO_base::input( int port )
 
 void GPIO_base::input( uint8_t *vp )
 {
-	read_ports( *(arp + IN), vp );
+	read_port( (access_word)(*(arp + IN)), vp );
 }
 
 void GPIO_base::config( int port, uint8_t config, uint8_t mask )
@@ -72,15 +72,15 @@ void GPIO_base::config( int port, uint8_t config, uint8_t mask )
 
 void GPIO_base::config( uint8_t* vp )
 {
-	write_ports( *(arp + CONFIG), vp );	
+	write_port( (access_word)(*(arp + CONFIG)), vp );	
 }
 
-void GPIO_base::write_ports( access_word w, uint8_t* vp )
+void GPIO_base::write_port( access_word w, uint8_t* vp )
 {
 	reg_w( 0x80 | *(arp + w), vp, (n_bits + 7) / 8 );
 }
 
-void GPIO_base::write_ports16( access_word w, uint16_t* vp )
+void GPIO_base::write_port16( access_word w, uint16_t* vp )
 {
 	if ( endian ) {
 		uint16_t	temp;
@@ -93,12 +93,12 @@ void GPIO_base::write_ports16( access_word w, uint16_t* vp )
 	reg_w( 0x80 | *(arp + w), (uint8_t*)vp, (n_bits * 2 + 7) / 8 );		
 }
 
-void GPIO_base::read_ports( access_word w, uint8_t* vp )
+void GPIO_base::read_port( access_word w, uint8_t* vp )
 {
 	reg_r( 0x80 | *(arp + w), vp, (n_bits + 7) / 8 );
 }
 
-void GPIO_base::read_ports16( access_word w, uint16_t* vp )
+void GPIO_base::read_port16( access_word w, uint16_t* vp )
 {
 	reg_r( 0x80 | *(arp + w), (uint8_t*)vp, (n_bits * 2 + 7) / 8 );	
 

@@ -57,10 +57,11 @@ public:
 	void config( int port, uint8_t config, uint8_t mask = 0 );
 	void config( uint8_t* vp );
 
-	void write_ports( access_word w, uint8_t* vp );
-	void write_ports16( access_word w, uint16_t* vp );
-	void read_ports( access_word w, uint8_t* vp );
-	void read_ports16( access_word w, uint16_t* vp );
+	void write_port( access_word w, int port_num, uint8_t value );
+	void write_port( access_word w, uint8_t* vp );
+	void write_port16( access_word w, uint16_t* vp );
+	void read_port( access_word w, uint8_t* vp );
+	void read_port16( access_word w, uint16_t* vp );
 
 private:
 	const uint8_t*	arp;
