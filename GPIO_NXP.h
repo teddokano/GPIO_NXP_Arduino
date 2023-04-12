@@ -67,10 +67,10 @@ public:
 	void config( int port, uint8_t config, uint8_t mask = 0 );
 	void config( uint8_t* vp );
 
-	void all_port_w8( int reg, uint8_t* vp );
-	void all_port_w16( int reg, uint16_t* vp );
-	void all_port_r8( int reg, uint8_t* vp );
-	void all_port_r16( int reg, uint16_t* vp );
+	void write_ports( int reg, uint8_t* vp );
+	void write_ports16( int reg, uint16_t* vp );
+	void read_ports( int reg, uint8_t* vp );
+	void read_ports16( int reg, uint16_t* vp );
 
 private:
 	const reg_references*	rrp;
@@ -84,8 +84,6 @@ class PCAL6xxx_base : public GPIO_base
 public:
 	PCAL6xxx_base( uint8_t i2c_address, const int nbits, const reg_references* prpty );
 	virtual ~PCAL6xxx_base();
-
-	
 };
 
 
@@ -105,8 +103,7 @@ public:
 		Output_drive_strength_register_port_1A, Output_drive_strength_register_port_1B,
 		Output_drive_strength_register_port_2A, Output_drive_strength_register_port_2B,
 		Output_drive_strength_register_port_3A, Output_drive_strength_register_port_3B,
-		Output_drive_strength_register_port_4A,
-		reserved0,
+		Output_drive_strength_register_port_4A, reserved0,
 		Input_latch_register_port_0, Input_latch_register_port_1, Input_latch_register_port_2, Input_latch_register_port_3, Input_latch_register_port_4,
 		Pull_up_pull_down_enable_register_port_0, Pull_up_pull_down_enable_register_port_1, Pull_up_pull_down_enable_register_port_2, Pull_up_pull_down_enable_register_port_3, Pull_up_pull_down_enable_register_port_4,
 		Pull_up_pull_down_selection_register_port_0, Pull_up_pull_down_selection_register_port_1, Pull_up_pull_down_selection_register_port_2, Pull_up_pull_down_selection_register_port_3, Pull_up_pull_down_selection_register_port_4,
@@ -117,8 +114,7 @@ public:
 		Interrupt_edge_register_port_1A, Interrupt_edge_register_port_1B,
 		Interrupt_edge_register_port_2A, Interrupt_edge_register_port_2B,
 		Interrupt_edge_register_port_3A, Interrupt_edge_register_port_3B,
-		Interrupt_edge_register_port_4A,
-		reserved1,
+		Interrupt_edge_register_port_4A, reserved1,
 		Interrupt_clear_register_port_0, Interrupt_clear_register_port_1, Interrupt_clear_register_port_2, Interrupt_clear_register_port_3, Interrupt_clear_register_port_4,
 		Input_status_port_0, Input_status_port_1, Input_status_port_2, Input_status_port_3, Input_status_port_4,
 		Individual_pin_output_port_0_configuration_register, Individual_pin_output_port_1_configuration_register, Individual_pin_output_port_2_configuration_register, Individual_pin_output_port_3_configuration_register, Individual_pin_output_port_4_configuration_register,
@@ -129,7 +125,7 @@ public:
 	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6534();
 
-	static constexpr reg_references rr = {
+	static constexpr reg_references reg_ref = {
 		Input_Port_0,
 		Output_Port_0,
 		Polarity_Inversion_port_0,

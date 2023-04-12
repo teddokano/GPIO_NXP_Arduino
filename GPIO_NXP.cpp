@@ -43,7 +43,7 @@ void GPIO_base::output( int port, uint8_t value, uint8_t mask )
 
 void GPIO_base::output( uint8_t *vp )
 {
-	all_port_w8( rrp->output, vp );
+	write_ports( rrp->output, vp );
 }
 
 uint8_t GPIO_base::input( int port )
@@ -53,7 +53,7 @@ uint8_t GPIO_base::input( int port )
 
 void GPIO_base::input( uint8_t *vp )
 {
-	all_port_r8( rrp->input, vp );
+	read_ports( rrp->input, vp );
 }
 
 void GPIO_base::config( int port, uint8_t config, uint8_t mask )
@@ -66,29 +66,29 @@ void GPIO_base::config( int port, uint8_t config, uint8_t mask )
 
 void GPIO_base::config( uint8_t* vp )
 {
-	all_port_w8( rrp->config, vp );	
+	write_ports( rrp->config, vp );	
 }
 
-void GPIO_base::all_port_w8( int reg, uint8_t* vp )
+void GPIO_base::write_ports( int reg, uint8_t* vp )
 {
-	reg_w( 0x80 | reg, vp, n_bits );
+	reg_w( 0x80 | reg, vp, (n_bits + 7) / 8 );
 }
 
-void GPIO_base::all_port_w16( int reg, uint16_t* vp )
-{
-	//	Expecting little endian
-	reg_w( 0x80 | reg, (uint8_t*)vp, n_bits * 2 );
-}
-
-void GPIO_base::all_port_r8( int reg, uint8_t* vp )
-{
-	reg_r( 0x80 | reg, vp, n_bits );
-}
-
-void GPIO_base::all_port_r16( int reg, uint16_t* vp )
+void GPIO_base::write_ports16( int reg, uint16_t* vp )
 {
 	//	Expecting little endian
-	reg_r( 0x80 | reg, (uint8_t*)vp, n_bits * 2 );	
+	reg_w( 0x80 | reg, (uint8_t*)vp, ((n_bits + 7) / 8) * 2 );
+}
+
+void GPIO_base::read_ports( int reg, uint8_t* vp )
+{
+	reg_r( 0x80 | reg, vp, (n_bits + 7) / 8 );
+}
+
+void GPIO_base::read_ports16( int reg, uint16_t* vp )
+{
+	//	Expecting little endian
+	reg_r( 0x80 | reg, (uint8_t*)vp, ((n_bits + 7) / 8) * 2 );	
 }
 
 PCAL6xxx_base::PCAL6xxx_base( uint8_t i2c_address, const int nbits, const reg_references* rrp ) :
@@ -102,7 +102,7 @@ PCAL6xxx_base::~PCAL6xxx_base()
 
 
 PCAL6534::PCAL6534( uint8_t i2c_address ) :
-	PCAL6xxx_base( i2c_address, 34, &rr )
+	PCAL6xxx_base( i2c_address, 34, &reg_ref )
 {
 }
 
@@ -110,4 +110,4 @@ PCAL6534::~PCAL6534()
 {
 }
 
-constexpr reg_references PCAL6534::rr;
+constexpr reg_references PCAL6534::reg_ref;

@@ -45,20 +45,28 @@ void setup() {
     0x03,  // Configure port4 bit 1 and 0 as INPUT
   };
   gpio.config(io_config_and_pull_up);
-  gpio.all_port_w8(PCAL6534::Pull_up_pull_down_enable_register_port_0, io_config_and_pull_up);
-  gpio.all_port_w8(PCAL6534::Pull_up_pull_down_selection_register_port_0, io_config_and_pull_up);
+  gpio.write_ports(PCAL6534::Pull_up_pull_down_enable_register_port_0, io_config_and_pull_up);
+  gpio.write_ports(PCAL6534::Pull_up_pull_down_selection_register_port_0, io_config_and_pull_up);
 
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_3, (uint8_t)(~0xE0));
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_4, (uint8_t)(~0x03));
 
   Serial.println("    *** If it seems the demo is not working, check the INT pins ***");
   Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
+
+  uint16_t test[] = { 0x0001, 0x0203, 0x0405, 0x0607, 0x0809 };
+
+
 }
+
 void loop() {
   if (int_flag) {
     int_flag = false;
+
     int int3 = gpio.read_r8(PCAL6534::Interrupt_status_register_port_3);
     int int4 = gpio.read_r8(PCAL6534::Interrupt_status_register_port_4);
+
+    //  Each status register will be cleared by next each INPUT register read
 
     Serial.print("[INT] ");
     Serial.print(" ");
