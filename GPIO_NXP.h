@@ -13,7 +13,6 @@
 #include <stdint.h>
 
 #include <I2C_device.h>
-#include <SPI.h>
 
 /** GPIO_base class
  *	
@@ -23,8 +22,7 @@
  *	All actual device class will be derived from this class
  */
 
-typedef struct gpio_properties {
-	int		bits;
+typedef struct register_references {
 	uint8_t	input;
 	uint8_t	output;
 	uint8_t	polarity;
@@ -34,7 +32,7 @@ typedef struct gpio_properties {
 	uint8_t	pud_sel;
 	uint8_t	int_mask;
 	uint8_t	int_status;
-} properties;
+} reg_references;
 
 
 class GPIO_base : public I2C_device
@@ -55,9 +53,9 @@ public:
 		INPUT,
 	};
 
-	const	uint8_t N_BITS;
+	const int	n_bits;
 	
-	GPIO_base( uint8_t i2c_address, const properties* prpty );
+	GPIO_base( uint8_t i2c_address, int nbits, const reg_references* prpty );
 	virtual ~GPIO_base();
 
 	void output( int port, uint8_t value, uint8_t mask = 0 );
@@ -73,9 +71,7 @@ public:
 	void all_port_r16( int reg, uint16_t* vp );
 
 private:
-	const uint8_t in_reg;
-	const uint8_t out_reg;
-	const uint8_t cfg_reg;
+	const reg_references*	rrp;
 };
 
 
@@ -176,8 +172,7 @@ public:
 	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6534();
 	
-	static const properties ppty = {
-		34,
+	const reg_references rr = {
 		Input_Port_0,
 		Output_Port_0,
 		Polarity_Inversion_port_0,
