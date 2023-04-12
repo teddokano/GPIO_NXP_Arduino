@@ -56,23 +56,25 @@ void setup() {
   Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
 
   Serial.println("size");
-  Serial.println(NUM_access_word);
+  Serial.println(gpio.n_bits);
+  Serial.println(gpio.n_ports);
 }
 
 void loop() {
   if (int_flag) {
     int_flag = false;
 
-    int int3 = gpio.read_r8(PCAL6534::Interrupt_status_register_port_3);
-    int int4 = gpio.read_r8(PCAL6534::Interrupt_status_register_port_4);
+    uint8_t status[gpio.n_ports];
 
-    //  Each status register will be cleared by next each INPUT register read
+    gpio.read_port(INT_STATUS, status);
 
-    Serial.print("[INT] ");
-    Serial.print(" ");
-    Serial.print(int3, HEX);
-    Serial.print(" ");
-    Serial.print(int4, HEX);
+    Serial.print("[INT] status:");
+
+    for (int i = 0; i < gpio.n_ports; i++) {
+      Serial.print(" ");
+      Serial.print(status[i], HEX);
+    }
+
     Serial.println("");
   }
 

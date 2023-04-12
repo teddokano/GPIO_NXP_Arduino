@@ -44,6 +44,7 @@ public:
 		ARDUINO_SHIELD,
 	};
 	const int	n_bits;
+	const int	n_ports;
 	
 	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp );
 	virtual ~GPIO_base();
@@ -53,15 +54,15 @@ public:
 	void output( int port, uint8_t value, uint8_t mask = 0 );
 	void output( uint8_t *vp );
 	uint8_t input( int port );
-	void input( uint8_t *vp );
+	uint8_t* input( uint8_t *vp );
 	void config( int port, uint8_t config, uint8_t mask = 0 );
 	void config( uint8_t* vp );
 
 	void write_port( access_word w, int port_num, uint8_t value );
 	void write_port( access_word w, uint8_t* vp );
 	void write_port16( access_word w, uint16_t* vp );
-	void read_port( access_word w, uint8_t* vp );
-	void read_port16( access_word w, uint16_t* vp );
+	uint8_t* read_port( access_word w, uint8_t* vp );
+	uint16_t* read_port16( access_word w, uint16_t* vp );
 
 private:
 	const uint8_t*	arp;
@@ -80,13 +81,137 @@ public:
 };
 
 
+class PCAL6408A : public PCAL6xxx_base
+{
+public:
+	/** Number of I/O bits */
+	constexpr static uint8_t n_channel	= 8;
+	
+	/** Name of the PCAL6408A registers */
+	enum reg_num {
+		Input_Port,
+		Output_Port,
+		Polarity_Inversion,
+		Configuration,
+		Output_drive_strength_0=0x40,
+		Output_drive_strength_1,
+		Input_latch,
+		Pull_up_pull_down_enable,
+		Pull_up_pull_down_selection,
+		Interrupt_mask,
+		Interrupt_status,
+		Output_port_configuration,
+	};
+	
+	PCAL6408A( uint8_t i2c_address = (0x40 >> 1) + 0 );
+	virtual ~PCAL6408A();
+
+	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
+		Input_Port,
+		Output_Port,
+		Polarity_Inversion,
+		Configuration,
+		Input_latch,
+		Pull_up_pull_down_enable,
+		Pull_up_pull_down_selection,
+		Interrupt_mask,
+		Interrupt_status,		
+	};
+};
+
+class PCAL6416A : public PCAL6xxx_base
+{
+public:
+	/** Number of I/O bits */
+	constexpr static uint8_t n_channel	= 16;
+	
+	/** Name of the PCAL6416A registers */
+	enum reg_num {
+		Input_Port_0, Input_Port_1,
+		Output_Port_0, Output_Port_1,
+		Polarity_Inversion_port_0, Polarity_Inversion_port_1,
+		Configuration_port_0, Configuration_port_1,
+		Output_drive_strength_register_0=0x40, Output_drive_strength_register_0B,
+		Output_drive_strength_register_1, Output_drive_strength_register_1B,
+		Input_latch_register_0, Input_latch_register_1, 
+		Pull_up_pull_down_enable_register_0, Pull_up_pull_down_enable_register_1, 
+		Pull_up_pull_down_selection_register_0, Pull_up_pull_down_selection_register_1, 
+		Interrupt_mask_register_0, Interrupt_mask_register_1, 
+		Interrupt_status_register_0, Interrupt_status_register_1, 
+		Output_port_configuration_register,  
+	};
+	
+	PCAL6416A( uint8_t i2c_address = (0x40 >> 1) + 0 );
+	virtual ~PCAL6416A();
+
+	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
+		Input_Port_0,
+		Output_Port_0,
+		Polarity_Inversion_port_0,
+		Configuration_port_0,
+		Input_latch_register_0,
+		Pull_up_pull_down_enable_register_0,
+		Pull_up_pull_down_selection_register_0,
+		Interrupt_mask_register_0,
+		Interrupt_status_register_0,		
+	};
+};
+
+class PCAL6524 : public PCAL6xxx_base
+{
+public:
+	/** Number of I/O bits */
+	constexpr static uint8_t n_channel	= 24;
+	
+	/** Name of the PCAL6416A registers */
+	enum reg_num {
+		Input_Port_0, Input_Port_1, Input_Port_2, reserved0, 
+		Output_Port_0, Output_Port_1, Output_Port_2, reserved1, 
+		Polarity_Inversion_port_0, Polarity_Inversion_port_1, Polarity_Inversion_port_2, reserved2, 
+		Configuration_port_0, Configuration_port_1, Configuration_port_2, 
+		Output_drive_strength_register_port_0A=0x40, Output_drive_strength_register_port_0B, 
+		Output_drive_strength_register_port_1A, Output_drive_strength_register_port_1B, 
+		Output_drive_strength_register_port_2A, Output_drive_strength_register_port_2B, 
+		reserved3, reserved4, 
+		Input_latch_register_port_0, Input_latch_register_port_1, Input_latch_register_port_2, reserved5, 
+		Pull_up_pull_down_enable_register_port_0, Pull_up_pull_down_enable_register_port_1, Pull_up_pull_down_enable_register_port_2, reserved6, 
+		Pull_up_pull_down_selection_register_port_0, Pull_up_pull_down_selection_register_port_1, Pull_up_pull_down_selection_register_port_2, reserved7, 
+		Interrupt_mask_register_port_0, Interrupt_mask_register_port_1, Interrupt_mask_register_port_2, reserved8, 
+		Interrupt_status_register_port_0, Interrupt_status_register_port_1, Interrupt_status_register_port_2, reserved9, 
+		Output_port_configuration_register, reserved10, reserved11, reserved12, 
+		Interrupt_edge_register_port_0A, Interrupt_edge_register_port_0B, 
+		Interrupt_edge_register_port_1A, Interrupt_edge_register_port_1B, 
+		Interrupt_edge_register_port_2A, Interrupt_edge_register_port_2B, 
+		reserved13, reserved14, 
+		Interrupt_clear_register_port_0, Interrupt_clear_register_port_1, Interrupt_clear_register_port_2, reserved15, 
+		Input_status_port_0, Input_status_port_1, Input_status_port_2, reserved16, 
+		Individual_pin_output_port_0_configuration_register, Individual_pin_output_port_1_configuration_register, Individual_pin_output_port_2_configuration_register, reserved17, 
+		Switch_debounce_enable_0, Switch_debounce_enable_1, Switch_debounce_count, 
+	};
+	
+	PCAL6524( uint8_t i2c_address = (0x44 >> 1) + 0 );
+	virtual ~PCAL6524();
+
+	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
+		Input_Port_0,
+		Output_Port_0,
+		Polarity_Inversion_port_0,
+		Configuration_port_0,
+		Input_latch_register_port_0,
+		Pull_up_pull_down_enable_register_port_0,
+		Pull_up_pull_down_selection_register_port_0,
+		Interrupt_mask_register_port_0,
+		Interrupt_status_register_port_0,		
+	};
+};
+
 class PCAL6534 : public PCAL6xxx_base
 {
 public:
-	/** Number of channels */
+	/** Number of I/O bits */
 	constexpr static uint8_t n_channel	= 34;
 	
-	/** Name of the PCA9955B registers */
+	/** Name of the PCAL6534 registers */
 	enum reg_num {
 		Input_Port_0,  Input_Port_1,  Input_Port_2,  Input_Port_3,  Input_Port_4,
 		Output_Port_0, Output_Port_1, Output_Port_2, Output_Port_3, Output_Port_4,
