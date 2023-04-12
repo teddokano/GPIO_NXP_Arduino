@@ -22,7 +22,8 @@
  *	All actual device class will be derived from this class
  */
 
-enum access_word {
+enum access_word : uint8_t
+{
 	IN,
 	OUT,
 	POLARITY,
@@ -32,21 +33,8 @@ enum access_word {
 	PULL_UD_SEL,
 	INT_MASK,
 	INT_STATUS,
+	NUM_access_word, 
 };
-
-
-typedef struct register_references {
-	const uint8_t	input;
-	const uint8_t	output;
-	const uint8_t	polarity;
-	const uint8_t	config;
-	const uint8_t	latch;
-	const uint8_t	pud_en;
-	const uint8_t	pud_sel;
-	const uint8_t	int_mask;
-	const uint8_t	int_status;
-} reg_references;
-
 
 class GPIO_base : public I2C_device
 {
@@ -57,7 +45,7 @@ public:
 	};
 	const int	n_bits;
 	
-	GPIO_base( uint8_t i2c_address, const int nbits, const reg_references* prpty );
+	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp );
 	virtual ~GPIO_base();
 
 	void begin( board env );
@@ -75,17 +63,18 @@ public:
 	void read_ports16( int reg, uint16_t* vp );
 
 private:
-	const reg_references*	rrp;
-	bool					endian;
+	const uint8_t*	arp;
+	bool			endian;
 	
 	static constexpr int RESET_PIN	= 8;
 	static constexpr int ADDR_PIN	= 9;
 };
 
+
 class PCAL6xxx_base : public GPIO_base
 {
 public:
-	PCAL6xxx_base( uint8_t i2c_address, const int nbits, const reg_references* prpty );
+	PCAL6xxx_base( uint8_t i2c_address, const int nbits, const uint8_t arp[] );
 	virtual ~PCAL6xxx_base();
 };
 
@@ -128,7 +117,7 @@ public:
 	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6534();
 
-	static constexpr reg_references reg_ref = {
+	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
 		Input_Port_0,
 		Output_Port_0,
 		Polarity_Inversion_port_0,
@@ -137,7 +126,7 @@ public:
 		Pull_up_pull_down_enable_register_port_0,
 		Pull_up_pull_down_selection_register_port_0,
 		Interrupt_mask_register_port_0,
-		Interrupt_status_register_port_0,
+		Interrupt_status_register_port_0,		
 	};
 };
 

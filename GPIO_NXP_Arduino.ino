@@ -45,6 +45,16 @@ void setup() {
     0x03,  // Configure port4 bit 1 and 0 as INPUT
   };
   gpio.config(io_config_and_pull_up);
+
+
+  gpio.output(2, 0xFF);
+
+
+
+
+
+
+
   gpio.write_ports(PCAL6534::Pull_up_pull_down_enable_register_port_0, io_config_and_pull_up);
   gpio.write_ports(PCAL6534::Pull_up_pull_down_selection_register_port_0, io_config_and_pull_up);
 
@@ -53,6 +63,10 @@ void setup() {
 
   Serial.println("    *** If it seems the demo is not working, check the INT pins ***");
   Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
+
+  Serial.println("size");
+  Serial.println(NUM_access_word);
+
 }
 
 void loop() {
