@@ -89,19 +89,12 @@ void GPIO_base::write_ports16( int reg, uint16_t* vp )
 			vp[ i ]	= temp | vp[ i ] >> 8;			
 		}
 	}
-	else {
-  Serial.println("__BIG_ENDIAN__");
-	}
-	reg_w( 0x80 | reg, (uint8_t*)vp, (n_bits * 2 + 7) / 8 );		
 
+	reg_w( 0x80 | reg, (uint8_t*)vp, (n_bits * 2 + 7) / 8 );		
 }
 
 void GPIO_base::read_ports( int reg, uint8_t* vp )
 {
-	Serial.println("read_ports");
-	Serial.println((n_bits + 7) / 8);
-		  
-
 	reg_r( 0x80 | reg, vp, (n_bits + 7) / 8 );
 }
 
@@ -111,17 +104,12 @@ void GPIO_base::read_ports16( int reg, uint16_t* vp )
 
 	if ( endian ) {
 		uint16_t	temp;
-  Serial.println("__LITTLE_ENDIAN__");
 
 		for ( int i = 0; i < ((n_bits + 7) / 8); i++ ) {
 			temp	= vp[ i ] << 8;
 			vp[ i ]	= temp | vp[ i ] >> 8;			
 		}
 	} 
-  else {
-      Serial.println("__BIG_ENDIAN__");
-
-  }
 }
 
 PCAL6xxx_base::PCAL6xxx_base( uint8_t i2c_address, const int nbits, const reg_references* rrp ) :

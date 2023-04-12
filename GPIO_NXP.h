@@ -22,6 +22,19 @@
  *	All actual device class will be derived from this class
  */
 
+enum access_word {
+	IN,
+	OUT,
+	POLARITY,
+	CONFIG,
+	LATCH,
+	PULL_UD_EN,
+	PULL_UD_SEL,
+	INT_MASK,
+	INT_STATUS,
+};
+
+
 typedef struct register_references {
 	const uint8_t	input;
 	const uint8_t	output;
@@ -42,17 +55,6 @@ public:
 		NONE,
 		ARDUINO_SHIELD,
 	};
-#ifdef OUTPUT
-#undef OUTPUT
-#endif
-#ifdef INPUT
-#undef INPUT
-#endif
-	enum io_config {
-		OUTPUT,
-		INPUT,
-	};
-
 	const int	n_bits;
 	
 	GPIO_base( uint8_t i2c_address, const int nbits, const reg_references* prpty );
@@ -74,7 +76,7 @@ public:
 
 private:
 	const reg_references*	rrp;
-	int						endian;
+	bool					endian;
 	
 	static constexpr int RESET_PIN	= 8;
 	static constexpr int ADDR_PIN	= 9;
