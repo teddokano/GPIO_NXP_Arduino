@@ -19,7 +19,6 @@ void GPIO_base::output( int port, uint8_t value, uint8_t mask )
 		bit_op8( rrp->output + port, mask, value );
 
 	write_r8( rrp->output + port, value );
-	Serial.println( n_bits );
 }
 
 void GPIO_base::output( uint8_t *vp )
@@ -80,3 +79,21 @@ PCAL6534::PCAL6534( uint8_t i2c_address ) :
 PCAL6534::~PCAL6534()
 {
 }
+
+#if 1
+#if 1
+const reg_references PCAL6534::rr;
+#else
+const reg_references PCAL6534::rr = {
+	Input_Port_0,
+	Output_Port_0,
+	Polarity_Inversion_port_0,
+	Configuration_port_0,
+	Input_latch_register_port_0,
+	Pull_up_pull_down_enable_register_port_0,
+	Pull_up_pull_down_selection_register_port_0,
+	Interrupt_mask_register_port_0,
+	Interrupt_status_register_port_0,
+};
+#endif
+#endif

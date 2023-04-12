@@ -23,15 +23,15 @@
  */
 
 typedef struct register_references {
-	uint8_t	input;
-	uint8_t	output;
-	uint8_t	polarity;
-	uint8_t	config;
-	uint8_t	latch;
-	uint8_t	pud_en;
-	uint8_t	pud_sel;
-	uint8_t	int_mask;
-	uint8_t	int_status;
+	const uint8_t	input;
+	const uint8_t	output;
+	const uint8_t	polarity;
+	const uint8_t	config;
+	const uint8_t	latch;
+	const uint8_t	pud_en;
+	const uint8_t	pud_sel;
+	const uint8_t	int_mask;
+	const uint8_t	int_status;
 } reg_references;
 
 
@@ -171,8 +171,9 @@ public:
 	
 	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6534();
-	
-	const reg_references rr = {
+
+#if 1
+	static constexpr reg_references rr = {
 		Input_Port_0,
 		Output_Port_0,
 		Polarity_Inversion_port_0,
@@ -183,6 +184,9 @@ public:
 		Interrupt_mask_register_port_0,
 		Interrupt_status_register_port_0,
 	};
+#else
+	static constexpr reg_references rr;
+#endif
 };
 
 #endif //	ARDUINO_LED_DRIVER_NXP_ARD_H
