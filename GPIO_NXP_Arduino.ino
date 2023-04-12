@@ -2,6 +2,9 @@
  *  
  *  This sample code is showing PCAL6534 GPIO operation.
  *
+ *  *** IMPORTANT 0 ***
+ *  *** TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCAL6xxx-ARD BOARDS, PIN10 MUST BE SHORTED TO PIN2 TO HANDLE INTERRUPT CORRECTLY
+ *
  *  @author  Tedd OKANO
  *
  *  Released under the MIT license License
@@ -20,7 +23,6 @@ bool int_flag = false;
 void pin_int_callback() {
   int_flag = true;
 }
-
 
 void setup() {
   Serial.begin(9600);
@@ -46,48 +48,35 @@ void setup() {
 
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_3, (uint8_t)(~0xE0));
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_4, (uint8_t)(~0x03));
+
+  Serial.println("    *** If it seems the demo is not working, check the INT pins ***");
+  Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
 }
 void loop() {
-#if 0
-  static int count = 0;
-  gpio.output(2, count++);
-#else
-  int int3 = gpio.read_r8(PCAL6534::Interrupt_status_register_port_3);
-  int int4 = gpio.read_r8(PCAL6534::Interrupt_status_register_port_4);
+  if (int_flag) {
+    int_flag = false;
+    int int3 = gpio.read_r8(PCAL6534::Interrupt_status_register_port_3);
+    int int4 = gpio.read_r8(PCAL6534::Interrupt_status_register_port_4);
 
-  //  int input3 = gpio.input(3);
-  //  int input4 = gpio.input(4);
-  int input3 = gpio.read_r8(PCAL6534::Input_Port_3);
-  int input4 = gpio.read_r8(PCAL6534::Input_Port_4);
+    Serial.print("[INT] ");
+    Serial.print(" ");
+    Serial.print(int3, HEX);
+    Serial.print(" ");
+    Serial.print(int4, HEX);
+    Serial.println("");
+  }
 
-  int intm3 = gpio.read_r8(PCAL6534::Interrupt_mask_register_port_3);
-  int intm4 = gpio.read_r8(PCAL6534::Interrupt_mask_register_port_4);
+
+  int input3 = gpio.input(3);
+  int input4 = gpio.input(4);
+
   gpio.output(2, (input3 & 0xFC) | input4);
 
   Serial.print(" ");
   Serial.print(input3, HEX);
   Serial.print(" ");
   Serial.print(input4, HEX);
-  Serial.print(" ");
-  Serial.print(PCAL6534::Interrupt_mask_register_port_3, HEX);
-  Serial.print(" ");
-  Serial.print(intm3, HEX);
-  Serial.print(" ");
-  Serial.print(intm4, HEX);
-  Serial.print(" ");
-  Serial.print(PCAL6534::Interrupt_status_register_port_3, HEX);
-  Serial.print(" ");
-  Serial.print(int3, HEX);
-  Serial.print(" ");
-  Serial.print(int4, HEX);
   Serial.println("");
 
-  if (int_flag) {
-    int_flag = false;
-
-    Serial.println("Interrupt:");
-  }
-
-#endif
   delay(100);
 }

@@ -18,10 +18,12 @@ void GPIO_base::begin( board env )
 	if ( env ) {
 		pinMode( RESET_PIN, OUTPUT );
 		pinMode( ADDR_PIN,  OUTPUT );
+		digitalWrite( ADDR_PIN ,  1 );
 		digitalWrite( RESET_PIN , 0 );
-		digitalWrite( ADDR_PIN ,  0 );
-		delay( 1 );
+		Serial.println("********************************************");
+			 delay( 100 );
 		digitalWrite( RESET_PIN , 1 );
+		delay( 100 );
 	}
 }
 

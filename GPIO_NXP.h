@@ -117,7 +117,7 @@ public:
 		Switch_debounce_count,
 	};
 	
-	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
+	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 1 );
 	virtual ~PCAL6534();
 
 	static constexpr reg_references rr = {
