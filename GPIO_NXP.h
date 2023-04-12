@@ -74,6 +74,7 @@ public:
 
 private:
 	const reg_references*	rrp;
+	int						endian;
 	
 	static constexpr int RESET_PIN	= 8;
 	static constexpr int ADDR_PIN	= 9;

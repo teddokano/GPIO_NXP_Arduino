@@ -55,13 +55,15 @@ void setup() {
   Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
 
   uint16_t test[] = { 0x0001, 0x0203, 0x0405, 0x0607, 0x0809 };
+uint8_t test2[10];
 
   gpio.write_ports16(PCAL6534::Output_drive_strength_register_port_0A, test);
-  gpio.read_ports16(PCAL6534::Output_drive_strength_register_port_0A, test);
+  gpio.read_ports(PCAL6534::Output_drive_strength_register_port_0A, test2);
+gpio.read_ports(PCAL6534::Output_drive_strength_register_port_0A + 5, test2 + 5);
 
   for (int i = 0; i < 9; i++) {
     Serial.print(" ");
-    Serial.print(test[i], HEX);
+    Serial.print(test2[i], HEX);
   }
   Serial.println("");
 
