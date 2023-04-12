@@ -55,8 +55,8 @@ void setup() {
 
 
 
-  gpio.write_ports(PCAL6534::Pull_up_pull_down_enable_register_port_0, io_config_and_pull_up);
-  gpio.write_ports(PCAL6534::Pull_up_pull_down_selection_register_port_0, io_config_and_pull_up);
+  gpio.write_ports(PULL_UD_EN, io_config_and_pull_up);
+  gpio.write_ports(PULL_UD_SEL, io_config_and_pull_up);
 
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_3, (uint8_t)(~0xE0));
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_4, (uint8_t)(~0x03));
