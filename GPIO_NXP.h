@@ -172,7 +172,6 @@ public:
 	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6534();
 
-#if 1
 	static constexpr reg_references rr = {
 		Input_Port_0,
 		Output_Port_0,
@@ -184,9 +183,6 @@ public:
 		Interrupt_mask_register_port_0,
 		Interrupt_status_register_port_0,
 	};
-#else
-	static constexpr reg_references rr;
-#endif
 };
 
 #endif //	ARDUINO_LED_DRIVER_NXP_ARD_H
