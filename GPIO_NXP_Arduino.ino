@@ -56,7 +56,16 @@ void setup() {
 
   uint16_t test[] = { 0x0001, 0x0203, 0x0405, 0x0607, 0x0809 };
 
+  gpio.write_ports16(PCAL6534::Output_drive_strength_register_port_0A, test);
+  gpio.read_ports16(PCAL6534::Output_drive_strength_register_port_0A, test);
 
+  for (int i = 0; i < 9; i++) {
+    Serial.print(" ");
+    Serial.print(test[i], HEX);
+  }
+  Serial.println("");
+
+  delay(10000);
 }
 
 void loop() {

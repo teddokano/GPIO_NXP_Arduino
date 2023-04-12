@@ -77,7 +77,7 @@ void GPIO_base::write_ports( int reg, uint8_t* vp )
 void GPIO_base::write_ports16( int reg, uint16_t* vp )
 {
 	//	Expecting little endian
-	reg_w( 0x80 | reg, (uint8_t*)vp, ((n_bits + 7) / 8) * 2 );
+	reg_w( 0x80 | reg, (uint8_t*)vp, (n_bits * 2 + 7) / 8 );
 }
 
 void GPIO_base::read_ports( int reg, uint8_t* vp )
@@ -88,7 +88,7 @@ void GPIO_base::read_ports( int reg, uint8_t* vp )
 void GPIO_base::read_ports16( int reg, uint16_t* vp )
 {
 	//	Expecting little endian
-	reg_r( 0x80 | reg, (uint8_t*)vp, ((n_bits + 7) / 8) * 2 );	
+	reg_r( 0x80 | reg, (uint8_t*)vp, (n_bits * 2 + 7) / 8 );	
 }
 
 PCAL6xxx_base::PCAL6xxx_base( uint8_t i2c_address, const int nbits, const reg_references* rrp ) :
