@@ -58,6 +58,8 @@ public:
 	GPIO_base( uint8_t i2c_address, int nbits, const reg_references* prpty );
 	virtual ~GPIO_base();
 
+	void begin( board env );
+	
 	void output( int port, uint8_t value, uint8_t mask = 0 );
 	void output( uint8_t *vp );
 	uint8_t input( int port );
@@ -72,6 +74,9 @@ public:
 
 private:
 	const reg_references*	rrp;
+	
+	static const int RESET_PIN	= 8;
+	static const int ADDR_PIN	= 9;
 };
 
 

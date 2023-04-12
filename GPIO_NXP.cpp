@@ -13,6 +13,19 @@ GPIO_base::~GPIO_base()
 {
 }
 
+void GPIO_base::begin( board env )
+{
+	if ( env ) {
+		pinMode( RESET_PIN, OUTPUT );
+		pinMode( ADDR_PIN,  OUTPUT );
+		digitalWrite( RESET_PIN , 0 );
+		digitalWrite( ADDR_PIN ,  0 );
+		delay( 1 );
+		digitalWrite( RESET_PIN , 1 );
+	}
+}
+
+
 void GPIO_base::output( int port, uint8_t value, uint8_t mask )
 {
 	if ( mask )
