@@ -23,6 +23,20 @@
  *	All actual device class will be derived from this class
  */
 
+typedef struct gpio_properties {
+	int		bits;
+	uint8_t	input;
+	uint8_t	output;
+	uint8_t	polarity;
+	uint8_t	config;
+	uint8_t	latch;
+	uint8_t	pud_en;
+	uint8_t	pud_sel;
+	uint8_t	int_mask;
+	uint8_t	int_status;
+} properties;
+
+
 class GPIO_base : public I2C_device
 {
 public:
@@ -43,7 +57,7 @@ public:
 
 	const	uint8_t N_BITS;
 	
-	GPIO_base( uint8_t i2c_address, uint8_t n_bits, uint8_t in_r, uint8_t out_r, uint8_t cfg_r  );
+	GPIO_base( uint8_t i2c_address, const properties* prpty );
 	virtual ~GPIO_base();
 
 	void output( int port, uint8_t value, uint8_t mask = 0 );
@@ -53,7 +67,6 @@ public:
 	void config( int port, uint8_t config, uint8_t mask = 0 );
 	void config( uint8_t* vp );
 
-protected:
 	void all_port_w8( int reg, uint8_t* vp );
 	void all_port_w16( int reg, uint16_t* vp );
 	void all_port_r8( int reg, uint8_t* vp );
@@ -158,20 +171,23 @@ public:
 		Switch_debounce_enable_0,
 		Switch_debounce_enable_1,
 		Switch_debounce_count,
-		
-		IN			= Input_Port_0,
-		OUT			= Output_Port_0,
-		POLARITY	= Polarity_Inversion_port_0,
-		CONFIG		= Configuration_port_0,
-		LATCH		= Input_latch_register_port_0,
-		PUD_ENABLE	= Pull_up_pull_down_enable_register_port_0,
-		PUD_SELECT	= Pull_up_pull_down_selection_register_port_0,
-		INT_MASK	= Interrupt_mask_register_port_0,
-		INT_STATUS	= Interrupt_status_register_port_0,
 	};
 	
-	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0, int n_bits = 34, uint8_t in_r = Input_Port_0, uint8_t out_r = Output_Port_0, uint8_t cfg_r = Configuration_port_0 );
+	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6534();
+	
+	static const properties ppty = {
+		34,
+		Input_Port_0,
+		Output_Port_0,
+		Polarity_Inversion_port_0,
+		Configuration_port_0,
+		Input_latch_register_port_0,
+		Pull_up_pull_down_enable_register_port_0,
+		Pull_up_pull_down_selection_register_port_0,
+		Interrupt_mask_register_port_0,
+		Interrupt_status_register_port_0,
+	};
 };
 
 #endif //	ARDUINO_LED_DRIVER_NXP_ARD_H

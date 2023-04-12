@@ -28,27 +28,23 @@ void setup() {
     0x03,  // Configure as INPUT for bit 1 and 0
   };
   gpio.config(io_config_and_pull_up);
-
-  gpio.write_r8(PCAL6534::Pull_up_pull_down_enable_register_port_3, 0xE0);
-  gpio.write_r8(PCAL6534::Pull_up_pull_down_enable_register_port_4, 0x03);
-  gpio.write_r8(PCAL6534::Pull_up_pull_down_selection_register_port_3, 0xE0);
-  gpio.write_r8(PCAL6534::Pull_up_pull_down_selection_register_port_4, 0x03);
+  //gpio.all_port_r8(PCAL6534::Pull_up_pull_down_enable_register_port_0, io_config_and_pull_up );
+  //gpio.all_port_r8(PCAL6534::Pull_up_pull_down_selection_register_port_0, io_config_and_pull_up );
 }
 void loop() {
-#if 0
+#if 1
   static int count = 0;
   gpio.output(2, count++);
-#endif
+#else
   int input3 = gpio.input(3);
   int input4 = gpio.input(4);
   gpio.output(2, (input3 & 0xFC) | input4);
-
 
   Serial.print(" ");
   Serial.print(input3, HEX);
   Serial.print(" ");
   Serial.print(input4, HEX);
   Serial.println("");
-
+#endif
   delay(100);
 }
