@@ -28,14 +28,19 @@ void setup() {
   Serial.begin(9600);
   Serial.println("\n***** Hello, PCAL6534! *****");
 
+  Serial.println("\n    *** If it seems the demo is not working, check the INT pins ***");
+  Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
+  Serial.println("");
+  Serial.println("8 LEDs on the ARD board blinks back and forth. Press button to generate interrupt.");
+  Serial.println("The interrupt event will be shown on those LED and serial console");
+  Serial.println("");
+
   pinMode(interruptPin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
 
   Wire.begin();
 
   I2C_device::scan();
-
-  //gpio.begin(GPIO_base::ARDUINO_SHIELD);
 
   uint8_t io_config_and_pull_up[] = {
     0x00,  // Configure port0 as OUTPUT
@@ -44,23 +49,24 @@ void setup() {
     0xE0,  // Configure port3 bit 7~5 as INPUT
     0x03,  // Configure port4 bit 1 and 0 as INPUT
   };
-  gpio.config(io_config_and_pull_up);
 
+  gpio.config(io_config_and_pull_up);
   gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
   gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
 
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_3, (uint8_t)(~0xE0));
   gpio.write_r8(PCAL6534::Interrupt_mask_register_port_4, (uint8_t)(~0x03));
-
-  Serial.println("    *** If it seems the demo is not working, check the INT pins ***");
-  Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
-
-  Serial.println("size");
-  Serial.println(gpio.n_bits);
-  Serial.println(gpio.n_ports);
 }
 
 void loop() {
+  static uint8_t pat[] = {  //  LED blinking pattern
+    0xFE, 0xFB, 0xFD, 0xEF, 0xF7, 0xBF, 0xDF,
+    0x7F, 0xDF, 0xBF, 0xF7, 0xEF, 0xFD, 0xFB,
+  };
+  static int count = 0;
+  uint8_t input3;
+  uint8_t input4;
+
   if (int_flag) {
     int_flag = false;
 
@@ -68,26 +74,29 @@ void loop() {
 
     gpio.read_port(INT_STATUS, status);
 
-    Serial.print("[INT] status:");
+    Serial.print("[INT] status 0~4:");
+    for (int i = 0; i < gpio.n_ports; i++)
+      print_bin(status[i]);
 
-    for (int i = 0; i < gpio.n_ports; i++) {
-      Serial.print(" ");
-      Serial.print(status[i], HEX);
-    }
+    input3 = gpio.input(3);
+    input4 = gpio.input(4);
 
+    Serial.print(",  input 3 and 4: ");
+    print_bin(input3);
+    print_bin(input4);
     Serial.println("");
+  } else {
+    input3 = gpio.input(3);
+    input4 = gpio.input(4);
   }
 
-  int input3 = gpio.input(3);
-  int input4 = gpio.input(4);
+  gpio.output(2, ((input3 & 0xFC) | input4) & pat[count++ % sizeof(pat)]);
+  delay(62);
+}
 
-  gpio.output(2, (input3 & 0xFC) | input4);
-
-  Serial.print(" ");
-  Serial.print(input3, HEX);
-  Serial.print(" ");
-  Serial.print(input4, HEX);
-  Serial.println("");
-
-  delay(100);
+void print_bin( uint8_t v )
+{
+  Serial.print(" 0b");
+  for (int i = 7; 0 <= i; i-- )
+    Serial.print(((v >> i) & 0x1) ? "1" : "0");
 }

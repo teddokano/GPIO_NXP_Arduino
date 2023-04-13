@@ -47,7 +47,7 @@ void GPIO_base::output( int port, uint8_t value, uint8_t mask )
 
 void GPIO_base::output( uint8_t *vp )
 {
-	write_port( (access_word)(*(arp + OUT)), vp );
+	write_port( OUT, vp );
 }
 
 uint8_t GPIO_base::input( int port )
@@ -57,7 +57,7 @@ uint8_t GPIO_base::input( int port )
 
 uint8_t* GPIO_base::input( uint8_t *vp )
 {
-	read_port( (access_word)(*(arp + IN)), vp );
+	read_port( IN, vp );
 	
 	return vp;
 }
@@ -72,7 +72,7 @@ void GPIO_base::config( int port, uint8_t config, uint8_t mask )
 
 void GPIO_base::config( uint8_t* vp )
 {
-	write_port( (access_word)(*(arp + CONFIG)), vp );	
+	write_port( CONFIG, vp );
 }
 
 void GPIO_base::write_port( access_word w, uint8_t* vp )
