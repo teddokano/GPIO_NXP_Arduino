@@ -2,7 +2,7 @@
  *  
  *  This sample code is showing PCAL6416A GPIO operation.
  *
- *  *** IMPORTANT 0 ***
+ *  *** IMPORTANT ***
  *  *** TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCAL6xxx-ARD BOARDS, PIN10 MUST BE SHORTED TO PIN2 TO HANDLE INTERRUPT CORRECTLY
  *
  *  @author  Tedd OKANO
@@ -56,7 +56,7 @@ void setup() {
 
 void loop() {
   static uint8_t pat[] = {  //  LED blinking pattern
-    0xFE, 0xFD, 0xFB, 0xF7, 0xEF, 0xDF, 0xBF, 0x7F,  
+    0xFE, 0xFD, 0xFB, 0xF7, 0xEF, 0xDF, 0xBF, 0x7F, 0xBF, 0xDF, 0xEF, 0xF7, 0xFB, 0xFD, 
   };
   static int count = 0;
   uint8_t input1;
@@ -78,10 +78,16 @@ void loop() {
     print_bin(input1);
     Serial.println("");
   } else {
-    input1 = gpio.input(2);
+    input1 = gpio.input(1);
   }
 
-  gpio.output(2, input1 & pat[count++ % sizeof(pat)]);
+#if 0
+  print_bin(input1);
+  print_bin(pat[count % sizeof(pat)]);
+  Serial.println("");
+#endif
+
+  gpio.output(0, input1 & pat[count++ % sizeof(pat)]);
   delay(62);
 }
 

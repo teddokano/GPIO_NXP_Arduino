@@ -1,6 +1,5 @@
 /** GPIO operation library for Arduino
  *
- *  @class  LEDDriver
  *  @author Tedd OKANO
  *
  *  Released under the MIT license License
@@ -38,22 +37,6 @@ enum access_word : uint8_t
 	NUM_access_word, 
 };
 
-
-enum reg_num {
-	Input_Port,				//	IN,
-	Output_Port,			//	OUT
-	Polarity_Inversion,		//	POLARITY
-	Configuration,			//	CONFIG
-	Output_drive_strength_0 = 0x40,	//	DRIVE_STRENGTH
-	Output_drive_strength_1,
-	Input_latch,					//	LATCHLATCH
-	Pull_up_pull_down_enable,		//	PULL_UD_EN
-	Pull_up_pull_down_selection,	//	PULL_UD_SEL
-	Interrupt_mask,					//	INT_MASK
-	Interrupt_status,				//	INT_STATUS
-	Output_port_configuration,		//	OUTPUT_PORT_CONFIG
-};
-
 class GPIO_base : public I2C_device
 {
 public:
@@ -67,24 +50,24 @@ public:
 	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp, uint8_t ai );
 	virtual ~GPIO_base();
 
-	void begin( board env );
+	void		begin( board env );
 	
-	void output( int port, uint8_t value, uint8_t mask = 0 );
-	void output( uint8_t *vp );
-	uint8_t input( int port );
-	uint8_t* input( uint8_t *vp );
-	void config( int port, uint8_t config, uint8_t mask = 0 );
-	void config( uint8_t* vp );
+	void		output( int port, uint8_t value, uint8_t mask = 0 );
+	void		output( uint8_t *vp );
+	uint8_t		input( int port );
+	uint8_t*	input( uint8_t *vp );
+	void		config( int port, uint8_t config, uint8_t mask = 0 );
+	void		config( uint8_t* vp );
 
-	void write_port( access_word w, uint8_t* vp );
-	void write_port16( access_word w, uint16_t* vp );
-	uint8_t* read_port( access_word w, uint8_t* vp );
-	uint16_t* read_port16( access_word w, uint16_t* vp );
+	void		write_port( access_word w, uint8_t* vp );
+	void		write_port16( access_word w, uint16_t* vp );
+	uint8_t*	read_port( access_word w, uint8_t* vp );
+	uint16_t*	read_port16( access_word w, uint16_t* vp );
 
-	void write_port( access_word w, uint8_t value, int port_num = 0 );
-	void write_port16( access_word w, uint16_t value, int port_num = 0 );
-	uint8_t read_port( access_word w, int port_num = 0 );
-	uint16_t read_port16( access_word w, int port_num = 0 );
+	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+	uint8_t		read_port( access_word w, int port_num = 0 );
+	uint16_t	read_port16( access_word w, int port_num = 0 );
 
 private:
 	const uint8_t*	arp;
