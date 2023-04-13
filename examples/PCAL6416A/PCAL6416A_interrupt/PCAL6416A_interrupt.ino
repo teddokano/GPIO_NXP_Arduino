@@ -50,7 +50,7 @@ void setup() {
   gpio.write_port(PULL_UD_EN, io_config_and_pull_up);   //  Pull-up/down in port0 bit7~4 are enabled
   gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);  //  Pull-up/down in port0 bit7~4 are as pull-up
 
-  gpio.write_port(INT_MASK, (uint8_t)(~0xFF), 1);
+  gpio.write_port(INT_MASK, (uint8_t)(~0xFF), 1);       //  Interrupt mask cleared on port1
 }
 
 void loop() {

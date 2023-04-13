@@ -19,10 +19,21 @@ void setup() {
   Serial.println("\n***** Hello, PCAL6534! *****");
 
   Wire.begin();
+  I2C_device::scan();
+
+  uint8_t io_config_and_pull_up[] = {
+    0x00,  // Configure port0 as OUTPUT
+    0x00,  // Configure port1 as OUTPUT
+    0x00,  // Configure port2 as OUTPUT
+    0xE0,  // Configure port3 bit 7~5 as INPUT
+    0x03,  // Configure port4 bit 1 and 0 as INPUT
+  };
+
+  gpio.config(io_config_and_pull_up);  //  Port0, 1, 2 and port3 bit 4~0 are configured as output
 }
 
 void loop() {
   static int count = 0;
-  gpio.output(2, count++);
+  gpio.output(2, count++);  //  Output to port2
   delay(100);
 }

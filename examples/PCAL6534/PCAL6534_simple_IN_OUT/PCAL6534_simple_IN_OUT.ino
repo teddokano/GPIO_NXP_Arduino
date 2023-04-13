@@ -24,27 +24,21 @@ void setup() {
     0x00,  // Configure port0 as OUTPUT
     0x00,  // Configure port1 as OUTPUT
     0x00,  // Configure port2 as OUTPUT
-    0xE0,  // Configure port3 bit 7~5 as INPUT 
-    0x03,  // Configure port4 bit 1 and 0 as INPUT 
+    0xE0,  // Configure port3 bit 7~5 as INPUT
+    0x03,  // Configure port4 bit 1 and 0 as INPUT
   };
-  gpio.config(io_config_and_pull_up);
-  gpio.all_port_w8(PCAL6534::Pull_up_pull_down_enable_register_port_0, io_config_and_pull_up );
-  gpio.all_port_w8(PCAL6534::Pull_up_pull_down_selection_register_port_0, io_config_and_pull_up );
+
+  gpio.config(io_config_and_pull_up);                   //  Port0, 1, 2 and port3 bit 4~0 are configured as output
+  gpio.write_port(PULL_UD_EN, io_config_and_pull_up);   //  Pull-up/down enabled for port3 bit 7~5 and port4 bit 1 and 0
+  gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);  //  Pull-up selected for port3 bit 7~5 and port4 bit 1 and 0
 }
 void loop() {
-#if 0
-  static int count = 0;
-  gpio.output(2, count++);
-#else
-  int input3 = gpio.input(3);
-  int input4 = gpio.input(4);
-  gpio.output(2, (input3 & 0xFC) | input4);
+  int input3 = gpio.input(3);   //  Read port3 input
+  int input4 = gpio.input(4);   //  Read port4 input
+  int output2 = (input3 & 0xFC) | input4;
+  gpio.output(2, output2);      //  Output to port2
 
-  Serial.print(" ");
-  Serial.print(input3, HEX);
-  Serial.print(" ");
-  Serial.print(input4, HEX);
+  GPIO_base::print_bin(output2);  //  Show the data on serial terminal
   Serial.println("");
-#endif
   delay(100);
 }
