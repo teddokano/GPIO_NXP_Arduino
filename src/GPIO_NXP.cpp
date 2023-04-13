@@ -29,7 +29,12 @@ void GPIO_base::begin( board env )
 		//	THE SIGNAL CAN BE LOW WHEN THE ARD BOARD IS NOT CONNECTED
 		//	INSTEAD OF USING THIS MECHANISM, USE "I2C_device::scan()" TO CONFIRM THE TARGET ADDRESS
 		
-#if 0		
+#if 1	
+		digitalWrite( ADDR_PIN , 0 );
+#else
+		digitalWrite( ADDR_PIN , 0 );
+		delay( 1 );
+	
 		digitalWrite( RESET_PIN , 0 );
 		delay( 1 );	// reset time = 500ns(min)
 		digitalWrite( RESET_PIN , 1 );

@@ -35,20 +35,19 @@ void setup() {
   Serial.println("The interrupt event will be shown on those LED and serial console");
   Serial.println("");
 
-  pinMode(interruptPin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
-
   Wire.begin();
-
   I2C_device::scan();
 
   uint8_t io_config_and_pull_up = 0xF0;
   
-  gpio.write_port(CONFIG, io_config_and_pull_up);
-  gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
-  gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
+  gpio.write_port(CONFIG, io_config_and_pull_up);       //  Port0 bit7~4 are INPUT, bit3~0 are are OUTPUT
+  gpio.write_port(PULL_UD_EN, io_config_and_pull_up);   //  Pull-up/down in port0 bit7~4 are enabled
+  gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);  //  Pull-up/down in port0 bit7~4 are as pull-up
   
-  gpio.write_port(INT_MASK, ~io_config_and_pull_up);
+  gpio.write_port(INT_MASK, ~io_config_and_pull_up);    //  Clear mask bits for input
+
+  pinMode(interruptPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
 }
 
 void loop() {

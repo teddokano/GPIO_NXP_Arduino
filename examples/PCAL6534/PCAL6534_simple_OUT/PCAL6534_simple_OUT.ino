@@ -16,7 +16,7 @@ PCAL6534 gpio;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCA9955B! *****");
+  Serial.println("\n***** Hello, PCAL6534! *****");
 
   Wire.begin();
 }

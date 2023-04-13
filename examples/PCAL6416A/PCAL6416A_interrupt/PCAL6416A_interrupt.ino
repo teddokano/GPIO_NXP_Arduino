@@ -39,17 +39,16 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
 
   Wire.begin();
-
   I2C_device::scan();
 
   uint8_t io_config_and_pull_up[] = {
     0x00,  // Configure port0 as OUTPUT
-    0xFF,  // Configure port2 as INTPUT
+    0xFF,  // Configure port1 as INTPUT
   };
 
-  gpio.config(io_config_and_pull_up);
-  gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
-  gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
+  gpio.config(io_config_and_pull_up);                   //  Port0 bit7~4 are INPUT, bit3~0 are are OUTPUT
+  gpio.write_port(PULL_UD_EN, io_config_and_pull_up);   //  Pull-up/down in port0 bit7~4 are enabled
+  gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);  //  Pull-up/down in port0 bit7~4 are as pull-up
 
   gpio.write_port(INT_MASK, (uint8_t)(~0xFF), 1);
 }

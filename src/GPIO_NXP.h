@@ -50,7 +50,7 @@ public:
 	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp, uint8_t ai );
 	virtual ~GPIO_base();
 
-	void		begin( board env );
+	void		begin( board env = NONE );
 	
 	void		output( int port, uint8_t value, uint8_t mask = 0 );
 	void		output( uint8_t *vp );
