@@ -166,6 +166,13 @@ uint16_t GPIO_base::read_port16( access_word w, int port_num )
 	return read_r16( *(arp + w) + port_num );
 }
 
+void GPIO_base::print_bin( uint8_t v )
+{
+	Serial.print(" 0b");
+	for (int i = 7; 0 <= i; i-- )
+		Serial.print(((v >> i) & 0x1) ? "1" : "0");
+}
+
 
 /* ******** PCAL6xxx_base ******** */
 

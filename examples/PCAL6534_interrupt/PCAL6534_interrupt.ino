@@ -2,7 +2,7 @@
  *  
  *  This sample code is showing PCAL6534 GPIO operation.
  *
- *  *** IMPORTANT 0 ***
+ *  *** IMPORTANT ***
  *  *** TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCAL6xxx-ARD BOARDS, PIN10 MUST BE SHORTED TO PIN2 TO HANDLE INTERRUPT CORRECTLY
  *
  *  @author  Tedd OKANO
@@ -54,8 +54,8 @@ void setup() {
   gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
   gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
 
-  gpio.write_r8(PCAL6534::Interrupt_mask_register_port_3, (uint8_t)(~0xE0));
-  gpio.write_r8(PCAL6534::Interrupt_mask_register_port_4, (uint8_t)(~0x03));
+  gpio.write_port(INT_MASK, (uint8_t)(~0xE0), 3);
+  gpio.write_port(INT_MASK, (uint8_t)(~0x03), 4);
 }
 
 void loop() {
@@ -76,14 +76,14 @@ void loop() {
 
     Serial.print("[INT] status 0~4:");
     for (int i = 0; i < gpio.n_ports; i++)
-      print_bin(status[i]);
+      GPIO_base::print_bin(status[i]);
 
     input3 = gpio.input(3);
     input4 = gpio.input(4);
 
     Serial.print(",  input 3 and 4: ");
-    print_bin(input3);
-    print_bin(input4);
+    GPIO_base::print_bin(input3);
+    GPIO_base::print_bin(input4);
     Serial.println("");
   } else {
     input3 = gpio.input(3);
@@ -92,11 +92,4 @@ void loop() {
 
   gpio.output(2, ((input3 & 0xFC) | input4) & pat[count++ % sizeof(pat)]);
   delay(62);
-}
-
-void print_bin( uint8_t v )
-{
-  Serial.print(" 0b");
-  for (int i = 7; 0 <= i; i-- )
-    Serial.print(((v >> i) & 0x1) ? "1" : "0");
 }

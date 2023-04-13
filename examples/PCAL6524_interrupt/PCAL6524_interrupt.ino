@@ -2,7 +2,7 @@
  *  
  *  This sample code is showing PCAL6524 GPIO operation.
  *
- *  *** IMPORTANT 0 ***
+ *  *** IMPORTANT ***
  *  *** TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCAL6xxx-ARD BOARDS, PIN10 MUST BE SHORTED TO PIN2 TO HANDLE INTERRUPT CORRECTLY
  *
  *  @author  Tedd OKANO
@@ -83,7 +83,7 @@ void loop() {
   }
 
   gpio.output(2, (input2 >> 4) & pat[count++ % sizeof(pat)]);
-  delay(62);
+  delay(80);
 }
 
 void print_bin( uint8_t v )

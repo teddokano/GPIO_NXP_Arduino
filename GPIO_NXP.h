@@ -69,6 +69,8 @@ public:
 	uint8_t		read_port( access_word w, int port_num = 0 );
 	uint16_t	read_port16( access_word w, int port_num = 0 );
 
+	static void	print_bin( uint8_t v );
+	
 private:
 	const uint8_t*	arp;
 	const uint8_t	auto_increment;
