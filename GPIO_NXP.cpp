@@ -176,7 +176,7 @@ constexpr uint8_t PCAL6408A::access_ref[];
 /* ******** PCAL6416A ******** */
 
 PCAL6416A::PCAL6416A( uint8_t i2c_address ) :
-	PCAL6xxx_base( i2c_address, n_channel, access_ref, 0 )
+	PCAL6xxx_base( i2c_address, 16, access_ref, 0 )
 {
 }
 

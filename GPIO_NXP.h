@@ -58,7 +58,6 @@ public:
 	void config( int port, uint8_t config, uint8_t mask = 0 );
 	void config( uint8_t* vp );
 
-	void write_port( access_word w, int port_num, uint8_t value );
 	void write_port( access_word w, uint8_t* vp );
 	void write_port16( access_word w, uint16_t* vp );
 	uint8_t* read_port( access_word w, uint8_t* vp );
@@ -85,16 +84,13 @@ public:
 class PCAL6408A : public PCAL6xxx_base
 {
 public:
-	/** Number of I/O bits */
-	constexpr static uint8_t n_channel	= 8;
-	
 	/** Name of the PCAL6408A registers */
 	enum reg_num {
 		Input_Port,
 		Output_Port,
 		Polarity_Inversion,
 		Configuration,
-		Output_drive_strength_0=0x40,
+		Output_drive_strength_0 = 0x40,
 		Output_drive_strength_1,
 		Input_latch,
 		Pull_up_pull_down_enable,
@@ -123,9 +119,6 @@ public:
 class PCAL6416A : public PCAL6xxx_base
 {
 public:
-	/** Number of I/O bits */
-	constexpr static uint8_t n_channel	= 16;
-	
 	/** Name of the PCAL6416A registers */
 	enum reg_num {
 		Input_Port_0, Input_Port_1,
@@ -161,9 +154,6 @@ public:
 class PCAL6524 : public PCAL6xxx_base
 {
 public:
-	/** Number of I/O bits */
-	constexpr static uint8_t n_channel	= 24;
-	
 	/** Name of the PCAL6416A registers */
 	enum reg_num {
 		Input_Port_0, Input_Port_1, Input_Port_2, reserved0, 
@@ -209,9 +199,6 @@ public:
 class PCAL6534 : public PCAL6xxx_base
 {
 public:
-	/** Number of I/O bits */
-	constexpr static uint8_t n_channel	= 34;
-	
 	/** Name of the PCAL6534 registers */
 	enum reg_num {
 		Input_Port_0,  Input_Port_1,  Input_Port_2,  Input_Port_3,  Input_Port_4,
