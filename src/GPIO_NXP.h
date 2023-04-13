@@ -13,14 +13,11 @@
 
 #include <I2C_device.h>
 
-/** GPIO_base class
- *	
- *  @class GPIO_base
+/** Descriptors for accessing GPIO
  *
- *	LEDDriver class is a base class for all LED drivers
- *	All actual device class will be derived from this class
+ *	'access_words' are used as first argument of write_portN(), read_portN() methods
+ *	These are abstracting register address for each device types
  */
-
 enum access_word : uint8_t
 {
 	IN,
@@ -37,6 +34,13 @@ enum access_word : uint8_t
 	NUM_access_word, 
 };
 
+/** GPIO_base class
+ *	
+ *  @class GPIO_base
+ *
+ *	This class is a base class for all GPIO devices
+ *	All actual device class will be derived from this
+ */
 class GPIO_base : public I2C_device
 {
 public:
@@ -44,29 +48,161 @@ public:
 		NONE,
 		ARDUINO_SHIELD,
 	};
+	
+	/** Number of IO bits */
 	const int	n_bits;
+
+	/** Number of IO ports */
 	const int	n_ports;
 	
+	/** Constractor
+	 * 
+	 * @param i2c_address I2C target address
+	 * @param nbits	Number of IO bits
+	 * @param arp	Pointer to register access reference table
+	 * @param ai	Auto-increment flag
+	 */
 	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp, uint8_t ai );
+
+	/** Destractor */
 	virtual ~GPIO_base();
 
+	/** Device initialization
+	 *
+	 *	This method is not used current version
+	 */
 	void		begin( board env = NONE );
 	
+	/** Output, single
+	 * 
+	 *	Basic GPIO port access function for single port output
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be output
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
 	void		output( int port, uint8_t value, uint8_t mask = 0 );
+
+	/** Output, all
+	 * 
+	 *	Basic GPIO port access function for all ports output
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
 	void		output( uint8_t *vp );
+	
+	/** Input, single
+	 * 
+	 *	Basic GPIO port access function for single port input
+	 *
+	 * @param port	Port number
+	 * @return Port read value
+	 */
 	uint8_t		input( int port );
+
+	/** Input, all
+	 * 
+	 *	Basic GPIO port access function for all ports input
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return Pointer to vp
+	 */
 	uint8_t*	input( uint8_t *vp );
+
+	/** Config, single
+	 * 
+	 *	Basic GPIO port access function for single port configuration
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be written into configuration register
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
 	void		config( int port, uint8_t config, uint8_t mask = 0 );
+
+	/** Config, all
+	 * 
+	 *	Basic GPIO port access function for all port configuration
+	 *
+	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
+	 */
 	void		config( uint8_t* vp );
 
+	/** Write all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
 	void		write_port( access_word w, uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
 	void		write_port16( access_word w, uint16_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
 	uint8_t*	read_port( access_word w, uint8_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
 	uint16_t*	read_port16( access_word w, uint16_t* vp );
 
+	/** Write single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
 	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+
+	/** Write single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
 	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
 	uint8_t		read_port( access_word w, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
 	uint16_t	read_port16( access_word w, int port_num = 0 );
 
 	static void	print_bin( uint8_t v );
@@ -80,7 +216,13 @@ private:
 	static constexpr int ADDR_PIN	= 9;
 };
 
-
+/** PCAL6xxx_base class
+ *	
+ *  @class PCAL6xxx_base
+ *
+ *	Yet another abstraction class for PCAL6xxx devices
+ *	This class is just passing parameters to GPIO_base class in this version
+ */
 class PCAL6xxx_base : public GPIO_base
 {
 public:
@@ -89,6 +231,10 @@ public:
 };
 
 
+/** PCAL6408A class
+ *	
+ *  @class PCAL6408A
+ */
 class PCAL6408A : public PCAL6xxx_base
 {
 public:
@@ -126,6 +272,10 @@ public:
 	};
 };
 
+/** PCAL6416A class
+ *	
+ *  @class PCAL6416A
+ */
 class PCAL6416A : public PCAL6xxx_base
 {
 public:
@@ -163,6 +313,10 @@ public:
 	};
 };
 
+/** PCAL6524 class
+ *	
+ *  @class PCAL6524
+ */
 class PCAL6524 : public PCAL6xxx_base
 {
 public:
@@ -210,6 +364,10 @@ public:
 	};
 };
 
+/** PCAL6534 class
+ *	
+ *  @class PCAL6534
+ */
 class PCAL6534 : public PCAL6xxx_base
 {
 public:
