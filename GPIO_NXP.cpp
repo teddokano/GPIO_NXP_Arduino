@@ -2,11 +2,12 @@
 
 /* ******** GPIO_base ******** */
 
-GPIO_base::GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* ar ) :
+GPIO_base::GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* ar, uint8_t ai  ) :
 	I2C_device( i2c_address ), 
 	n_bits( nbits ),
 	n_ports( (nbits + 7) / 8 ),
-	arp( ar )
+	arp( ar ),
+	auto_increment( ai )
 {
 	constexpr uint16_t	i	= 0x0001;
 	uint8_t*			tp	= (uint8_t*)(&i);
@@ -77,7 +78,13 @@ void GPIO_base::config( uint8_t* vp )
 
 void GPIO_base::write_port( access_word w, uint8_t* vp )
 {
-	reg_w( 0x80 | *(arp + w), vp, n_ports );
+	if ( auto_increment ) {
+		reg_w( auto_increment | *(arp + w), vp, n_ports );		
+	}
+	else {
+		for ( int i = 0; i < n_ports; i++ )
+			write_r8( *(arp + w) + i, *vp++ );
+	}
 }
 
 void GPIO_base::write_port16( access_word w, uint16_t* vp )
@@ -89,20 +96,43 @@ void GPIO_base::write_port16( access_word w, uint16_t* vp )
 			vp[ i ]	= temp | vp[ i ] >> 8;			
 		}
 	}
+	
+	int	n_bytes	= (n_bits * 2 + 7) / 8;
 
-	reg_w( 0x80 | *(arp + w), (uint8_t*)vp, (n_bits * 2 + 7) / 8 );		
+	if ( auto_increment ) {
+		reg_w( auto_increment | *(arp + w), (uint8_t*)vp, n_bytes );		
+	}
+	else {
+		for ( int i = 0; i < n_bytes; i++ )
+			write_r8( *(arp + w) + i, *vp++ );
+	}
 }
 
 uint8_t* GPIO_base::read_port( access_word w, uint8_t* vp )
 {
-	reg_r( 0x80 | *(arp + w), vp, n_ports );
+	if ( auto_increment ) {
+		reg_r( auto_increment | *(arp + w), vp, n_ports );		
+	}
+	else {
+		for ( int i = 0; i < n_ports; i++ )
+			*(vp + i)	= read_r8( *(arp + w) + i );
+	}
 	
 	return vp;
 }
 
 uint16_t*  GPIO_base::read_port16( access_word w, uint16_t* vp )
 {
-	reg_r( 0x80 | *(arp + w), (uint8_t*)vp, (n_bits * 2 + 7) / 8 );	
+	int	n_bytes	= (n_bits * 2 + 7) / 8;
+	
+	if ( auto_increment ) {
+		reg_r( auto_increment | *(arp + w), (uint8_t*)vp, n_bytes );	
+	}
+	else {
+		for ( int i = 0; i < n_bytes; i++ )
+			*(vp + i)	= read_r8( *(arp + w) + i );		
+	}
+		
 
 	if ( endian ) {
 		uint16_t	temp;
@@ -119,8 +149,8 @@ uint16_t*  GPIO_base::read_port16( access_word w, uint16_t* vp )
 
 /* ******** PCAL6xxx_base ******** */
 
-PCAL6xxx_base::PCAL6xxx_base( uint8_t i2c_address, const int nbits, const uint8_t arp[] ) :
-	GPIO_base( i2c_address, nbits, arp )
+PCAL6xxx_base::PCAL6xxx_base( uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai ) :
+	GPIO_base( i2c_address, nbits, arp, ai )
 {
 }
 
@@ -132,7 +162,7 @@ PCAL6xxx_base::~PCAL6xxx_base()
 /* ******** PCAL6408A ******** */
 
 PCAL6408A::PCAL6408A( uint8_t i2c_address ) :
-	PCAL6xxx_base( i2c_address, 8, access_ref )
+	PCAL6xxx_base( i2c_address, 8, access_ref, 0 )
 {
 }
 
@@ -146,7 +176,7 @@ constexpr uint8_t PCAL6408A::access_ref[];
 /* ******** PCAL6416A ******** */
 
 PCAL6416A::PCAL6416A( uint8_t i2c_address ) :
-	PCAL6xxx_base( i2c_address, 16, access_ref )
+	PCAL6xxx_base( i2c_address, n_channel, access_ref, 0 )
 {
 }
 
@@ -160,7 +190,7 @@ constexpr uint8_t PCAL6416A::access_ref[];
 /* ******** PCAL6524 ******** */
 
 PCAL6524::PCAL6524( uint8_t i2c_address ) :
-	PCAL6xxx_base( i2c_address, 24, access_ref )
+	PCAL6xxx_base( i2c_address, 24, access_ref, 0x80 )
 {
 }
 
@@ -174,7 +204,7 @@ constexpr uint8_t PCAL6524::access_ref[];
 /* ******** PCAL6534 ******** */
 
 PCAL6534::PCAL6534( uint8_t i2c_address ) :
-	PCAL6xxx_base( i2c_address, 34, access_ref )
+	PCAL6xxx_base( i2c_address, 34, access_ref, 0x80 )
 {
 }
 

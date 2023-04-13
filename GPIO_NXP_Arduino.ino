@@ -15,7 +15,7 @@
 
 #include "GPIO_NXP.h"
 
-PCAL6524 gpio;
+PCAL6416A gpio;
 
 const uint8_t interruptPin = 2;
 bool int_flag = false;
@@ -31,7 +31,7 @@ void setup() {
   Serial.println("\n    *** If it seems the demo is not working, check the INT pins ***");
   Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
   Serial.println("");
-  Serial.println("4 LEDs on the ARD board blinks back and forth. Press button to generate interrupt.");
+  Serial.println("8 LEDs on the ARD board blinks back and forth. Press button to generate interrupt.");
   Serial.println("The interrupt event will be shown on those LED and serial console");
   Serial.println("");
 
@@ -44,23 +44,22 @@ void setup() {
 
   uint8_t io_config_and_pull_up[] = {
     0x00,  // Configure port0 as OUTPUT
-    0x00,  // Configure port1 as OUTPUT
-    0xF0,  // Configure port2 as OUTPUT
+    0xFF,  // Configure port2 as INTPUT
   };
 
   gpio.config(io_config_and_pull_up);
   gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
   gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
 
-  gpio.write_r8(PCAL6524::Interrupt_mask_register_port_2, (uint8_t)(~0xF0));
+  gpio.write_r8(PCAL6416A::Interrupt_mask_register_1, (uint8_t)(~0xFF));
 }
 
 void loop() {
   static uint8_t pat[] = {  //  LED blinking pattern
-    0xFE, 0xFB, 0xFD, 0xF7, 0xFD, 0xFB, 
+    0xFE, 0xFD, 0xFB, 0xF7, 0xEF, 0xDF, 0xBF, 0x7F,  
   };
   static int count = 0;
-  uint8_t input2;
+  uint8_t input1;
 
   if (int_flag) {
     int_flag = false;
@@ -73,16 +72,16 @@ void loop() {
     for (int i = 0; i < gpio.n_ports; i++)
       print_bin(status[i]);
 
-    input2 = gpio.input(2);
+    input1 = gpio.input(1);
 
-    Serial.print(",  input 2: ");
-    print_bin(input2);
+    Serial.print(",  input 1: ");
+    print_bin(input1);
     Serial.println("");
   } else {
-    input2 = gpio.input(2);
+    input1 = gpio.input(2);
   }
 
-  gpio.output(2, (input2 >> 4) & pat[count++ % sizeof(pat)]);
+  gpio.output(2, input1 & pat[count++ % sizeof(pat)]);
   delay(62);
 }
 

@@ -46,7 +46,7 @@ public:
 	const int	n_bits;
 	const int	n_ports;
 	
-	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp );
+	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp, uint8_t ai );
 	virtual ~GPIO_base();
 
 	void begin( board env );
@@ -66,6 +66,7 @@ public:
 
 private:
 	const uint8_t*	arp;
+	const uint8_t	auto_increment;
 	bool			endian;
 	
 	static constexpr int RESET_PIN	= 8;
@@ -76,7 +77,7 @@ private:
 class PCAL6xxx_base : public GPIO_base
 {
 public:
-	PCAL6xxx_base( uint8_t i2c_address, const int nbits, const uint8_t arp[] );
+	PCAL6xxx_base( uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai );
 	virtual ~PCAL6xxx_base();
 };
 
