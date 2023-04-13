@@ -67,7 +67,7 @@ void loop() {
 
     gpio.read_port(INT_STATUS, status);
 
-    Serial.print("[INT] status 0~2:");
+    Serial.print("[INT] status 0~1:");
     for (int i = 0; i < gpio.n_ports; i++)
       GPIO_base::print_bin(status[i]);
 
