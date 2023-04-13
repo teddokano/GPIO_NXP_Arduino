@@ -1,6 +1,6 @@
-/** PCAL6534 GPIO operation sample
+/** PCAL6524 GPIO operation sample
  *  
- *  This sample code is showing PCAL6534 GPIO operation.
+ *  This sample code is showing PCAL6524 GPIO operation.
  *
  *  *** IMPORTANT 0 ***
  *  *** TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCAL6xxx-ARD BOARDS, PIN10 MUST BE SHORTED TO PIN2 TO HANDLE INTERRUPT CORRECTLY
@@ -9,13 +9,13 @@
  *
  *  Released under the MIT license License
  *
- *  About PCAL6534:
- *    https://www.nxp.jp/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534
+ *  About PCAL6524:
+ *    https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/ic-bus-controller-and-bridge-ics/ultra-low-voltage-translating-24-bit-fm-plus-ic-bus-smbus-i-o-expander:PCAL6524?_gl=1*18ctsjm*_ga*NTA5NDE1NDA0LjE2NzgzNDYyNzA.*_ga_WM5LE0KMSH*MTY4MTM1NzI0NC40OC4wLjE2ODEzNTcyNDQuMC4wLjA.
  */
 
 #include "GPIO_NXP.h"
 
-PCAL6534 gpio;
+PCAL6524 gpio;
 
 const uint8_t interruptPin = 2;
 bool int_flag = false;
@@ -26,12 +26,12 @@ void pin_int_callback() {
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCAL6534! *****");
+  Serial.println("\n***** Hello, PCAL6524! *****");
 
   Serial.println("\n    *** If it seems the demo is not working, check the INT pins ***");
   Serial.println("    ***   D2<--->D10 pins should to be connected       ***");
   Serial.println("");
-  Serial.println("8 LEDs on the ARD board blinks back and forth. Press button to generate interrupt.");
+  Serial.println("4 LEDs on the ARD board blinks back and forth. Press button to generate interrupt.");
   Serial.println("The interrupt event will be shown on those LED and serial console");
   Serial.println("");
 
@@ -45,27 +45,22 @@ void setup() {
   uint8_t io_config_and_pull_up[] = {
     0x00,  // Configure port0 as OUTPUT
     0x00,  // Configure port1 as OUTPUT
-    0x00,  // Configure port2 as OUTPUT
-    0xE0,  // Configure port3 bit 7~5 as INPUT
-    0x03,  // Configure port4 bit 1 and 0 as INPUT
+    0xF0,  // Configure port2 as OUTPUT
   };
 
   gpio.config(io_config_and_pull_up);
   gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
   gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
 
-  gpio.write_r8(PCAL6534::Interrupt_mask_register_port_3, (uint8_t)(~0xE0));
-  gpio.write_r8(PCAL6534::Interrupt_mask_register_port_4, (uint8_t)(~0x03));
+  gpio.write_r8(PCAL6524::Interrupt_mask_register_port_2, (uint8_t)(~0xF0));
 }
 
 void loop() {
   static uint8_t pat[] = {  //  LED blinking pattern
-    0xFE, 0xFB, 0xFD, 0xEF, 0xF7, 0xBF, 0xDF,
-    0x7F, 0xDF, 0xBF, 0xF7, 0xEF, 0xFD, 0xFB,
+    0xFE, 0xFB, 0xFD, 0xF7, 0xFD, 0xFB, 
   };
   static int count = 0;
-  uint8_t input3;
-  uint8_t input4;
+  uint8_t input2;
 
   if (int_flag) {
     int_flag = false;
@@ -74,23 +69,20 @@ void loop() {
 
     gpio.read_port(INT_STATUS, status);
 
-    Serial.print("[INT] status 0~4:");
+    Serial.print("[INT] status 0~2:");
     for (int i = 0; i < gpio.n_ports; i++)
       print_bin(status[i]);
 
-    input3 = gpio.input(3);
-    input4 = gpio.input(4);
+    input2 = gpio.input(2);
 
-    Serial.print(",  input 3 and 4: ");
-    print_bin(input3);
-    print_bin(input4);
+    Serial.print(",  input 2: ");
+    print_bin(input2);
     Serial.println("");
   } else {
-    input3 = gpio.input(3);
-    input4 = gpio.input(4);
+    input2 = gpio.input(2);
   }
 
-  gpio.output(2, ((input3 & 0xFC) | input4) & pat[count++ % sizeof(pat)]);
+  gpio.output(2, (input2 >> 4) & pat[count++ % sizeof(pat)]);
   delay(62);
 }
 
