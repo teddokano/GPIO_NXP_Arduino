@@ -51,7 +51,7 @@ void setup() {
   gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
   gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
 
-  gpio.write_r8(PCAL6416A::Interrupt_mask_register_1, (uint8_t)(~0xFF));
+  gpio.write_port(INT_MASK, (uint8_t)(~0xFF), 1);
 }
 
 void loop() {
@@ -70,30 +70,23 @@ void loop() {
 
     Serial.print("[INT] status 0~2:");
     for (int i = 0; i < gpio.n_ports; i++)
-      print_bin(status[i]);
+      GPIO_base::print_bin(status[i]);
 
     input1 = gpio.input(1);
 
     Serial.print(",  input 1: ");
-    print_bin(input1);
+    GPIO_base::print_bin(input1);
     Serial.println("");
   } else {
     input1 = gpio.input(1);
   }
 
 #if 0
-  print_bin(input1);
-  print_bin(pat[count % sizeof(pat)]);
+  GPIO_base::print_bin(input1);
+  GPIO_base::print_bin(pat[count % sizeof(pat)]);
   Serial.println("");
 #endif
 
   gpio.output(0, input1 & pat[count++ % sizeof(pat)]);
   delay(62);
-}
-
-void print_bin( uint8_t v )
-{
-  Serial.print(" 0b");
-  for (int i = 7; 0 <= i; i-- )
-    Serial.print(((v >> i) & 0x1) ? "1" : "0");
 }

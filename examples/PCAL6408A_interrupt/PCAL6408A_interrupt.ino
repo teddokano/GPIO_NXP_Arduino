@@ -47,6 +47,7 @@ void setup() {
   gpio.write_port(CONFIG, io_config_and_pull_up);
   gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
   gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
+  
   gpio.write_port(INT_MASK, ~io_config_and_pull_up);
 }
 
@@ -61,12 +62,12 @@ void loop() {
     uint8_t status  = gpio.read_port(INT_STATUS);
 
     Serial.print("[INT] status:");
-    print_bin(status);
+    GPIO_base::print_bin(status);
 
     input0 = gpio.input(0);
 
     Serial.print(",  input: ");
-    print_bin(input0);
+    GPIO_base::print_bin(input0);
     Serial.println("");
   } else {
     input0 = gpio.input(0);
@@ -75,10 +76,4 @@ void loop() {
   gpio.output(0, (input0 >> 4) & pat[count++ % sizeof(pat)]);
 
   delay(80);
-}
-
-void print_bin(uint8_t v) {
-  Serial.print(" 0b");
-  for (int i = 7; 0 <= i; i--)
-    Serial.print(((v >> i) & 0x1) ? "1" : "0");
 }
