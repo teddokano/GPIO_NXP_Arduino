@@ -10,7 +10,7 @@
  *    https://www.nxp.jp/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534
  */
 
-#include "GPIO_NXP.h"
+#include <GPIO_NXP.h>
 
 PCAL6534 gpio;
 
