@@ -43,12 +43,11 @@ void setup() {
   I2C_device::scan();
 
   uint8_t io_config_and_pull_up = 0xF0;
-  uint8_t mask = ~io_config_and_pull_up;
-
-  gpio.write_port(CONFIG, &io_config_and_pull_up);
-  gpio.write_port(PULL_UD_EN, &io_config_and_pull_up);
-  gpio.write_port(PULL_UD_SEL, &io_config_and_pull_up);
-  gpio.write_port(INT_MASK, &mask);
+  
+  gpio.write_port(CONFIG, io_config_and_pull_up);
+  gpio.write_port(PULL_UD_EN, io_config_and_pull_up);
+  gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);
+  gpio.write_port(INT_MASK, ~io_config_and_pull_up);
 }
 
 void loop() {
@@ -59,8 +58,7 @@ void loop() {
   if (int_flag) {
     int_flag = false;
 
-    uint8_t status;
-    gpio.read_port(INT_STATUS, &status);
+    uint8_t status  = gpio.read_port(INT_STATUS);
 
     Serial.print("[INT] status:");
     print_bin(status);

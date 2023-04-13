@@ -146,6 +146,26 @@ uint16_t*  GPIO_base::read_port16( access_word w, uint16_t* vp )
 	return vp;
 }
 
+void GPIO_base::write_port( access_word w, uint8_t value, int port_num )
+{
+	write_r8( *(arp + w) + port_num, value );
+}
+
+void GPIO_base::write_port16( access_word w, uint16_t value, int port_num )
+{
+	write_r16( *(arp + w) + port_num, value );
+}
+
+uint8_t GPIO_base::read_port( access_word w, int port_num )
+{
+	return read_r8( *(arp + w) + port_num );
+}
+
+uint16_t GPIO_base::read_port16( access_word w, int port_num )
+{
+	return read_r16( *(arp + w) + port_num );
+}
+
 
 /* ******** PCAL6xxx_base ******** */
 
