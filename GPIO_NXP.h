@@ -28,12 +28,30 @@ enum access_word : uint8_t
 	OUT,
 	POLARITY,
 	CONFIG,
+	DRIVE_STRENGTH,
 	LATCH,
 	PULL_UD_EN,
 	PULL_UD_SEL,
 	INT_MASK,
 	INT_STATUS,
+	OUTPUT_PORT_CONFIG,
 	NUM_access_word, 
+};
+
+
+enum reg_num {
+	Input_Port,				//	IN,
+	Output_Port,			//	OUT
+	Polarity_Inversion,		//	POLARITY
+	Configuration,			//	CONFIG
+	Output_drive_strength_0 = 0x40,	//	DRIVE_STRENGTH
+	Output_drive_strength_1,
+	Input_latch,					//	LATCHLATCH
+	Pull_up_pull_down_enable,		//	PULL_UD_EN
+	Pull_up_pull_down_selection,	//	PULL_UD_SEL
+	Interrupt_mask,					//	INT_MASK
+	Interrupt_status,				//	INT_STATUS
+	Output_port_configuration,		//	OUTPUT_PORT_CONFIG
 };
 
 class GPIO_base : public I2C_device
@@ -109,15 +127,17 @@ public:
 	virtual ~PCAL6408A();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
-		Input_Port,
-		Output_Port,
-		Polarity_Inversion,
-		Configuration,
-		Input_latch,
-		Pull_up_pull_down_enable,
-		Pull_up_pull_down_selection,
-		Interrupt_mask,
-		Interrupt_status,		
+		Input_Port,						//	IN,
+		Output_Port,					//	OUT
+		Polarity_Inversion,				//	POLARITY
+		Configuration,					//	CONFIG
+		Output_drive_strength_0,		//	DRIVE_STRENGTH
+		Input_latch,					//	LATCHLATCH
+		Pull_up_pull_down_enable,		//	PULL_UD_EN
+		Pull_up_pull_down_selection,	//	PULL_UD_SEL
+		Interrupt_mask,					//	INT_MASK
+		Interrupt_status,				//	INT_STATUS
+		Output_port_configuration,		//	OUTPUT_PORT_CONFIG
 	};
 };
 
@@ -144,15 +164,17 @@ public:
 	virtual ~PCAL6416A();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
-		Input_Port_0,
-		Output_Port_0,
-		Polarity_Inversion_port_0,
-		Configuration_port_0,
-		Input_latch_register_0,
-		Pull_up_pull_down_enable_register_0,
-		Pull_up_pull_down_selection_register_0,
-		Interrupt_mask_register_0,
-		Interrupt_status_register_0,		
+		Input_Port_0,							//	IN,
+		Output_Port_0,							//	OUT
+		Polarity_Inversion_port_0,				//	POLARITY
+		Configuration_port_0,					//	CONFIG
+		Output_drive_strength_register_0,		//	DRIVE_STRENGTH
+		Input_latch_register_0,					//	LATCHLATCH
+		Pull_up_pull_down_enable_register_0,	//	PULL_UD_EN
+		Pull_up_pull_down_selection_register_0,	//	PULL_UD_SEL
+		Interrupt_mask_register_0,				//	INT_MASK
+		Interrupt_status_register_0,			//	INT_STATUS
+		Output_port_configuration_register,		//	OUTPUT_PORT_CONFIG
 	};
 };
 
@@ -189,15 +211,17 @@ public:
 	virtual ~PCAL6524();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
-		Input_Port_0,
-		Output_Port_0,
-		Polarity_Inversion_port_0,
-		Configuration_port_0,
-		Input_latch_register_port_0,
-		Pull_up_pull_down_enable_register_port_0,
-		Pull_up_pull_down_selection_register_port_0,
-		Interrupt_mask_register_port_0,
-		Interrupt_status_register_port_0,		
+		Input_Port_0,									//	IN,
+		Output_Port_0,									//	OUT
+		Polarity_Inversion_port_0,						//	POLARITY
+		Configuration_port_0,							//	CONFIG
+		Output_drive_strength_register_port_0A,			//	DRIVE_STRENGTH
+		Input_latch_register_port_0,					//	LATCHLATCH
+		Pull_up_pull_down_enable_register_port_0,		//	PULL_UD_EN
+		Pull_up_pull_down_selection_register_port_0,	//	PULL_UD_SEL
+		Interrupt_mask_register_port_0,					//	INT_MASK
+		Interrupt_status_register_port_0,				//	INT_STATUS
+		Output_port_configuration_register,				//	OUTPUT_PORT_CONFIG
 	};
 };
 
@@ -237,15 +261,17 @@ public:
 	virtual ~PCAL6534();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
-		Input_Port_0,
-		Output_Port_0,
-		Polarity_Inversion_port_0,
-		Configuration_port_0,
-		Input_latch_register_port_0,
-		Pull_up_pull_down_enable_register_port_0,
-		Pull_up_pull_down_selection_register_port_0,
-		Interrupt_mask_register_port_0,
-		Interrupt_status_register_port_0,		
+		Input_Port_0,									//	IN,
+		Output_Port_0,									//	OUT
+		Polarity_Inversion_port_0,						//	POLARITY
+		Configuration_port_0,							//	CONFIG
+		Output_drive_strength_register_port_0A,			//	DRIVE_STRENGTH
+		Input_latch_register_port_0,					//	LATCHLATCH
+		Pull_up_pull_down_enable_register_port_0,		//	PULL_UD_EN
+		Pull_up_pull_down_selection_register_port_0,	//	PULL_UD_SEL
+		Interrupt_mask_register_port_0,					//	INT_MASK
+		Interrupt_status_register_port_0,				//	INT_STATUS
+		Output_port_configuration_register,				//	OUTPUT_PORT_CONFIG
 	};
 };
 
