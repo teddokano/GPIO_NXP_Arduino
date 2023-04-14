@@ -18,6 +18,7 @@ With `GPIO_NXP_Arduino` library, parallel output can be controlled by next sampl
 PCAL6416A gpio;
 
 void setup() {
+  gpio.begin(GPIO_base::ARDUINO_SHIELD);
   Wire.begin();
   gpio.config(0, 0x00); //  Port0 is configured as output
 }
