@@ -4,7 +4,7 @@ var indexSectionsWithContent =
   1: "gp",
   2: "bcgiorw~",
   3: "n",
-  4: "r",
+  4: "br",
   5: "g"
 };
 

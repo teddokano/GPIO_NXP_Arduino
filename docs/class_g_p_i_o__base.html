@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.1.1</span>
    </div>
    <div id="projectbrief">GPIO device operation sample code for Arduino</div>
   </td>
@@ -97,7 +97,7 @@ Inheritance diagram for GPIO_base:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a296614cb858fb0fa93e8997f337124a3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>board</b> { <b>NONE</b>
+<tr class="memitem:a296614cb858fb0fa93e8997f337124a3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a296614cb858fb0fa93e8997f337124a3">board</a> { <b>NONE</b>
 , <b>ARDUINO_SHIELD</b>
  }</td></tr>
 <tr class="separator:a296614cb858fb0fa93e8997f337124a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,7 +108,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a024c717a4e77ebbc6dd2147dcc930357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8033434aa001cdfe6b528300b7cd0c36"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a8033434aa001cdfe6b528300b7cd0c36">~GPIO_base</a> ()</td></tr>
 <tr class="separator:a8033434aa001cdfe6b528300b7cd0c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac55adf02067272e2c5b4bdd5f955f78c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#ac55adf02067272e2c5b4bdd5f955f78c">begin</a> (board env=NONE)</td></tr>
+<tr class="memitem:ac55adf02067272e2c5b4bdd5f955f78c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#ac55adf02067272e2c5b4bdd5f955f78c">begin</a> (<a class="el" href="class_g_p_i_o__base.html#a296614cb858fb0fa93e8997f337124a3">board</a> env=NONE)</td></tr>
 <tr class="separator:ac55adf02067272e2c5b4bdd5f955f78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5e40a5d4825f5c29cf22f1ea0e73dae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#aa5e40a5d4825f5c29cf22f1ea0e73dae">output</a> (int port, uint8_t value, uint8_t mask=0)</td></tr>
 <tr class="separator:aa5e40a5d4825f5c29cf22f1ea0e73dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,12 +164,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum GPIO_base::board</td>
+          <td class="memname">enum <a class="el" href="class_g_p_i_o__base.html#a296614cb858fb0fa93e8997f337124a3">GPIO_base::board</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Target board selection constants </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00047">47</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00049">49</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -264,14 +265,20 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void GPIO_base::begin </td>
           <td>(</td>
-          <td class="paramtype">board&#160;</td>
+          <td class="paramtype"><a class="el" href="class_g_p_i_o__base.html#a296614cb858fb0fa93e8997f337124a3">board</a>&#160;</td>
           <td class="paramname"><em>env</em> = <code>NONE</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Device initialization</p>
-<p>This method is not used current version </p>
+<p>Initialization method for Arduino shield board. Since the PCAL6xxx Arduino shield board have floating ADR (on D9) pin, the I2C target address could be another one. To avoid this behavior, call this method with 'GPIO_base::ARDUINO_SHIELD'. It will perform a hardware reset after the ADR pin set LOW.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">env</td><td>board type given. If the target is an Arduino shield board, use GPIO_base::ARDUINO_SHIELD </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00022">22</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
@@ -319,9 +326,9 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00071">71</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00065">65</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00071">config()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00065">config()</a>.</p>
 
 </div>
 </div>
@@ -349,7 +356,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00079">79</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00073">73</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -378,7 +385,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Port read value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00059">59</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00053">53</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -407,7 +414,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to vp </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00064">64</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00058">58</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -453,7 +460,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00046">46</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00040">40</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -481,7 +488,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00054">54</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00048">48</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -509,7 +516,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00174">174</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00168">168</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -549,7 +556,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Register read value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00164">164</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00158">158</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -589,9 +596,9 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to vp </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00116">116</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00110">110</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00064">input()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00058">input()</a>.</p>
 
 </div>
 </div>
@@ -631,7 +638,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Register read value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00169">169</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00163">163</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -671,7 +678,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to vp </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00129">129</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00123">123</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -710,9 +717,9 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00084">84</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00078">78</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00079">config()</a>, and <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00054">output()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00073">config()</a>, and <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00048">output()</a>.</p>
 
 </div>
 </div>
@@ -758,7 +765,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00154">154</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00148">148</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -797,7 +804,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00095">95</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00089">89</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -843,7 +850,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00159">159</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00153">153</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -861,9 +868,9 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of IO bits </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00053">53</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00055">55</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00129">read_port16()</a>, and <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00095">write_port16()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00123">read_port16()</a>, and <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00089">write_port16()</a>.</p>
 
 </div>
 </div>
@@ -880,9 +887,9 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of IO ports </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00056">56</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00058">58</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00116">read_port()</a>, <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00129">read_port16()</a>, <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00084">write_port()</a>, and <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00095">write_port16()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00110">read_port()</a>, <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00123">read_port16()</a>, <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00078">write_port()</a>, and <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00089">write_port16()</a>.</p>
 
 </div>
 </div>

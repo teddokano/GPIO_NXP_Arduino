@@ -15,11 +15,12 @@
 PCAL6408A gpio;
 
 void setup() {
+  gpio.begin(GPIO_base::ARDUINO_SHIELD);  //  Force ADR pin (@D8) LOW and reset to give right target address
+  
   Serial.begin(9600);
   Serial.println("\n***** Hello, PCAL6408A! *****");
 
   Wire.begin();
-  I2C_device::scan();
 
   gpio.config(0, 0xF0); //  Port0 bit3~0 are configured as output
 }

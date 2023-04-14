@@ -44,6 +44,8 @@ enum access_word : uint8_t
 class GPIO_base : public I2C_device
 {
 public:
+	
+	/** Target board selection constants */
 	enum board {
 		NONE,
 		ARDUINO_SHIELD,
@@ -69,7 +71,13 @@ public:
 
 	/** Device initialization
 	 *
-	 *	This method is not used current version
+	 *	Initialization method for Arduino shield board.
+	 *	Since the PCAL6xxx Arduino shield board have floating ADR (on D9) pin, 
+	 *	the I2C target address could be another one. 
+	 *	To avoid this behavior, call this method with 'GPIO_base::ARDUINO_SHIELD'. 
+	 *	It will perform a hardware reset after the ADR pin set LOW. 
+	 *	
+	 *	@param	env	board type given. If the target is an Arduino shield board, use GPIO_base::ARDUINO_SHIELD
 	 */
 	void		begin( board env = NONE );
 	

@@ -22,16 +22,11 @@ GPIO_base::~GPIO_base()
 void GPIO_base::begin( board env )
 {
 	if ( env ) {
-		//	NEED INVESTIGATION LATER
-		//	NO ENOUGH CURRENT ON PIN8 OUTPUT?
-		//	BECAUSE IT CANNOT ASSERT LOW (LITTLE LOWER VOLTAGE)
-		//	SAME THING HAPPENS ON OTHER PCAL6XXX-ARD BOARDS
-		//	THE SIGNAL CAN BE LOW WHEN THE ARD BOARD IS NOT CONNECTED
-		//	INSTEAD OF USING THIS MECHANISM, USE "I2C_device::scan()" TO CONFIRM THE TARGET ADDRESS
-		
-#if 1	
-		digitalWrite( ADDR_PIN , 0 );
-#else
+		pinMode(RESET_PIN, OUTPUT);
+		pinMode(ADDR_PIN, OUTPUT);
+
+		digitalWrite( RESET_PIN , 1 );
+		digitalWrite( ADDR_PIN , 1 );
 		digitalWrite( ADDR_PIN , 0 );
 		delay( 1 );
 	
@@ -39,7 +34,6 @@ void GPIO_base::begin( board env )
 		delay( 1 );	// reset time = 500ns(min)
 		digitalWrite( RESET_PIN , 1 );
 		delay( 1 ); // reset recovery time = 600ns(min)
-#endif
 	}
 }
 
