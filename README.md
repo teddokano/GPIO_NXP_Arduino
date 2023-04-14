@@ -4,7 +4,7 @@ GPIO device operation sample code for [Arduino](https://www.arduino.cc)
 > **Note**
 This library works with [`I2C_device`](https://github.com/teddokano/I2C_device_Arduino) library together. Please be sure the `I2C_device` library is imported in your environment before trying to build. 
 
-![Boards](https://github.com/teddokano/additional_files/blob/main/GPIO_NXP_Arduino/board.jpg)  
+![Boards](https://github.com/teddokano/additional_files/blob/main/GPIO_NXP_Arduino/boards.jpg)  
 _PCAL6416AEV-ARD (on Arduino), PCAL6408A-ARD, PCAL6524EV-ARD and PCAL6534EV-ARD: Arduino® Shield Evaluation Board for GPIO_
 
 ## What is this?
