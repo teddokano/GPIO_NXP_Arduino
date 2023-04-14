@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GPIO_NXP_Arduino: PCAL6408A Class Reference</title>
+<title>GPIO_NXP_Arduino: PCA9555 Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,43 +74,37 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="class_p_c_a_l6408_a-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">PCAL6408A Class Reference</div></div>
+<a href="class_p_c_a9555-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">PCA9555 Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for PCAL6408A:</div>
+Inheritance diagram for PCA9555:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_p_c_a_l6408_a.png" usemap="#PCAL6408A_map" alt=""/>
-  <map id="PCAL6408A_map" name="PCAL6408A_map">
-<area href="class_p_c_a_l6xxx__base.html" alt="PCAL6xxx_base" shape="rect" coords="0,112,104,136"/>
-<area href="class_g_p_i_o__base.html" alt="GPIO_base" shape="rect" coords="0,56,104,80"/>
+  <img src="class_p_c_a9555.png" usemap="#PCA9555_map" alt=""/>
+  <map id="PCA9555_map" name="PCA9555_map">
+<area href="class_g_p_i_o__base.html" alt="GPIO_base" shape="rect" coords="0,56,76,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a34f376c58409b04b6ff495a94ab7e57c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a34f376c58409b04b6ff495a94ab7e57c">reg_num</a> { <br />
-&#160;&#160;<b>Input_Port</b>
-, <b>Output_Port</b>
-, <b>Polarity_Inversion</b>
-, <b>Configuration</b>
+<tr class="memitem:a25bddf48a36c957279104c8117a11d3c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9555.html#a25bddf48a36c957279104c8117a11d3c">reg_num</a> { <br />
+&#160;&#160;<b>Input_Port_0</b>
+, <b>Input_Port_1</b>
+, <b>Output_Port_0</b>
+, <b>Output_Port_1</b>
 , <br />
-&#160;&#160;<b>Output_drive_strength_0</b> = 0x40
-, <b>Output_drive_strength_1</b>
-, <b>Input_latch</b>
-, <b>Pull_up_pull_down_enable</b>
-, <br />
-&#160;&#160;<b>Pull_up_pull_down_selection</b>
-, <b>Interrupt_mask</b>
-, <b>Interrupt_status</b>
-, <b>Output_port_configuration</b>
+&#160;&#160;<b>Polarity_Inversion_Port_0</b>
+, <b>Polarity_Inversion_Port_1</b>
+, <b>Configuration_Port_0</b>
+, <b>Configuration_Port_1</b>
 <br />
  }</td></tr>
-<tr class="separator:a34f376c58409b04b6ff495a94ab7e57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a25bddf48a36c957279104c8117a11d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_class_g_p_i_o__base"><td colspan="2" onclick="javascript:toggleInherit('pub_types_class_g_p_i_o__base')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="class_g_p_i_o__base.html">GPIO_base</a></td></tr>
 <tr class="memitem:a296614cb858fb0fa93e8997f337124a3 inherit pub_types_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>board</b> { <b>NONE</b>
 , <b>ARDUINO_SHIELD</b>
@@ -119,11 +113,8 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a299fc29c50f826561419988f96521a02"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a299fc29c50f826561419988f96521a02">PCAL6408A</a> (uint8_t i2c_address=(0x40 &gt; &gt; 1)+0)</td></tr>
-<tr class="separator:a299fc29c50f826561419988f96521a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_p_c_a_l6xxx__base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_p_c_a_l6xxx__base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_p_c_a_l6xxx__base.html">PCAL6xxx_base</a></td></tr>
-<tr class="memitem:a212fc093cd9ce0c181730c324bc48477 inherit pub_methods_class_p_c_a_l6xxx__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6xxx__base.html#a212fc093cd9ce0c181730c324bc48477">PCAL6xxx_base</a> (uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai)</td></tr>
-<tr class="separator:a212fc093cd9ce0c181730c324bc48477 inherit pub_methods_class_p_c_a_l6xxx__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2babdae3a0dba54169eb3d09277b97c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9555.html#af2babdae3a0dba54169eb3d09277b97c">PCA9555</a> (uint8_t i2c_address=(0x40 &gt; &gt; 1)+0)</td></tr>
+<tr class="separator:af2babdae3a0dba54169eb3d09277b97c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_g_p_i_o__base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_g_p_i_o__base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_g_p_i_o__base.html">GPIO_base</a></td></tr>
 <tr class="memitem:a024c717a4e77ebbc6dd2147dcc930357 inherit pub_methods_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a024c717a4e77ebbc6dd2147dcc930357">GPIO_base</a> (uint8_t i2c_address, const int nbits, const uint8_t *arp, uint8_t ai)</td></tr>
 <tr class="separator:a024c717a4e77ebbc6dd2147dcc930357 inherit pub_methods_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,8 +153,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:afd2a97276746c7fe2e605710679a5777"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#afd2a97276746c7fe2e605710679a5777">access_ref</a> [NUM_access_word]</td></tr>
-<tr class="separator:afd2a97276746c7fe2e605710679a5777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae64fdfb90074ac2e770bf3c6a62baa9"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9555.html#aae64fdfb90074ac2e770bf3c6a62baa9">access_ref</a> [NUM_access_word]</td></tr>
+<tr class="separator:aae64fdfb90074ac2e770bf3c6a62baa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -177,36 +168,36 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a7f604e3ec0a10c0dc5f82bb693d3ed59 inherit pub_attribs_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_p_c_a_l6408_a.html">PCAL6408A</a> class </p>
+<div class="textblock"><p><a class="el" href="class_p_c_a9555.html">PCA9555</a> class </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00304">304</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00256">256</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a34f376c58409b04b6ff495a94ab7e57c" name="a34f376c58409b04b6ff495a94ab7e57c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34f376c58409b04b6ff495a94ab7e57c">&#9670;&#160;</a></span>reg_num</h2>
+<a id="a25bddf48a36c957279104c8117a11d3c" name="a25bddf48a36c957279104c8117a11d3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25bddf48a36c957279104c8117a11d3c">&#9670;&#160;</a></span>reg_num</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="class_p_c_a_l6408_a.html#a34f376c58409b04b6ff495a94ab7e57c">PCAL6408A::reg_num</a></td>
+          <td class="memname">enum <a class="el" href="class_p_c_a9555.html#a25bddf48a36c957279104c8117a11d3c">PCA9555::reg_num</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Name of the <a class="el" href="class_p_c_a_l6408_a.html">PCAL6408A</a> registers </p>
+<p>Name of the <a class="el" href="class_p_c_a_l6416_a.html">PCAL6416A</a> registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00308">308</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00260">260</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a299fc29c50f826561419988f96521a02" name="a299fc29c50f826561419988f96521a02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a299fc29c50f826561419988f96521a02">&#9670;&#160;</a></span>PCAL6408A()</h2>
+<a id="af2babdae3a0dba54169eb3d09277b97c" name="af2babdae3a0dba54169eb3d09277b97c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2babdae3a0dba54169eb3d09277b97c">&#9670;&#160;</a></span>PCA9555()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PCAL6408A::PCAL6408A </td>
+          <td class="memname">PCA9555::PCA9555 </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>i2c_address</em> = <code>(0x40&#160;&gt;&gt;&#160;1)&#160;+&#160;0</code></td><td>)</td>
@@ -215,12 +206,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00218">218</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00192">192</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ac10591320253508287dcb6e5e4641e33" name="ac10591320253508287dcb6e5e4641e33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac10591320253508287dcb6e5e4641e33">&#9670;&#160;</a></span>~PCAL6408A()</h2>
+<a id="a319e651c9ae76570513d09cf82308c35" name="a319e651c9ae76570513d09cf82308c35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a319e651c9ae76570513d09cf82308c35">&#9670;&#160;</a></span>~PCA9555()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +220,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">PCAL6408A::~PCAL6408A </td>
+          <td class="memname">PCA9555::~PCA9555 </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -242,13 +233,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00223">223</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00197">197</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="afd2a97276746c7fe2e605710679a5777" name="afd2a97276746c7fe2e605710679a5777"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd2a97276746c7fe2e605710679a5777">&#9670;&#160;</a></span>access_ref</h2>
+<a id="aae64fdfb90074ac2e770bf3c6a62baa9" name="aae64fdfb90074ac2e770bf3c6a62baa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae64fdfb90074ac2e770bf3c6a62baa9">&#9670;&#160;</a></span>access_ref</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,7 +248,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t PCAL6408A::access_ref</td>
+          <td class="memname">constexpr uint8_t PCA9555::access_ref</td>
         </tr>
       </table>
   </td>
@@ -267,20 +258,20 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">        Input_Port,                     </div>
-<div class="line">        Output_Port,                    </div>
-<div class="line">        Polarity_Inversion,             </div>
-<div class="line">        Configuration,                  </div>
-<div class="line">        Output_drive_strength_0,        </div>
-<div class="line">        Input_latch,                    </div>
-<div class="line">        Pull_up_pull_down_enable,       </div>
-<div class="line">        Pull_up_pull_down_selection,    </div>
-<div class="line">        Interrupt_mask,                 </div>
-<div class="line">        Interrupt_status,               </div>
-<div class="line">        Output_port_configuration,      </div>
+<div class="line">        Input_Port_0,               </div>
+<div class="line">        Output_Port_0,              </div>
+<div class="line">        Polarity_Inversion_Port_0,  </div>
+<div class="line">        Configuration_Port_0,       </div>
+<div class="line">        0xFF,   </div>
+<div class="line">        0xFF,   </div>
+<div class="line">        0xFF,   </div>
+<div class="line">        0xFF,   </div>
+<div class="line">        0xFF,   </div>
+<div class="line">        0xFF,   </div>
+<div class="line">        0xFF,   </div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00326">326</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00270">270</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>

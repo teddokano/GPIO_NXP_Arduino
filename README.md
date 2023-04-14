@@ -37,6 +37,8 @@ Type#|IO bits|Features|Interface|Evaluation board
 [PCAL6416A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/low-voltage-translating-16-bit-ic-bus-smbus-i-o-expander:PCAL6416A)	|16	|Low-Voltage Translating 16-Bit I²C-Bus/SMBus I/O Expander				|I²C Fast-mode Plus (1MHz)	|[PCAL6416A 16-bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6416a-16-bit-gpio-arduino-shield-evaluation-board:PCAL6416AEV-ARD)
 [PCAL6408A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/ic-bus-controller-and-bridge-ics/ultra-low-voltage-translating-24-bit-fm-plus-ic-bus-smbus-i-o-expander:PCAL6524)	|24	|Ultra-Low-Voltage Translating 24-Bit Fm+ I²C-Bus/SMBus I/O Expander	|I²C Fast-mode Plus (1MHz)	|[PCAL6524EV 24-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6524ev-24-bit-gpio-arduino-shield:PCAL6524EV-ARD)
 [PCAL6408A](https://www.nxp.jp/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534)	|34	|Ultra-Low-Voltage, Level Translating, 34-Bit I2C-Bus/SMBus I/O Expander|I²C Fast-mode Plus (1MHz)	|[PCAL6534EV 34-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6534ev-34-bit-gpio-arduino-shield:PCAL6534EV-ARD)
+[PCA9554](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/8-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9554_PCA9554A)<br /> **not tested**	|8	|8-Bit I²C-Bus and SMBus I/O Port with Interrupt	|---
+[PCA9555](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/16-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9555)	|16	|16-Bit I²C-Bus and SMBus I/O Port with Interrupt	|---
 
 # Getting started
 
@@ -53,6 +55,7 @@ After library install, Choose menu on Arduino-IDE: `File`→`Examples`→`GPIO_N
 
 ### List of sample code
 
+#### For PCAL6xxx GPIO Arduino® Shield evaluation boards
 Sketch|Folder/Target|Feature
 ---|---|---
 PCAL6408A_simple_OUT		|PCAL6408A	|**Simple** sample for **just output** counter value
@@ -68,6 +71,12 @@ PCAL6534_simple_OUT			|PCAL6534	|**Simple** sample for **just output** counter v
 PCAL6534_simple_IN_OUT		|PCAL6534	|Blink LED to show which buton pressed. Read value shown on serial terminal also
 PCAL6534_interrupt			|PCAL6534	|IO demo with **interrupt**
 
+#### For non-ARD boards
+Sketch|Folder/Target|Feature
+---|---|---
+PCA9555_port0_OUT				|PCA9555	|**Simple** sample for **just output** counter value
+PCA9555_port0_OUT_and_port1_IN	|PCA9555	|To check **output** and **input**
+PCA9555_interrupt_on_port1		|PCA9555	|**Interrupt** check
 
 # Document
 For details of the library, please find descriptions in [this document](https://teddokano.github.io/GPIO_NXP_Arduino/annotated.html).

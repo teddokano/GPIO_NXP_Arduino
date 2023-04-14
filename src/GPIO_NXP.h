@@ -44,8 +44,6 @@ enum access_word : uint8_t
 class GPIO_base : public I2C_device
 {
 public:
-	
-	/** Target board selection constants */
 	enum board {
 		NONE,
 		ARDUINO_SHIELD,
@@ -71,13 +69,7 @@ public:
 
 	/** Device initialization
 	 *
-	 *	Initialization method for Arduino shield board.
-	 *	Since the PCAL6xxx Arduino shield board have floating ADR (on D9) pin, 
-	 *	the I2C target address could be another one. 
-	 *	To avoid this behavior, call this method with 'GPIO_base::ARDUINO_SHIELD'. 
-	 *	It will perform a hardware reset after the ADR pin set LOW. 
-	 *	
-	 *	@param	env	board type given. If the target is an Arduino shield board, use GPIO_base::ARDUINO_SHIELD
+	 *	This method is not used current version
 	 */
 	void		begin( board env = NONE );
 	
@@ -222,6 +214,72 @@ private:
 	
 	static constexpr int RESET_PIN	= 8;
 	static constexpr int ADDR_PIN	= 9;
+};
+
+/** PCA9554 class
+ *	
+ *  @class PCA9554
+ */
+class PCA9554 : public GPIO_base
+{
+public:
+	/** Name of the PCAL6416A registers */
+	enum reg_num {
+		Input_Port,
+		Output_Port,
+		Polarity_Inversion,
+		Configuration,
+	};
+	
+	PCA9554( uint8_t i2c_address = (0x40 >> 1) + 0 );
+	virtual ~PCA9554();
+
+	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
+		Input_Port,			//	IN,
+		Output_Port,		//	OUT
+		Polarity_Inversion,	//	POLARITY
+		Configuration,		//	CONFIG
+		0xFF,	//	DRIVE_STRENGTH		** CANNOT BE USED **
+		0xFF,	//	LATCHLATCH			** CANNOT BE USED **
+		0xFF,	//	PULL_UD_EN			** CANNOT BE USED **
+		0xFF,	//	PULL_UD_SEL			** CANNOT BE USED **
+		0xFF,	//	INT_MASK			** CANNOT BE USED **
+		0xFF,	//	INT_STATUS			** CANNOT BE USED **
+		0xFF,	//	OUTPUT_PORT_CONFIG	** CANNOT BE USED **
+	};
+};
+
+/** PCA9555 class
+ *	
+ *  @class PCA9555
+ */
+class PCA9555 : public GPIO_base
+{
+public:
+	/** Name of the PCAL6416A registers */
+	enum reg_num {
+		Input_Port_0, Input_Port_1, 
+		Output_Port_0, Output_Port_1, 
+		Polarity_Inversion_Port_0, Polarity_Inversion_Port_1, 
+		Configuration_Port_0, Configuration_Port_1, 
+	};
+	
+	PCA9555( uint8_t i2c_address = (0x40 >> 1) + 0 );
+	virtual ~PCA9555();
+
+	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
+		Input_Port_0,				//	IN,
+		Output_Port_0,				//	OUT
+		Polarity_Inversion_Port_0,	//	POLARITY
+		Configuration_Port_0,		//	CONFIG
+		0xFF,	//	DRIVE_STRENGTH		** CANNOT BE USED **
+		0xFF,	//	LATCHLATCH			** CANNOT BE USED **
+		0xFF,	//	PULL_UD_EN			** CANNOT BE USED **
+		0xFF,	//	PULL_UD_SEL			** CANNOT BE USED **
+		0xFF,	//	INT_MASK			** CANNOT BE USED **
+		0xFF,	//	INT_STATUS			** CANNOT BE USED **
+		0xFF,	//	OUTPUT_PORT_CONFIG	** CANNOT BE USED **
+	};
 };
 
 /** PCAL6xxx_base class

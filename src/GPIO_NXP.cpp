@@ -173,6 +173,34 @@ void GPIO_base::print_bin( uint8_t v )
 }
 
 
+/* ******** PCA9554 ******** */
+
+PCA9554::PCA9554( uint8_t i2c_address ) :
+	GPIO_base( i2c_address, 8, access_ref, 0x00 )
+{
+}
+
+PCA9554::~PCA9554()
+{
+}
+
+constexpr uint8_t PCA9554::access_ref[];
+
+
+/* ******** PCA9555 ******** */
+
+PCA9555::PCA9555( uint8_t i2c_address ) :
+	GPIO_base( i2c_address, 16, access_ref, 0x00 )
+{
+}
+
+PCA9555::~PCA9555()
+{
+}
+
+constexpr uint8_t PCA9555::access_ref[];
+
+
 /* ******** PCAL6xxx_base ******** */
 
 PCAL6xxx_base::PCAL6xxx_base( uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai ) :

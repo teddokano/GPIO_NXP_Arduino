@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.1.1</span>
+   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.2.0</span>
    </div>
    <div id="projectbrief">GPIO device operation sample code for Arduino</div>
   </td>
@@ -89,7 +89,8 @@ What is this?</h1>
 <div class="line"><a class="code hl_class" href="class_p_c_a_l6416_a.html">PCAL6416A</a> gpio;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
-<div class="line">  Wire.<a class="code hl_function" href="class_g_p_i_o__base.html#ac55adf02067272e2c5b4bdd5f955f78c">begin</a>();</div>
+<div class="line">  gpio.<a class="code hl_function" href="class_g_p_i_o__base.html#ac55adf02067272e2c5b4bdd5f955f78c">begin</a>(GPIO_base::ARDUINO_SHIELD);</div>
+<div class="line">  Wire.begin();</div>
 <div class="line">  gpio.<a class="code hl_function" href="class_g_p_i_o__base.html#a70435ed72db6dc2d124ee005a226ab11">config</a>(0, 0x00); <span class="comment">//  Port0 is configured as output</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -101,7 +102,7 @@ What is this?</h1>
 <div class="ttc" id="aclass_g_p_i_o__base_html_a70435ed72db6dc2d124ee005a226ab11"><div class="ttname"><a href="class_g_p_i_o__base.html#a70435ed72db6dc2d124ee005a226ab11">GPIO_base::config</a></div><div class="ttdeci">void config(int port, uint8_t config, uint8_t mask=0)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o___n_x_p_8cpp_source.html#l00065">GPIO_NXP.cpp:65</a></div></div>
 <div class="ttc" id="aclass_g_p_i_o__base_html_aa5e40a5d4825f5c29cf22f1ea0e73dae"><div class="ttname"><a href="class_g_p_i_o__base.html#aa5e40a5d4825f5c29cf22f1ea0e73dae">GPIO_base::output</a></div><div class="ttdeci">void output(int port, uint8_t value, uint8_t mask=0)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o___n_x_p_8cpp_source.html#l00040">GPIO_NXP.cpp:40</a></div></div>
 <div class="ttc" id="aclass_g_p_i_o__base_html_ac55adf02067272e2c5b4bdd5f955f78c"><div class="ttname"><a href="class_g_p_i_o__base.html#ac55adf02067272e2c5b4bdd5f955f78c">GPIO_base::begin</a></div><div class="ttdeci">void begin(board env=NONE)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o___n_x_p_8cpp_source.html#l00022">GPIO_NXP.cpp:22</a></div></div>
-<div class="ttc" id="aclass_p_c_a_l6416_a_html"><div class="ttname"><a href="class_p_c_a_l6416_a.html">PCAL6416A</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o___n_x_p_8h_source.html#l00287">GPIO_NXP.h:288</a></div></div>
+<div class="ttc" id="aclass_p_c_a_l6416_a_html"><div class="ttname"><a href="class_p_c_a_l6416_a.html">PCAL6416A</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o___n_x_p_8h_source.html#l00345">GPIO_NXP.h:346</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 Supported devices</h1>
 <table class="markdownTable">
@@ -116,6 +117,8 @@ Supported devices</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a href="https://www.nxp.jp/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534">PCAL6408A</a>   </td><td class="markdownTableBodyNone">34   </td><td class="markdownTableBodyNone">Ultra-Low-Voltage, Level Translating, 34-Bit I2C-Bus/SMBus I/O Expander   </td><td class="markdownTableBodyNone">I²C Fast-mode Plus (1MHz)   </td><td class="markdownTableBodyNone"><a href="https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6534ev-34-bit-gpio-arduino-shield:PCAL6534EV-ARD">PCAL6534EV 34-Bit GPIO Arduino® Shield</a>   </td></tr>
 </table>
+<p><a href="https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/8-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9554_PCA9554A">PCA9554</a><br  />
+ <b>not tested</b> |8 |8-Bit I²C-Bus and SMBus I/O Port with Interrupt |&mdash; <a href="https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/16-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9555">PCA9555</a> |16 |16-Bit I²C-Bus and SMBus I/O Port with Interrupt |&mdash;</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Getting started</h1>
 <p>Use Library manager in Arduino IDE for easy install</p>
@@ -129,6 +132,8 @@ How to use?</h3>
 <p>After library install, Choose menu on Arduino-IDE: <code>File</code>→<code>Examples</code>→<code>GPIO_NXP_Arduino</code>→ <b>sketch for your try</b></p>
 <h3><a class="anchor" id="autotoc_md7"></a>
 List of sample code</h3>
+<h4><a class="anchor" id="autotoc_md8"></a>
+For PCAL6xxx GPIO Arduino® Shield evaluation boards</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Sketch   </th><th class="markdownTableHeadNone">Folder/Target   </th><th class="markdownTableHeadNone">Feature    </th></tr>
@@ -157,12 +162,24 @@ List of sample code</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">PCAL6534_interrupt   </td><td class="markdownTableBodyNone"><a class="el" href="class_p_c_a_l6534.html">PCAL6534</a>   </td><td class="markdownTableBodyNone">IO demo with <b>interrupt</b>   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h4><a class="anchor" id="autotoc_md9"></a>
+For non-ARD boards</h4>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Sketch   </th><th class="markdownTableHeadNone">Folder/Target   </th><th class="markdownTableHeadNone">Feature    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PCA9555_port0_OUT   </td><td class="markdownTableBodyNone"><a class="el" href="class_p_c_a9555.html">PCA9555</a>   </td><td class="markdownTableBodyNone"><b>Simple</b> sample for <b>just output</b> counter value    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PCA9555_port0_OUT_and_port1_IN   </td><td class="markdownTableBodyNone"><a class="el" href="class_p_c_a9555.html">PCA9555</a>   </td><td class="markdownTableBodyNone">To check <b>output</b> and <b>input</b>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PCA9555_interrupt_on_port1   </td><td class="markdownTableBodyNone"><a class="el" href="class_p_c_a9555.html">PCA9555</a>   </td><td class="markdownTableBodyNone"><b>Interrupt</b> check   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Document</h1>
 <p>For details of the library, please find descriptions in <a href="https://teddokano.github.io/GPIO_NXP_Arduino/annotated.html">this document</a>.</p>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 References</h1>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Related libraries</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
