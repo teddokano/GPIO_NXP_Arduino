@@ -5,7 +5,7 @@ GPIO device operation sample code for [Arduino](https://www.arduino.cc)
 This library works with [`I2C_device`](https://github.com/teddokano/I2C_device_Arduino) library together. Please be sure the `I2C_device` library is imported in your environment before trying to build. 
 
 ![Boards](https://github.com/teddokano/additional_files/blob/main/GPIO_NXP_Arduino/boards.jpg)  
-_PCAL6416AEV-ARD (on Arduino), PCAL6408A-ARD, PCAL6524EV-ARD and PCAL6534EV-ARD: Arduino® Shield Evaluation Board for GPIO_
+_PCAL6416AEV-ARD (on Arduino), PCAL6534EV-ARD, PCAL6524EV-ARD and PCAL6408A-ARD (far side from left to right) : Arduino® Shield Evaluation Boards for GPIO_
 
 ## What is this?
 An Arduino library for I²C GPIO-expander with sample code.  
