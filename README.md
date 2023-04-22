@@ -10,10 +10,11 @@ _PCAL6416AEV-ARD (on Arduino), PCAL6534EV-ARD, PCAL6524EV-ARD and PCAL6408A-ARD 
 ## What is this?
 An Arduino library for I²C GPIO-expander with sample code.  
 This library provides simple API to control GPIO device IO bits
+Include device name header file (`PCAL6408A.h`, `PCAL6416A.h`, `PCAL6424.h`, `PCAL6434.h`, `PCA9554.h`, and/or `PCA9555.h`) to use those class libraries. 
 
 With `GPIO_NXP_Arduino` library, parallel output can be controlled by next sample code. 
 ```cpp
-#include <GPIO_NXP.h>
+#include <PCAL6416A.h>
 
 PCAL6416A gpio;
 
@@ -31,14 +32,14 @@ void loop() {
 ```
 
 ## Supported devices
-Type#|IO bits|Features|Interface|Evaluation board
----|---|---|---|---
-[PCAL6408A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/low-voltage-translating-8-bit-ic-bus-smbus-i-o-expander:PCAL6408A)	|8	|Low-Voltage Translating, 8-Bit I²C-Bus/SMBus I/O Expander				|I²C Fast-mode Plus (1MHz)	|[PCAL6408A 8-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6408a-8-bit-gpio-arduino-shield:PCAL6408A-ARD)
-[PCAL6416A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/low-voltage-translating-16-bit-ic-bus-smbus-i-o-expander:PCAL6416A)	|16	|Low-Voltage Translating 16-Bit I²C-Bus/SMBus I/O Expander				|I²C Fast-mode Plus (1MHz)	|[PCAL6416A 16-bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6416a-16-bit-gpio-arduino-shield-evaluation-board:PCAL6416AEV-ARD)
-[PCAL6408A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/ic-bus-controller-and-bridge-ics/ultra-low-voltage-translating-24-bit-fm-plus-ic-bus-smbus-i-o-expander:PCAL6524)	|24	|Ultra-Low-Voltage Translating 24-Bit Fm+ I²C-Bus/SMBus I/O Expander	|I²C Fast-mode Plus (1MHz)	|[PCAL6524EV 24-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6524ev-24-bit-gpio-arduino-shield:PCAL6524EV-ARD)
-[PCAL6408A](https://www.nxp.jp/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534)	|34	|Ultra-Low-Voltage, Level Translating, 34-Bit I2C-Bus/SMBus I/O Expander|I²C Fast-mode Plus (1MHz)	|[PCAL6534EV 34-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6534ev-34-bit-gpio-arduino-shield:PCAL6534EV-ARD)
-[PCA9554](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/8-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9554_PCA9554A)<br /> **not tested**	|8	|8-Bit I²C-Bus and SMBus I/O Port with Interrupt	|I²C Fast-mode (400Hz)	|---
-[PCA9555](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/16-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9555)	|16	|16-Bit I²C-Bus and SMBus I/O Port with Interrupt	|I²C Fast-mode (400Hz)	|---
+Type#|Header file|IO bits|Features|Interface|Evaluation board
+---|---|---|---|---|---
+[PCAL6408A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/low-voltage-translating-8-bit-ic-bus-smbus-i-o-expander:PCAL6408A)						|`PCAL6408A.h`		|8	|Low-Voltage Translating, 8-Bit I²C-Bus/SMBus I/O Expander				|I²C Fast-mode Plus (1MHz)	|[PCAL6408A 8-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6408a-8-bit-gpio-arduino-shield:PCAL6408A-ARD)
+[PCAL6416A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/low-voltage-translating-16-bit-ic-bus-smbus-i-o-expander:PCAL6416A)						|`PCAL6416A.h`		|16	|Low-Voltage Translating 16-Bit I²C-Bus/SMBus I/O Expander				|I²C Fast-mode Plus (1MHz)	|[PCAL6416A 16-bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6416a-16-bit-gpio-arduino-shield-evaluation-board:PCAL6416AEV-ARD)
+[PCAL6424](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/ic-bus-controller-and-bridge-ics/ultra-low-voltage-translating-24-bit-fm-plus-ic-bus-smbus-i-o-expander:PCAL6524)	|`PCAL6424.h`		|24	|Ultra-Low-Voltage Translating 24-Bit Fm+ I²C-Bus/SMBus I/O Expander	|I²C Fast-mode Plus (1MHz)	|[PCAL6524EV 24-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6524ev-24-bit-gpio-arduino-shield:PCAL6524EV-ARD)
+[PCAL6434](https://www.nxp.jp/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534)				|`PCAL6434.h`		|34	|Ultra-Low-Voltage, Level Translating, 34-Bit I2C-Bus/SMBus I/O Expander|I²C Fast-mode Plus (1MHz)	|[PCAL6534EV 34-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6534ev-34-bit-gpio-arduino-shield:PCAL6534EV-ARD)
+[PCA9554](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/8-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9554_PCA9554A)<br /> **not tested**		|`PCA9554.h`		|8	|8-Bit I²C-Bus and SMBus I/O Port with Interrupt	|I²C Fast-mode (400Hz)	|---
+[PCA9555](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/16-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9555)									|`PCA9555.h`		|16	|16-Bit I²C-Bus and SMBus I/O Port with Interrupt	|I²C Fast-mode (400Hz)	|---
 
 # Getting started
 

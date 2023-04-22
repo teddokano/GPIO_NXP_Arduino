@@ -10,7 +10,7 @@
  *    https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/16-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9555
  */
 
-#include <GPIO_NXP.h>
+#include <PCA9555.h>
 
 PCA9555 gpio;
 

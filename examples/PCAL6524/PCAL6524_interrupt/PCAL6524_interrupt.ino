@@ -13,7 +13,7 @@
  *    https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/ic-bus-controller-and-bridge-ics/ultra-low-voltage-translating-24-bit-fm-plus-ic-bus-smbus-i-o-expander:PCAL6524
  */
 
-#include <GPIO_NXP.h>
+#include <PCAL6524.h>
 
 PCAL6524 gpio;
 

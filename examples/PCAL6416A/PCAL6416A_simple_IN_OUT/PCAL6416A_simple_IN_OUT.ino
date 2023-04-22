@@ -10,7 +10,7 @@
  *    https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/low-voltage-translating-16-bit-ic-bus-smbus-i-o-expander:PCAL6416A
  */
 
-#include <GPIO_NXP.h>
+#include <PCAL6416A.h>
 
 PCAL6416A gpio;
 

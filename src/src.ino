@@ -10,17 +10,16 @@
  *    https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/low-voltage-translating-8-bit-ic-bus-smbus-i-o-expander:PCAL6408A
  */
 
-#include <PCAL6408A.h>
+#include "GPIO_NXP.h"
 
 PCAL6408A gpio;
 
 void setup() {
-  gpio.begin(GPIO_base::ARDUINO_SHIELD);  //  Force ADR pin (@D8) LOW and reset to give right target address
-  
   Serial.begin(9600);
   Serial.println("\n***** Hello, PCAL6408A! *****");
 
   Wire.begin();
+  I2C_device::scan();
 
   constexpr uint8_t io_config_and_pull_up = 0xF0;
 
@@ -32,7 +31,7 @@ void loop() {
   int input0 = gpio.input(0);   //  Read port0 input
   gpio.output(0, input0 >> 4);  //  Output to port0. Higher 4 bits are input. Those are shifted to lower 4 bits
 
-  GPIO_base::print_bin(input0); //  Show the data on serial terminal
+  GPIO_base::print_bin(input0);  //  Show the data on serial terminal
   Serial.println("");
 
   delay(100);
