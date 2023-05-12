@@ -64,6 +64,16 @@ public:
 	 */
 	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp, uint8_t ai );
 
+	/** Constractor
+	 * 
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C target address
+	 * @param nbits	Number of IO bits
+	 * @param arp	Pointer to register access reference table
+	 * @param ai	Auto-increment flag
+	 */
+	GPIO_base( TwoWire& wire, uint8_t i2c_address, const int nbits, const uint8_t* arp, uint8_t ai );
+
 	/** Destractor */
 	virtual ~GPIO_base();
 
@@ -214,6 +224,8 @@ private:
 	
 	static constexpr int RESET_PIN	= 8;
 	static constexpr int ADDR_PIN	= 9;
+	
+	void init( void );
 };
 
 /** PCA9554 class
@@ -232,6 +244,7 @@ public:
 	};
 	
 	PCA9554( uint8_t i2c_address = (0x40 >> 1) + 0 );
+	PCA9554( TwoWire& wire, uint8_t i2c_address = (0x40 >> 1) + 0 );
 	virtual ~PCA9554();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -265,6 +278,7 @@ public:
 	};
 	
 	PCA9555( uint8_t i2c_address = (0x40 >> 1) + 0 );
+	PCA9555( TwoWire& wire, uint8_t i2c_address = (0x40 >> 1) + 0 );
 	virtual ~PCA9555();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -293,6 +307,7 @@ class PCAL6xxx_base : public GPIO_base
 {
 public:
 	PCAL6xxx_base( uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai );
+	PCAL6xxx_base( TwoWire& wire, uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai );
 	virtual ~PCAL6xxx_base();
 };
 
@@ -321,6 +336,7 @@ public:
 	};
 	
 	PCAL6408A( uint8_t i2c_address = (0x40 >> 1) + 0 );
+	PCAL6408A( TwoWire& wire, uint8_t i2c_address = (0x40 >> 1) + 0 );
 	virtual ~PCAL6408A();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -362,6 +378,7 @@ public:
 	};
 	
 	PCAL6416A( uint8_t i2c_address = (0x40 >> 1) + 0 );
+	PCAL6416A( TwoWire& wire, uint8_t i2c_address = (0x40 >> 1) + 0 );
 	virtual ~PCAL6416A();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -413,6 +430,7 @@ public:
 	};
 	
 	PCAL6524( uint8_t i2c_address = (0x44 >> 1) + 0 );
+	PCAL6524( TwoWire& wire, uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6524();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -467,6 +485,7 @@ public:
 	};
 	
 	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
+	PCAL6534( TwoWire& wire, uint8_t i2c_address = (0x44 >> 1) + 0 );
 	virtual ~PCAL6534();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {

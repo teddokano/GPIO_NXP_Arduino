@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.3.0</span>
+   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.0</span>
    </div>
    <div id="projectbrief">GPIO device operation sample code for Arduino</div>
   </td>
@@ -115,9 +115,13 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af2babdae3a0dba54169eb3d09277b97c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9555.html#af2babdae3a0dba54169eb3d09277b97c">PCA9555</a> (uint8_t i2c_address=(0x40 &gt; &gt; 1)+0)</td></tr>
 <tr class="separator:af2babdae3a0dba54169eb3d09277b97c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d4e7a26684d425c328acae4c36e7dc2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9555.html#a5d4e7a26684d425c328acae4c36e7dc2">PCA9555</a> (TwoWire &amp;wire, uint8_t i2c_address=(0x40 &gt; &gt; 1)+0)</td></tr>
+<tr class="separator:a5d4e7a26684d425c328acae4c36e7dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_g_p_i_o__base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_g_p_i_o__base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_g_p_i_o__base.html">GPIO_base</a></td></tr>
 <tr class="memitem:a024c717a4e77ebbc6dd2147dcc930357 inherit pub_methods_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a024c717a4e77ebbc6dd2147dcc930357">GPIO_base</a> (uint8_t i2c_address, const int nbits, const uint8_t *arp, uint8_t ai)</td></tr>
 <tr class="separator:a024c717a4e77ebbc6dd2147dcc930357 inherit pub_methods_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acea4fb9c2bed10314844e7fef2941228 inherit pub_methods_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#acea4fb9c2bed10314844e7fef2941228">GPIO_base</a> (TwoWire &amp;wire, uint8_t i2c_address, const int nbits, const uint8_t *arp, uint8_t ai)</td></tr>
+<tr class="separator:acea4fb9c2bed10314844e7fef2941228 inherit pub_methods_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8033434aa001cdfe6b528300b7cd0c36 inherit pub_methods_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a8033434aa001cdfe6b528300b7cd0c36">~GPIO_base</a> ()</td></tr>
 <tr class="separator:a8033434aa001cdfe6b528300b7cd0c36 inherit pub_methods_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac55adf02067272e2c5b4bdd5f955f78c inherit pub_methods_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#ac55adf02067272e2c5b4bdd5f955f78c">begin</a> (board env=NONE)</td></tr>
@@ -170,7 +174,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_p_c_a9555.html">PCA9555</a> class </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00256">256</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00269">269</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a25bddf48a36c957279104c8117a11d3c" name="a25bddf48a36c957279104c8117a11d3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a25bddf48a36c957279104c8117a11d3c">&#9670;&#160;</a></span>reg_num</h2>
@@ -185,13 +189,13 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Name of the <a class="el" href="class_p_c_a_l6416_a.html">PCAL6416A</a> registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00260">260</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00273">273</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af2babdae3a0dba54169eb3d09277b97c" name="af2babdae3a0dba54169eb3d09277b97c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2babdae3a0dba54169eb3d09277b97c">&#9670;&#160;</a></span>PCA9555()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af2babdae3a0dba54169eb3d09277b97c">&#9670;&#160;</a></span>PCA9555() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -206,7 +210,37 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00192">192</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00212">212</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5d4e7a26684d425c328acae4c36e7dc2" name="a5d4e7a26684d425c328acae4c36e7dc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d4e7a26684d425c328acae4c36e7dc2">&#9670;&#160;</a></span>PCA9555() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PCA9555::PCA9555 </td>
+          <td>(</td>
+          <td class="paramtype">TwoWire &amp;&#160;</td>
+          <td class="paramname"><em>wire</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>i2c_address</em> = <code>(0x40&#160;&gt;&gt;&#160;1)&#160;+&#160;0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00217">217</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +267,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00197">197</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00222">222</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
 </div>
 </div>
@@ -271,7 +305,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">        0xFF,   </div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00270">270</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00284">284</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>

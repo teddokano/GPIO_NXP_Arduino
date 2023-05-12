@@ -79,6 +79,17 @@ PCA9555_port0_OUT				|PCA9555	|**Simple** sample for **just output** counter val
 PCA9555_port0_OUT_and_port1_IN	|PCA9555	|To check **output** and **input**
 PCA9555_interrupt_on_port1		|PCA9555	|**Interrupt** check
 
+### TIPS
+If you need to use different I²C bus on Arduino, it can be done like this. This sample shows how the `Wire1` on Arduino Due can be operated.  
+```cpp
+include <PCAL6408A.h>
+
+PCAL6408A gpio(Wire1);
+
+void setup() {
+  Wire1.begin();
+```
+
 # Document
 For details of the library, please find descriptions in [this document](https://teddokano.github.io/GPIO_NXP_Arduino/annotated.html).
 

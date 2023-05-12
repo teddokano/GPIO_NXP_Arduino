@@ -9,6 +9,21 @@ GPIO_base::GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* ar, u
 	arp( ar ),
 	auto_increment( ai )
 {
+	init();
+}
+
+GPIO_base::GPIO_base( TwoWire& wire, uint8_t i2c_address, const int nbits, const uint8_t* ar, uint8_t ai  ) :
+	I2C_device( wire, i2c_address ), 
+	n_bits( nbits ),
+	n_ports( (nbits + 7) / 8 ),
+	arp( ar ),
+	auto_increment( ai )
+{
+	init();
+}
+
+void GPIO_base::init( void )
+{
 	constexpr uint16_t	i	= 0x0001;
 	uint8_t*			tp	= (uint8_t*)(&i);
 
@@ -180,6 +195,11 @@ PCA9554::PCA9554( uint8_t i2c_address ) :
 {
 }
 
+PCA9554::PCA9554( TwoWire& wire, uint8_t i2c_address ) :
+	GPIO_base( wire, i2c_address, 8, access_ref, 0x00 )
+{
+}
+
 PCA9554::~PCA9554()
 {
 }
@@ -191,6 +211,11 @@ constexpr uint8_t PCA9554::access_ref[];
 
 PCA9555::PCA9555( uint8_t i2c_address ) :
 	GPIO_base( i2c_address, 16, access_ref, 0x00 )
+{
+}
+
+PCA9555::PCA9555( TwoWire& wire, uint8_t i2c_address ) :
+	GPIO_base( wire, i2c_address, 8, access_ref, 0x00 )
 {
 }
 
@@ -208,6 +233,11 @@ PCAL6xxx_base::PCAL6xxx_base( uint8_t i2c_address, const int nbits, const uint8_
 {
 }
 
+PCAL6xxx_base::PCAL6xxx_base( TwoWire& wire, uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai ) :
+	GPIO_base( wire, i2c_address, nbits, arp, ai )
+{
+}
+
 PCAL6xxx_base::~PCAL6xxx_base()
 {
 }
@@ -217,6 +247,11 @@ PCAL6xxx_base::~PCAL6xxx_base()
 
 PCAL6408A::PCAL6408A( uint8_t i2c_address ) :
 	PCAL6xxx_base( i2c_address, 8, access_ref, 0 )
+{
+}
+
+PCAL6408A::PCAL6408A( TwoWire& wire, uint8_t i2c_address ) :
+	PCAL6xxx_base( wire, i2c_address, 8, access_ref, 0 )
 {
 }
 
@@ -234,6 +269,11 @@ PCAL6416A::PCAL6416A( uint8_t i2c_address ) :
 {
 }
 
+PCAL6416A::PCAL6416A( TwoWire& wire, uint8_t i2c_address ) :
+	PCAL6xxx_base( wire, i2c_address, 8, access_ref, 0 )
+{
+}
+
 PCAL6416A::~PCAL6416A()
 {
 }
@@ -248,6 +288,11 @@ PCAL6524::PCAL6524( uint8_t i2c_address ) :
 {
 }
 
+PCAL6524::PCAL6524( TwoWire& wire, uint8_t i2c_address ) :
+	PCAL6xxx_base( wire, i2c_address, 8, access_ref, 0 )
+{
+}
+
 PCAL6524::~PCAL6524()
 {
 }
@@ -259,6 +304,11 @@ constexpr uint8_t PCAL6524::access_ref[];
 
 PCAL6534::PCAL6534( uint8_t i2c_address ) :
 	PCAL6xxx_base( i2c_address, 34, access_ref, 0x80 )
+{
+}
+
+PCAL6534::PCAL6534( TwoWire& wire, uint8_t i2c_address ) :
+	PCAL6xxx_base( wire, i2c_address, 8, access_ref, 0 )
 {
 }
 
