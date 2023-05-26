@@ -18,9 +18,12 @@ void setup() {
   gpio.begin();
 
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCA9555! *****");
+  while (!Serial)
+    ;
 
   Wire.begin();
+
+  Serial.println("\n***** Hello, PCA9555! *****");
 
   gpio.config(0, 0x00); //  Port0 is configured as output
 }

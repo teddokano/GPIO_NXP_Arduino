@@ -28,6 +28,11 @@ void setup() {
   gpio.begin(GPIO_base::ARDUINO_SHIELD);  //  Force ADR pin (@D8) LOW and reset to give right target address
   
   Serial.begin(9600);
+  while (!Serial)
+    ;
+
+  Wire.begin();
+
   Serial.println("\n***** Hello, PCAL6524! *****");
 
   Serial.println("\n    *** If it seems the demo is not working, check the INT pins ***");
@@ -36,8 +41,6 @@ void setup() {
   Serial.println("4 LEDs on the ARD board blinks back and forth. Press button to generate interrupt.");
   Serial.println("The interrupt event will be shown on those LED and serial console");
   Serial.println("");
-
-  Wire.begin();
 
   uint8_t io_config_and_pull_up[] = {
     0x00,  // Configure port0 as OUTPUT

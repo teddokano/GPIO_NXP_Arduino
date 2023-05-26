@@ -18,9 +18,12 @@ void setup() {
   gpio.begin(GPIO_base::ARDUINO_SHIELD);  //  Force ADR pin (@D8) LOW and reset to give right target address
   
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCAL6408A! *****");
+  while (!Serial)
+    ;
 
   Wire.begin();
+
+  Serial.println("\n***** Hello, PCAL6408A! *****");
 
   constexpr uint8_t io_config_and_pull_up = 0xF0;
 
