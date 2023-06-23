@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.1</span>
+   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.2</span>
    </div>
    <div id="projectbrief">GPIO device operation sample code for Arduino</div>
   </td>
@@ -333,8 +333,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Device initialization</p>
-<p>This method is not used current version </p>
+<p>Device/board initialization</p>
+<p>This method is needed to initialize Arduino-shield type evaluation boards from NXP. This method takes one argument of "GPIO_base::ARDUINO_SHIELD" to set RESET and ADDRESS pins.</p>
+<p>If the devoce is used as it self, this method doesn't need to be called.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">env</td><td>This argument can be given as "GPIO_base::NONE" ot "GPIO_base::ARDUINO_SHIELD" </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00037">37</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
@@ -371,7 +378,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Config, single</p>
+<p>Config, single port</p>
 <p>Basic GPIO port access function for single port configuration</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -403,7 +410,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Config, all</p>
+<p>Config, all ports</p>
 <p>Basic GPIO port access function for all port configuration</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -431,7 +438,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Input, single</p>
+<p>Input, single port</p>
 <p>Basic GPIO port access function for single port input</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -460,7 +467,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Input, all</p>
+<p>Input, all ports</p>
 <p>Basic GPIO port access function for all ports input</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -505,7 +512,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Output, single</p>
+<p>Output, single port</p>
 <p>Basic GPIO port access function for single port output</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -535,7 +542,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Output, all</p>
+<p>Output, all ports</p>
 <p>Basic GPIO port access function for all ports output</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

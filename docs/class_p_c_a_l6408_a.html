@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.1</span>
+   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.2</span>
    </div>
    <div id="projectbrief">GPIO device operation sample code for Arduino</div>
   </td>
@@ -73,6 +73,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_p_c_a_l6408_a-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PCAL6408A Class Reference</div></div>
@@ -111,6 +112,10 @@ Public Types</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a34f376c58409b04b6ff495a94ab7e57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa652d6627319e2b524d78700996ddd6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#aaa652d6627319e2b524d78700996ddd6">board</a> { <b>NONE</b>
+, <b>ARDUINO_SHIELD</b>
+ }</td></tr>
+<tr class="separator:aaa652d6627319e2b524d78700996ddd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_class_g_p_i_o__base"><td colspan="2" onclick="javascript:toggleInherit('pub_types_class_g_p_i_o__base')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="class_g_p_i_o__base.html">GPIO_base</a></td></tr>
 <tr class="memitem:a296614cb858fb0fa93e8997f337124a3 inherit pub_types_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>board</b> { <b>NONE</b>
 , <b>ARDUINO_SHIELD</b>
@@ -123,6 +128,38 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a299fc29c50f826561419988f96521a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fa775a860f5646c7373dc59813707c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a0fa775a860f5646c7373dc59813707c7">PCAL6408A</a> (TwoWire &amp;wire, uint8_t i2c_address=(0x40 &gt; &gt; 1)+0)</td></tr>
 <tr class="separator:a0fa775a860f5646c7373dc59813707c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac10591320253508287dcb6e5e4641e33"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#ac10591320253508287dcb6e5e4641e33">~PCAL6408A</a> ()</td></tr>
+<tr class="separator:ac10591320253508287dcb6e5e4641e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62e435911dee04a96b21a75788ad9c4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a62e435911dee04a96b21a75788ad9c4e">begin</a> (<a class="el" href="class_p_c_a_l6408_a.html#aaa652d6627319e2b524d78700996ddd6">board</a> env=NONE)</td></tr>
+<tr class="separator:a62e435911dee04a96b21a75788ad9c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb0f51c3f4e470c64f7bf683dd0c071e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#aeb0f51c3f4e470c64f7bf683dd0c071e">output</a> (int port, uint8_t value, uint8_t mask=0)</td></tr>
+<tr class="separator:aeb0f51c3f4e470c64f7bf683dd0c071e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb76c43b075bfb2ba6c29e7423062487"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#aeb76c43b075bfb2ba6c29e7423062487">output</a> (uint8_t *vp)</td></tr>
+<tr class="separator:aeb76c43b075bfb2ba6c29e7423062487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af00b3cc250d601db45b46b67cb39cfb9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#af00b3cc250d601db45b46b67cb39cfb9">input</a> (int port)</td></tr>
+<tr class="separator:af00b3cc250d601db45b46b67cb39cfb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d0b2194d9221217d338806906f3825c"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a5d0b2194d9221217d338806906f3825c">input</a> (uint8_t *vp)</td></tr>
+<tr class="separator:a5d0b2194d9221217d338806906f3825c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3883494b7041f720acbc11c821a3b8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#ab3883494b7041f720acbc11c821a3b8c">config</a> (int port, uint8_t config, uint8_t mask=0)</td></tr>
+<tr class="separator:ab3883494b7041f720acbc11c821a3b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f877bbaa3c938a6df322e4207f0be83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a8f877bbaa3c938a6df322e4207f0be83">config</a> (uint8_t *vp)</td></tr>
+<tr class="separator:a8f877bbaa3c938a6df322e4207f0be83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f45a7264f91e73389540cc774a78bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a02f45a7264f91e73389540cc774a78bb">write_port</a> (access_word w, uint8_t *vp)</td></tr>
+<tr class="separator:a02f45a7264f91e73389540cc774a78bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3efd96861b8a8bf5f24ef852c449160c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a3efd96861b8a8bf5f24ef852c449160c">write_port16</a> (access_word w, uint16_t *vp)</td></tr>
+<tr class="separator:a3efd96861b8a8bf5f24ef852c449160c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa929181ecc27205b74855d37720a64cc"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#aa929181ecc27205b74855d37720a64cc">read_port</a> (access_word w, uint8_t *vp)</td></tr>
+<tr class="separator:aa929181ecc27205b74855d37720a64cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08f5b7e2fc0287fc2764e2dd827f7329"><td class="memItemLeft" align="right" valign="top">uint16_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a08f5b7e2fc0287fc2764e2dd827f7329">read_port16</a> (access_word w, uint16_t *vp)</td></tr>
+<tr class="separator:a08f5b7e2fc0287fc2764e2dd827f7329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb5c293da29354d3a8c18fbab850c951"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#abb5c293da29354d3a8c18fbab850c951">write_port</a> (access_word w, uint8_t value, int port_num=0)</td></tr>
+<tr class="separator:abb5c293da29354d3a8c18fbab850c951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d66581dc5fb387f043cd1274da2b88f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a5d66581dc5fb387f043cd1274da2b88f">write_port16</a> (access_word w, uint16_t value, int port_num=0)</td></tr>
+<tr class="separator:a5d66581dc5fb387f043cd1274da2b88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1ce52af89f57fcc6d9602c0ab4fd3c7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#ab1ce52af89f57fcc6d9602c0ab4fd3c7">read_port</a> (access_word w, int port_num=0)</td></tr>
+<tr class="separator:ab1ce52af89f57fcc6d9602c0ab4fd3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa24d149151c912d56a18df73da208290"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#aa24d149151c912d56a18df73da208290">read_port16</a> (access_word w, int port_num=0)</td></tr>
+<tr class="separator:aa24d149151c912d56a18df73da208290"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_p_c_a_l6xxx__base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_p_c_a_l6xxx__base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_p_c_a_l6xxx__base.html">PCAL6xxx_base</a></td></tr>
 <tr class="memitem:a212fc093cd9ce0c181730c324bc48477 inherit pub_methods_class_p_c_a_l6xxx__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6xxx__base.html#a212fc093cd9ce0c181730c324bc48477">PCAL6xxx_base</a> (uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai)</td></tr>
 <tr class="separator:a212fc093cd9ce0c181730c324bc48477 inherit pub_methods_class_p_c_a_l6xxx__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +203,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a32195c566dfb23ea595703e1c385e353 inherit pub_methods_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a32195c566dfb23ea595703e1c385e353">read_port16</a> (access_word w, int port_num=0)</td></tr>
 <tr class="separator:a32195c566dfb23ea595703e1c385e353 inherit pub_methods_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a5afe7509000774498f750724c6ffd0ad"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#a5afe7509000774498f750724c6ffd0ad">n_bits</a></td></tr>
+<tr class="separator:a5afe7509000774498f750724c6ffd0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab854a2f9909847cf844cba08d771f37"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#aab854a2f9909847cf844cba08d771f37">n_ports</a></td></tr>
+<tr class="separator:aab854a2f9909847cf844cba08d771f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_g_p_i_o__base"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_g_p_i_o__base')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_g_p_i_o__base.html">GPIO_base</a></td></tr>
+<tr class="memitem:a689ae7c91560dae191c6a9609c55de54 inherit pub_attribs_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a689ae7c91560dae191c6a9609c55de54">n_bits</a></td></tr>
+<tr class="separator:a689ae7c91560dae191c6a9609c55de54 inherit pub_attribs_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f604e3ec0a10c0dc5f82bb693d3ed59 inherit pub_attribs_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a7f604e3ec0a10c0dc5f82bb693d3ed59">n_ports</a></td></tr>
+<tr class="separator:a7f604e3ec0a10c0dc5f82bb693d3ed59 inherit pub_attribs_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:afd2a97276746c7fe2e605710679a5777"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6408_a.html#afd2a97276746c7fe2e605710679a5777">access_ref</a> [NUM_access_word]</td></tr>
@@ -176,17 +225,29 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_g_p_i_o__base"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_g_p_i_o__base')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_g_p_i_o__base.html">GPIO_base</a></td></tr>
 <tr class="memitem:a598c9aa15a081429eb2393a227a34192 inherit pub_static_methods_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a598c9aa15a081429eb2393a227a34192">print_bin</a> (uint8_t v)</td></tr>
 <tr class="separator:a598c9aa15a081429eb2393a227a34192 inherit pub_static_methods_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_class_g_p_i_o__base"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_g_p_i_o__base')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_g_p_i_o__base.html">GPIO_base</a></td></tr>
-<tr class="memitem:a689ae7c91560dae191c6a9609c55de54 inherit pub_attribs_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a689ae7c91560dae191c6a9609c55de54">n_bits</a></td></tr>
-<tr class="separator:a689ae7c91560dae191c6a9609c55de54 inherit pub_attribs_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f604e3ec0a10c0dc5f82bb693d3ed59 inherit pub_attribs_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a7f604e3ec0a10c0dc5f82bb693d3ed59">n_ports</a></td></tr>
-<tr class="separator:a7f604e3ec0a10c0dc5f82bb693d3ed59 inherit pub_attribs_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_p_c_a_l6408_a.html">PCAL6408A</a> class </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00319">319</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00663">663</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="aaa652d6627319e2b524d78700996ddd6" name="aaa652d6627319e2b524d78700996ddd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa652d6627319e2b524d78700996ddd6">&#9670;&#160;</a></span>board</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_p_c_a_l6408_a.html#aaa652d6627319e2b524d78700996ddd6">PCAL6408A::board</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constants for <a class="el" href="class_p_c_a_l6408_a.html#a62e435911dee04a96b21a75788ad9c4e">begin()</a> method </p>
+
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00714">714</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+
+</div>
+</div>
 <a id="a34f376c58409b04b6ff495a94ab7e57c" name="a34f376c58409b04b6ff495a94ab7e57c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34f376c58409b04b6ff495a94ab7e57c">&#9670;&#160;</a></span>reg_num</h2>
 
@@ -200,7 +261,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Name of the <a class="el" href="class_p_c_a_l6408_a.html">PCAL6408A</a> registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00323">323</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00667">667</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -220,6 +281,13 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Constractor</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i2c_address</td><td>I2C target address </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00248">248</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
@@ -250,6 +318,14 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Constractor</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wire</td><td>TwoWire instance </td></tr>
+    <tr><td class="paramname">i2c_address</td><td>I2C target address </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00253">253</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
 
@@ -277,8 +353,545 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Destractor </p>
 
 <p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html#l00258">258</a> of file <a class="el" href="_g_p_i_o___n_x_p_8cpp_source.html">GPIO_NXP.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a62e435911dee04a96b21a75788ad9c4e" name="a62e435911dee04a96b21a75788ad9c4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62e435911dee04a96b21a75788ad9c4e">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::begin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_p_c_a_l6408_a.html#aaa652d6627319e2b524d78700996ddd6">board</a>&#160;</td>
+          <td class="paramname"><em>env</em> = <code>NONE</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Device/board initialization</p>
+<p>This method is needed to initialize Arduino-shield type evaluation boards from NXP. This method takes one argument of "PCAL6408A::ARDUINO_SHIELD" to set RESET and ADDRESS pins.</p>
+<p>If the devoce is used as it self, this method doesn't need to be called.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">env</td><td>This argument can be given as "PCAL6408A::NONE" ot "PCAL6408A::ARDUINO_SHIELD" </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab3883494b7041f720acbc11c821a3b8c" name="ab3883494b7041f720acbc11c821a3b8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3883494b7041f720acbc11c821a3b8c">&#9670;&#160;</a></span>config() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::config </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mask</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Config, single port</p>
+<p>Basic GPIO port access function for single port configuration</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Port number </td></tr>
+    <tr><td class="paramname">value</td><td>Value to be written into configuration register </td></tr>
+    <tr><td class="paramname">mask</td><td>Bit mask. Value will not be changed in bit positions '1' in mask </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8f877bbaa3c938a6df322e4207f0be83" name="a8f877bbaa3c938a6df322e4207f0be83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f877bbaa3c938a6df322e4207f0be83">&#9670;&#160;</a></span>config() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::config </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>vp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Config, all ports</p>
+<p>Basic GPIO port access function for all port configuration</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vp</td><td>Pointer to array of configuration values. The array should have 'n_ports' length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af00b3cc250d601db45b46b67cb39cfb9" name="af00b3cc250d601db45b46b67cb39cfb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af00b3cc250d601db45b46b67cb39cfb9">&#9670;&#160;</a></span>input() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t PCAL6408A::input </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Input, single port</p>
+<p>Basic GPIO port access function for single port input</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Port number </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Port read value </dd></dl>
+
+</div>
+</div>
+<a id="a5d0b2194d9221217d338806906f3825c" name="a5d0b2194d9221217d338806906f3825c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d0b2194d9221217d338806906f3825c">&#9670;&#160;</a></span>input() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * PCAL6408A::input </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>vp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Input, all ports</p>
+<p>Basic GPIO port access function for all ports input</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vp</td><td>Pointer to an array of values. The array should have 'n_ports' length </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to vp </dd></dl>
+
+</div>
+</div>
+<a id="aeb0f51c3f4e470c64f7bf683dd0c071e" name="aeb0f51c3f4e470c64f7bf683dd0c071e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0f51c3f4e470c64f7bf683dd0c071e">&#9670;&#160;</a></span>output() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::output </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mask</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Output, single port</p>
+<p>Basic GPIO port access function for single port output</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Port number </td></tr>
+    <tr><td class="paramname">value</td><td>Value to be output </td></tr>
+    <tr><td class="paramname">mask</td><td>Bit mask. Value will not be changed in bit positions '1' in mask </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeb76c43b075bfb2ba6c29e7423062487" name="aeb76c43b075bfb2ba6c29e7423062487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb76c43b075bfb2ba6c29e7423062487">&#9670;&#160;</a></span>output() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::output </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>vp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Output, all ports</p>
+<p>Basic GPIO port access function for all ports output</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vp</td><td>Pointer to an array of values. The array should have 'n_ports' length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab1ce52af89f57fcc6d9602c0ab4fd3c7" name="ab1ce52af89f57fcc6d9602c0ab4fd3c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1ce52af89f57fcc6d9602c0ab4fd3c7">&#9670;&#160;</a></span>read_port() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t PCAL6408A::read_port </td>
+          <td>(</td>
+          <td class="paramtype">access_word&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port_num</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read single port method</p>
+<p>Single port register access function using word of 'access_word'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
+    <tr><td class="paramname">port_num</td><td>Option, to specify port number </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Register read value </dd></dl>
+
+</div>
+</div>
+<a id="aa929181ecc27205b74855d37720a64cc" name="aa929181ecc27205b74855d37720a64cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa929181ecc27205b74855d37720a64cc">&#9670;&#160;</a></span>read_port() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * PCAL6408A::read_port </td>
+          <td>(</td>
+          <td class="paramtype">access_word&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>vp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read all port method</p>
+<p>All port register access function using word of 'access_word'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
+    <tr><td class="paramname">vp</td><td>Pointer to an array of values. The array should have 'n_ports' length </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to vp </dd></dl>
+
+</div>
+</div>
+<a id="aa24d149151c912d56a18df73da208290" name="aa24d149151c912d56a18df73da208290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24d149151c912d56a18df73da208290">&#9670;&#160;</a></span>read_port16() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t PCAL6408A::read_port16 </td>
+          <td>(</td>
+          <td class="paramtype">access_word&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port_num</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read single port method</p>
+<p>Single port 16 bit register access function using word of 'access_word'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
+    <tr><td class="paramname">port_num</td><td>Option, to specify port number </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Register read value </dd></dl>
+
+</div>
+</div>
+<a id="a08f5b7e2fc0287fc2764e2dd827f7329" name="a08f5b7e2fc0287fc2764e2dd827f7329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08f5b7e2fc0287fc2764e2dd827f7329">&#9670;&#160;</a></span>read_port16() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t * PCAL6408A::read_port16 </td>
+          <td>(</td>
+          <td class="paramtype">access_word&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>vp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read all port method</p>
+<p>All port 16 bit register access function using word of 'access_word'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
+    <tr><td class="paramname">vp</td><td>Pointer to an array of values. The array should have 'n_ports' length </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to vp </dd></dl>
+
+</div>
+</div>
+<a id="a02f45a7264f91e73389540cc774a78bb" name="a02f45a7264f91e73389540cc774a78bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02f45a7264f91e73389540cc774a78bb">&#9670;&#160;</a></span>write_port() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::write_port </td>
+          <td>(</td>
+          <td class="paramtype">access_word&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>vp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write all port method</p>
+<p>All port register access function using word of 'access_word'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
+    <tr><td class="paramname">vp</td><td>Pointer to an array of values. The array should have 'n_ports' length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abb5c293da29354d3a8c18fbab850c951" name="abb5c293da29354d3a8c18fbab850c951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb5c293da29354d3a8c18fbab850c951">&#9670;&#160;</a></span>write_port() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::write_port </td>
+          <td>(</td>
+          <td class="paramtype">access_word&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port_num</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write single port method</p>
+<p>Single port register access function using word of 'access_word'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
+    <tr><td class="paramname">value</td><td>Value to be written into a register </td></tr>
+    <tr><td class="paramname">port_num</td><td>Option, to specify port number </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3efd96861b8a8bf5f24ef852c449160c" name="a3efd96861b8a8bf5f24ef852c449160c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3efd96861b8a8bf5f24ef852c449160c">&#9670;&#160;</a></span>write_port16() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::write_port16 </td>
+          <td>(</td>
+          <td class="paramtype">access_word&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>vp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write all port method</p>
+<p>All port 16 bit register access function using word of 'access_word'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
+    <tr><td class="paramname">vp</td><td>Pointer to an array of values. The array should have 'n_ports' length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5d66581dc5fb387f043cd1274da2b88f" name="a5d66581dc5fb387f043cd1274da2b88f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d66581dc5fb387f043cd1274da2b88f">&#9670;&#160;</a></span>write_port16() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6408A::write_port16 </td>
+          <td>(</td>
+          <td class="paramtype">access_word&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port_num</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write single port method</p>
+<p>Single port 16 bit register access function using word of 'access_word'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
+    <tr><td class="paramname">value</td><td>Value to be written into a register </td></tr>
+    <tr><td class="paramname">port_num</td><td>Option, to specify port number </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -316,7 +929,41 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">        Output_port_configuration,      </div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00342">342</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00698">698</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+
+</div>
+</div>
+<a id="a5afe7509000774498f750724c6ffd0ad" name="a5afe7509000774498f750724c6ffd0ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5afe7509000774498f750724c6ffd0ad">&#9670;&#160;</a></span>n_bits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int PCAL6408A::n_bits</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of IO bits </p>
+
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00720">720</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+
+</div>
+</div>
+<a id="aab854a2f9909847cf844cba08d771f37" name="aab854a2f9909847cf844cba08d771f37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab854a2f9909847cf844cba08d771f37">&#9670;&#160;</a></span>n_ports</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int PCAL6408A::n_ports</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of IO ports </p>
+
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l00723">723</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>

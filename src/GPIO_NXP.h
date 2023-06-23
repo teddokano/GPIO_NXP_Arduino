@@ -77,13 +77,18 @@ public:
 	/** Destractor */
 	virtual ~GPIO_base();
 
-	/** Device initialization
+	/** Device/board initialization
 	 *
-	 *	This method is not used current version
+	 * This method is needed to initialize Arduino-shield type evaluation boards from NXP. 
+	 * This method takes one argument of "GPIO_base::ARDUINO_SHIELD" to set RESET and ADDRESS pins. 
+	 * 
+	 * If the devoce is used as it self, this method doesn't need to be called. 
+	 *	
+	 * @param env	This argument can be given as "GPIO_base::NONE" ot "GPIO_base::ARDUINO_SHIELD"
 	 */
 	void		begin( board env = NONE );
 	
-	/** Output, single
+	/** Output, single port
 	 * 
 	 *	Basic GPIO port access function for single port output
 	 *
@@ -93,7 +98,7 @@ public:
 	 */
 	void		output( int port, uint8_t value, uint8_t mask = 0 );
 
-	/** Output, all
+	/** Output, all ports
 	 * 
 	 *	Basic GPIO port access function for all ports output
 	 *
@@ -101,7 +106,7 @@ public:
 	 */
 	void		output( uint8_t *vp );
 	
-	/** Input, single
+	/** Input, single port
 	 * 
 	 *	Basic GPIO port access function for single port input
 	 *
@@ -110,7 +115,7 @@ public:
 	 */
 	uint8_t		input( int port );
 
-	/** Input, all
+	/** Input, all ports
 	 * 
 	 *	Basic GPIO port access function for all ports input
 	 *
@@ -119,7 +124,7 @@ public:
 	 */
 	uint8_t*	input( uint8_t *vp );
 
-	/** Config, single
+	/** Config, single port
 	 * 
 	 *	Basic GPIO port access function for single port configuration
 	 *
@@ -129,7 +134,7 @@ public:
 	 */
 	void		config( int port, uint8_t config, uint8_t mask = 0 );
 
-	/** Config, all
+	/** Config, all ports
 	 * 
 	 *	Basic GPIO port access function for all port configuration
 	 *
@@ -235,7 +240,7 @@ private:
 class PCA9554 : public GPIO_base
 {
 public:
-	/** Name of the PCAL6416A registers */
+	/** Name of the PCA9554 registers */
 	enum reg_num {
 		Input_Port,
 		Output_Port,
@@ -243,8 +248,20 @@ public:
 		Configuration,
 	};
 	
+	/** Constractor
+	 * 
+	 * @param i2c_address I2C target address
+	 */
 	PCA9554( uint8_t i2c_address = (0x40 >> 1) + 0 );
+
+	/** Constractor
+	 * 
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C target address
+	 */
 	PCA9554( TwoWire& wire, uint8_t i2c_address = (0x40 >> 1) + 0 );
+
+	/** Destractor */
 	virtual ~PCA9554();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -260,6 +277,164 @@ public:
 		0xFF,	//	INT_STATUS			** CANNOT BE USED **
 		0xFF,	//	OUTPUT_PORT_CONFIG	** CANNOT BE USED **
 	};
+	
+#if DOXYGEN_ONLY
+	/** Constants for begin() method */
+	enum board {
+		NONE,
+		ARDUINO_SHIELD,
+	};
+
+	/** Number of IO bits */
+	const int	n_bits;
+
+	/** Number of IO ports */
+	const int	n_ports;
+
+	/** Device/board initialization
+	 *
+	 * This method is needed to initialize Arduino-shield type evaluation boards from NXP. 
+	 * This method takes one argument of "PCA9554::ARDUINO_SHIELD" to set RESET and ADDRESS pins. 
+	 * 
+	 * If the devoce is used as it self, this method doesn't need to be called. 
+	 *	
+	 * @param env	This argument can be given as "PCA9554::NONE" ot "PCA9554::ARDUINO_SHIELD"
+	 */
+	void		begin( board env = NONE );
+	
+	/** Output, single port
+	 * 
+	 *	Basic GPIO port access function for single port output
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be output
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		output( int port, uint8_t value, uint8_t mask = 0 );
+
+	/** Output, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports output
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		output( uint8_t *vp );
+	
+	/** Input, single port
+	 * 
+	 *	Basic GPIO port access function for single port input
+	 *
+	 * @param port	Port number
+	 * @return Port read value
+	 */
+	uint8_t		input( int port );
+
+	/** Input, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports input
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return Pointer to vp
+	 */
+	uint8_t*	input( uint8_t *vp );
+
+	/** Config, single port
+	 * 
+	 *	Basic GPIO port access function for single port configuration
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be written into configuration register
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		config( int port, uint8_t config, uint8_t mask = 0 );
+
+	/** Config, all ports
+	 * 
+	 *	Basic GPIO port access function for all port configuration
+	 *
+	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
+	 */
+	void		config( uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port( access_word w, uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port16( access_word w, uint16_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint8_t*	read_port( access_word w, uint8_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint16_t*	read_port16( access_word w, uint16_t* vp );
+
+	/** Write single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+
+	/** Write single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint8_t		read_port( access_word w, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint16_t	read_port16( access_word w, int port_num = 0 );
+#endif	//	DOXYGEN_ONLY
+
 };
 
 /** PCA9555 class
@@ -269,7 +444,7 @@ public:
 class PCA9555 : public GPIO_base
 {
 public:
-	/** Name of the PCAL6416A registers */
+	/** Name of the PCA9555 registers */
 	enum reg_num {
 		Input_Port_0, Input_Port_1, 
 		Output_Port_0, Output_Port_1, 
@@ -277,8 +452,20 @@ public:
 		Configuration_Port_0, Configuration_Port_1, 
 	};
 	
+	/** Constractor
+	 * 
+	 * @param i2c_address I2C target address
+	 */
 	PCA9555( uint8_t i2c_address = (0x40 >> 1) + 0 );
+
+	/** Constractor
+	 * 
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C target address
+	 */
 	PCA9555( TwoWire& wire, uint8_t i2c_address = (0x40 >> 1) + 0 );
+
+	/** Destractor */
 	virtual ~PCA9555();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -294,6 +481,163 @@ public:
 		0xFF,	//	INT_STATUS			** CANNOT BE USED **
 		0xFF,	//	OUTPUT_PORT_CONFIG	** CANNOT BE USED **
 	};
+
+#if DOXYGEN_ONLY
+	/** Constants for begin() method */
+	enum board {
+		NONE,
+		ARDUINO_SHIELD,
+	};
+
+	/** Number of IO bits */
+	const int	n_bits;
+
+	/** Number of IO ports */
+	const int	n_ports;
+
+	/** Device/board initialization
+	 *
+	 * This method is needed to initialize Arduino-shield type evaluation boards from NXP. 
+	 * This method takes one argument of "PCA9555::ARDUINO_SHIELD" to set RESET and ADDRESS pins. 
+	 * 
+	 * If the devoce is used as it self, this method doesn't need to be called. 
+	 *	
+	 * @param env	This argument can be given as "PCA9555::NONE" ot "PCA9555::ARDUINO_SHIELD"
+	 */
+	void		begin( board env = NONE );
+	
+	/** Output, single port
+	 * 
+	 *	Basic GPIO port access function for single port output
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be output
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		output( int port, uint8_t value, uint8_t mask = 0 );
+
+	/** Output, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports output
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		output( uint8_t *vp );
+	
+	/** Input, single port
+	 * 
+	 *	Basic GPIO port access function for single port input
+	 *
+	 * @param port	Port number
+	 * @return Port read value
+	 */
+	uint8_t		input( int port );
+
+	/** Input, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports input
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return Pointer to vp
+	 */
+	uint8_t*	input( uint8_t *vp );
+
+	/** Config, single port
+	 * 
+	 *	Basic GPIO port access function for single port configuration
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be written into configuration register
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		config( int port, uint8_t config, uint8_t mask = 0 );
+
+	/** Config, all ports
+	 * 
+	 *	Basic GPIO port access function for all port configuration
+	 *
+	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
+	 */
+	void		config( uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port( access_word w, uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port16( access_word w, uint16_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint8_t*	read_port( access_word w, uint8_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint16_t*	read_port16( access_word w, uint16_t* vp );
+
+	/** Write single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+
+	/** Write single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint8_t		read_port( access_word w, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint16_t	read_port16( access_word w, int port_num = 0 );
+#endif	//	DOXYGEN_ONLY
 };
 
 /** PCAL6xxx_base class
@@ -335,8 +679,20 @@ public:
 		Output_port_configuration,
 	};
 	
+	/** Constractor
+	 * 
+	 * @param i2c_address I2C target address
+	 */
 	PCAL6408A( uint8_t i2c_address = (0x40 >> 1) + 0 );
+
+	/** Constractor
+	 * 
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C target address
+	 */
 	PCAL6408A( TwoWire& wire, uint8_t i2c_address = (0x40 >> 1) + 0 );
+
+	/** Destractor */
 	virtual ~PCAL6408A();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -352,6 +708,163 @@ public:
 		Interrupt_status,				//	INT_STATUS
 		Output_port_configuration,		//	OUTPUT_PORT_CONFIG
 	};
+
+#if DOXYGEN_ONLY
+	/** Constants for begin() method */
+	enum board {
+		NONE,
+		ARDUINO_SHIELD,
+	};
+
+	/** Number of IO bits */
+	const int	n_bits;
+
+	/** Number of IO ports */
+	const int	n_ports;
+
+	/** Device/board initialization
+	 *
+	 * This method is needed to initialize Arduino-shield type evaluation boards from NXP. 
+	 * This method takes one argument of "PCAL6408A::ARDUINO_SHIELD" to set RESET and ADDRESS pins. 
+	 * 
+	 * If the devoce is used as it self, this method doesn't need to be called. 
+	 *	
+	 * @param env	This argument can be given as "PCAL6408A::NONE" ot "PCAL6408A::ARDUINO_SHIELD"
+	 */
+	void		begin( board env = NONE );
+	
+	/** Output, single port
+	 * 
+	 *	Basic GPIO port access function for single port output
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be output
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		output( int port, uint8_t value, uint8_t mask = 0 );
+
+	/** Output, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports output
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		output( uint8_t *vp );
+	
+	/** Input, single port
+	 * 
+	 *	Basic GPIO port access function for single port input
+	 *
+	 * @param port	Port number
+	 * @return Port read value
+	 */
+	uint8_t		input( int port );
+
+	/** Input, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports input
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return Pointer to vp
+	 */
+	uint8_t*	input( uint8_t *vp );
+
+	/** Config, single port
+	 * 
+	 *	Basic GPIO port access function for single port configuration
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be written into configuration register
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		config( int port, uint8_t config, uint8_t mask = 0 );
+
+	/** Config, all ports
+	 * 
+	 *	Basic GPIO port access function for all port configuration
+	 *
+	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
+	 */
+	void		config( uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port( access_word w, uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port16( access_word w, uint16_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint8_t*	read_port( access_word w, uint8_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint16_t*	read_port16( access_word w, uint16_t* vp );
+
+	/** Write single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+
+	/** Write single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint8_t		read_port( access_word w, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint16_t	read_port16( access_word w, int port_num = 0 );
+#endif	//	DOXYGEN_ONLY
 };
 
 /** PCAL6416A class
@@ -377,8 +890,20 @@ public:
 		Output_port_configuration_register,  
 	};
 	
+	/** Constractor
+	 * 
+	 * @param i2c_address I2C target address
+	 */
 	PCAL6416A( uint8_t i2c_address = (0x40 >> 1) + 0 );
+
+	/** Constractor
+	 * 
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C target address
+	 */
 	PCAL6416A( TwoWire& wire, uint8_t i2c_address = (0x40 >> 1) + 0 );
+
+	/** Destractor */
 	virtual ~PCAL6416A();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -394,6 +919,163 @@ public:
 		Interrupt_status_register_0,			//	INT_STATUS
 		Output_port_configuration_register,		//	OUTPUT_PORT_CONFIG
 	};
+
+#if DOXYGEN_ONLY
+	/** Constants for begin() method */
+	enum board {
+		NONE,
+		ARDUINO_SHIELD,
+	};
+
+	/** Number of IO bits */
+	const int	n_bits;
+
+	/** Number of IO ports */
+	const int	n_ports;
+
+	/** Device/board initialization
+	 *
+	 * This method is needed to initialize Arduino-shield type evaluation boards from NXP. 
+	 * This method takes one argument of "PCAL6416A::ARDUINO_SHIELD" to set RESET and ADDRESS pins. 
+	 * 
+	 * If the devoce is used as it self, this method doesn't need to be called. 
+	 *	
+	 * @param env	This argument can be given as "PCAL6416A::NONE" ot "PCAL6416A::ARDUINO_SHIELD"
+	 */
+	void		begin( board env = NONE );
+	
+	/** Output, single port
+	 * 
+	 *	Basic GPIO port access function for single port output
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be output
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		output( int port, uint8_t value, uint8_t mask = 0 );
+
+	/** Output, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports output
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		output( uint8_t *vp );
+	
+	/** Input, single port
+	 * 
+	 *	Basic GPIO port access function for single port input
+	 *
+	 * @param port	Port number
+	 * @return Port read value
+	 */
+	uint8_t		input( int port );
+
+	/** Input, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports input
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return Pointer to vp
+	 */
+	uint8_t*	input( uint8_t *vp );
+
+	/** Config, single port
+	 * 
+	 *	Basic GPIO port access function for single port configuration
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be written into configuration register
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		config( int port, uint8_t config, uint8_t mask = 0 );
+
+	/** Config, all ports
+	 * 
+	 *	Basic GPIO port access function for all port configuration
+	 *
+	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
+	 */
+	void		config( uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port( access_word w, uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port16( access_word w, uint16_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint8_t*	read_port( access_word w, uint8_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint16_t*	read_port16( access_word w, uint16_t* vp );
+
+	/** Write single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+
+	/** Write single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint8_t		read_port( access_word w, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint16_t	read_port16( access_word w, int port_num = 0 );
+#endif	//	DOXYGEN_ONLY
 };
 
 /** PCAL6524 class
@@ -403,7 +1085,7 @@ public:
 class PCAL6524 : public PCAL6xxx_base
 {
 public:
-	/** Name of the PCAL6416A registers */
+	/** Name of the PCAL6524 registers */
 	enum reg_num {
 		Input_Port_0, Input_Port_1, Input_Port_2, reserved0, 
 		Output_Port_0, Output_Port_1, Output_Port_2, reserved1, 
@@ -429,8 +1111,20 @@ public:
 		Switch_debounce_enable_0, Switch_debounce_enable_1, Switch_debounce_count, 
 	};
 	
+	/** Constractor
+	 * 
+	 * @param i2c_address I2C target address
+	 */
 	PCAL6524( uint8_t i2c_address = (0x44 >> 1) + 0 );
+
+	/** Constractor
+	 * 
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C target address
+	 */
 	PCAL6524( TwoWire& wire, uint8_t i2c_address = (0x44 >> 1) + 0 );
+
+	/** Destractor */
 	virtual ~PCAL6524();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -446,6 +1140,163 @@ public:
 		Interrupt_status_register_port_0,				//	INT_STATUS
 		Output_port_configuration_register,				//	OUTPUT_PORT_CONFIG
 	};
+
+#if DOXYGEN_ONLY
+	/** Constants for begin() method */
+	enum board {
+		NONE,
+		ARDUINO_SHIELD,
+	};
+
+	/** Number of IO bits */
+	const int	n_bits;
+
+	/** Number of IO ports */
+	const int	n_ports;
+
+	/** Device/board initialization
+	 *
+	 * This method is needed to initialize Arduino-shield type evaluation boards from NXP. 
+	 * This method takes one argument of "PCAL6524::ARDUINO_SHIELD" to set RESET and ADDRESS pins. 
+	 * 
+	 * If the devoce is used as it self, this method doesn't need to be called. 
+	 *	
+	 * @param env	This argument can be given as "PCAL6524::NONE" ot "PCAL6524::ARDUINO_SHIELD"
+	 */
+	void		begin( board env = NONE );
+	
+	/** Output, single port
+	 * 
+	 *	Basic GPIO port access function for single port output
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be output
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		output( int port, uint8_t value, uint8_t mask = 0 );
+
+	/** Output, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports output
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		output( uint8_t *vp );
+	
+	/** Input, single port
+	 * 
+	 *	Basic GPIO port access function for single port input
+	 *
+	 * @param port	Port number
+	 * @return Port read value
+	 */
+	uint8_t		input( int port );
+
+	/** Input, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports input
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return Pointer to vp
+	 */
+	uint8_t*	input( uint8_t *vp );
+
+	/** Config, single port
+	 * 
+	 *	Basic GPIO port access function for single port configuration
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be written into configuration register
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		config( int port, uint8_t config, uint8_t mask = 0 );
+
+	/** Config, all ports
+	 * 
+	 *	Basic GPIO port access function for all port configuration
+	 *
+	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
+	 */
+	void		config( uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port( access_word w, uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port16( access_word w, uint16_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint8_t*	read_port( access_word w, uint8_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint16_t*	read_port16( access_word w, uint16_t* vp );
+
+	/** Write single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+
+	/** Write single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint8_t		read_port( access_word w, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint16_t	read_port16( access_word w, int port_num = 0 );
+#endif	//	DOXYGEN_ONLY
 };
 
 /** PCAL6534 class
@@ -484,8 +1335,20 @@ public:
 		Switch_debounce_count,
 	};
 	
+	/** Constractor
+	 * 
+	 * @param i2c_address I2C target address
+	 */
 	PCAL6534( uint8_t i2c_address = (0x44 >> 1) + 0 );
+
+	/** Constractor
+	 * 
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C target address
+	 */
 	PCAL6534( TwoWire& wire, uint8_t i2c_address = (0x44 >> 1) + 0 );
+
+	/** Destractor */
 	virtual ~PCAL6534();
 
 	static constexpr uint8_t	access_ref[ NUM_access_word ]	= {
@@ -501,6 +1364,163 @@ public:
 		Interrupt_status_register_port_0,				//	INT_STATUS
 		Output_port_configuration_register,				//	OUTPUT_PORT_CONFIG
 	};
+
+#if DOXYGEN_ONLY
+	/** Constants for begin() method */
+	enum board {
+		NONE,
+		ARDUINO_SHIELD,
+	};
+
+	/** Number of IO bits */
+	const int	n_bits;
+
+	/** Number of IO ports */
+	const int	n_ports;
+
+	/** Device/board initialization
+	 *
+	 * This method is needed to initialize Arduino-shield type evaluation boards from NXP. 
+	 * This method takes one argument of "PCAL6534::ARDUINO_SHIELD" to set RESET and ADDRESS pins. 
+	 * 
+	 * If the devoce is used as it self, this method doesn't need to be called. 
+	 *	
+	 * @param env	This argument can be given as "PCAL6534::NONE" ot "PCAL6534::ARDUINO_SHIELD"
+	 */
+	void		begin( board env = NONE );
+	
+	/** Output, single port
+	 * 
+	 *	Basic GPIO port access function for single port output
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be output
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		output( int port, uint8_t value, uint8_t mask = 0 );
+
+	/** Output, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports output
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		output( uint8_t *vp );
+	
+	/** Input, single port
+	 * 
+	 *	Basic GPIO port access function for single port input
+	 *
+	 * @param port	Port number
+	 * @return Port read value
+	 */
+	uint8_t		input( int port );
+
+	/** Input, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports input
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return Pointer to vp
+	 */
+	uint8_t*	input( uint8_t *vp );
+
+	/** Config, single port
+	 * 
+	 *	Basic GPIO port access function for single port configuration
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be written into configuration register
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		config( int port, uint8_t config, uint8_t mask = 0 );
+
+	/** Config, all ports
+	 * 
+	 *	Basic GPIO port access function for all port configuration
+	 *
+	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
+	 */
+	void		config( uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port( access_word w, uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port16( access_word w, uint16_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint8_t*	read_port( access_word w, uint8_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint16_t*	read_port16( access_word w, uint16_t* vp );
+
+	/** Write single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+
+	/** Write single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint8_t		read_port( access_word w, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint16_t	read_port16( access_word w, int port_num = 0 );
+#endif	//	DOXYGEN_ONLY
 };
 
 #endif //	ARDUINO_GPIO_NXP_ARD_H

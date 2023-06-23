@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['begin_0',['begin',['../class_g_p_i_o__base.html#ac55adf02067272e2c5b4bdd5f955f78c',1,'GPIO_base']]]
+  ['begin_0',['begin',['../class_g_p_i_o__base.html#ac55adf02067272e2c5b4bdd5f955f78c',1,'GPIO_base::begin()'],['../class_p_c_a9554.html#acb93f1ea29ede958468ca378b6f9d182',1,'PCA9554::begin()'],['../class_p_c_a9555.html#af6831fd3ea76e0b251b24ff558558e18',1,'PCA9555::begin()'],['../class_p_c_a_l6408_a.html#a62e435911dee04a96b21a75788ad9c4e',1,'PCAL6408A::begin()'],['../class_p_c_a_l6416_a.html#a6f0a5c545e76d934e16812cd629a8291',1,'PCAL6416A::begin()'],['../class_p_c_a_l6524.html#a2ee0e5f563f04eecd1a5e9a1158cfdcf',1,'PCAL6524::begin()'],['../class_p_c_a_l6534.html#a5f3dbd5673a265f940c91a1fc294bf12',1,'PCAL6534::begin()']]],
+  ['board_1',['board',['../class_p_c_a9554.html#a49cc321cfa6229f58db195b429f75d97',1,'PCA9554::board'],['../class_p_c_a9555.html#aa68db0ffc742a639cfba88115d80f14c',1,'PCA9555::board'],['../class_p_c_a_l6408_a.html#aaa652d6627319e2b524d78700996ddd6',1,'PCAL6408A::board'],['../class_p_c_a_l6416_a.html#a4ee90c7b6626a488760ad200ebd64d22',1,'PCAL6416A::board'],['../class_p_c_a_l6524.html#a4d7454eba0a486300bd311bd1b96b1bc',1,'PCAL6524::board'],['../class_p_c_a_l6534.html#af4afa9fcaa78e99bf02ed5193a02e5c2',1,'PCAL6534::board']]]
 ];
