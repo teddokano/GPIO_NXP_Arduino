@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.2</span>
+   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.3</span>
    </div>
    <div id="projectbrief">GPIO device operation sample code for Arduino</div>
   </td>
@@ -147,6 +147,29 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afeb8f897b2fc2a81c056bcdfa75a569a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91abea8d1be23d54847407ae5ca65cf0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#a91abea8d1be23d54847407ae5ca65cf0">read_port16</a> (access_word w, int port_num=0)</td></tr>
 <tr class="separator:a91abea8d1be23d54847407ae5ca65cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae615d6c7c8c1e69d2be1c27df8941bce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#ae615d6c7c8c1e69d2be1c27df8941bce">ping</a> (void)</td></tr>
+<tr class="separator:ae615d6c7c8c1e69d2be1c27df8941bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8266c82f20439e9ccae5b18db4d5a0dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#a8266c82f20439e9ccae5b18db4d5a0dc">reg_w</a> (uint8_t reg_adr, uint8_t *data, uint16_t size)</td></tr>
+<tr class="separator:a8266c82f20439e9ccae5b18db4d5a0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0fe509e8d1a3bd489598fd0be0fd2b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#ab0fe509e8d1a3bd489598fd0be0fd2b1">reg_w</a> (uint8_t reg_adr, uint8_t data)</td></tr>
+<tr class="separator:ab0fe509e8d1a3bd489598fd0be0fd2b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00cf873d1b3f75574f902b1f1c0d0718"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#a00cf873d1b3f75574f902b1f1c0d0718">reg_r</a> (uint8_t reg_adr, uint8_t *data, uint16_t size)</td></tr>
+<tr class="separator:a00cf873d1b3f75574f902b1f1c0d0718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ae18caec952bcaaf0d285d8ab3afd2d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#a4ae18caec952bcaaf0d285d8ab3afd2d">reg_r</a> (uint8_t reg_adr)</td></tr>
+<tr class="separator:a4ae18caec952bcaaf0d285d8ab3afd2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cdde4810d5f9e17201704a2ec04d465"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#a3cdde4810d5f9e17201704a2ec04d465">write_r8</a> (uint8_t reg, uint8_t val)</td></tr>
+<tr class="separator:a3cdde4810d5f9e17201704a2ec04d465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a166ab6736a2e8d490267a16bc85e8ce3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#a166ab6736a2e8d490267a16bc85e8ce3">write_r16</a> (uint8_t reg, uint16_t val)</td></tr>
+<tr class="separator:a166ab6736a2e8d490267a16bc85e8ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d8e0a6eb00975ba63e9ad9b16a543e1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#a2d8e0a6eb00975ba63e9ad9b16a543e1">read_r8</a> (uint8_t reg)</td></tr>
+<tr class="separator:a2d8e0a6eb00975ba63e9ad9b16a543e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae18d243d7a049a3f644c33b73f8a3e25"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#ae18d243d7a049a3f644c33b73f8a3e25">read_r16</a> (uint8_t reg)</td></tr>
+<tr class="separator:ae18d243d7a049a3f644c33b73f8a3e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61e411af7bf4dcf1f431bf6fa191098a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a9554.html#a61e411af7bf4dcf1f431bf6fa191098a">bit_op8</a> (uint8_t reg, uint8_t mask, uint8_t value)</td></tr>
+<tr class="separator:a61e411af7bf4dcf1f431bf6fa191098a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5b49f615a1a714f7a30780e9f74e281"><td class="memItemLeft" align="right" valign="top"><a id="af5b49f615a1a714f7a30780e9f74e281" name="af5b49f615a1a714f7a30780e9f74e281"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bit_op16</b> (uint8_t reg, uint16_t mask, uint16_t value)</td></tr>
+<tr class="separator:af5b49f615a1a714f7a30780e9f74e281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_g_p_i_o__base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_g_p_i_o__base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_g_p_i_o__base.html">GPIO_base</a></td></tr>
 <tr class="memitem:a024c717a4e77ebbc6dd2147dcc930357 inherit pub_methods_class_g_p_i_o__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_p_i_o__base.html#a024c717a4e77ebbc6dd2147dcc930357">GPIO_base</a> (uint8_t i2c_address, const int nbits, const uint8_t *arp, uint8_t ai)</td></tr>
 <tr class="separator:a024c717a4e77ebbc6dd2147dcc930357 inherit pub_methods_class_g_p_i_o__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -369,6 +392,50 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a61e411af7bf4dcf1f431bf6fa191098a" name="a61e411af7bf4dcf1f431bf6fa191098a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61e411af7bf4dcf1f431bf6fa191098a">&#9670;&#160;</a></span>bit_op8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCA9554::bit_op8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register overwriting with bit-mask</p>
+<p>Register can be updated by bit level</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">mask</td><td>bit-mask to protect overwriting </td></tr>
+    <tr><td class="paramname">value</td><td>value to overwrite </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ab107dc5d03fabfbcf95d8e8aa87fdb25" name="ab107dc5d03fabfbcf95d8e8aa87fdb25"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab107dc5d03fabfbcf95d8e8aa87fdb25">&#9670;&#160;</a></span>config() <span class="overload">[1/2]</span></h2>
 
@@ -563,6 +630,26 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ae615d6c7c8c1e69d2be1c27df8941bce" name="ae615d6c7c8c1e69d2be1c27df8941bce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae615d6c7c8c1e69d2be1c27df8941bce">&#9670;&#160;</a></span>ping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PCA9554::ping </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ping the device</p>
+<dl class="section return"><dt>Returns</dt><dd>true when ACK </dd></dl>
+
+</div>
+</div>
 <a id="afeb8f897b2fc2a81c056bcdfa75a569a" name="afeb8f897b2fc2a81c056bcdfa75a569a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afeb8f897b2fc2a81c056bcdfa75a569a">&#9670;&#160;</a></span>read_port() <span class="overload">[1/2]</span></h2>
 
@@ -712,6 +799,211 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to vp </dd></dl>
+
+</div>
+</div>
+<a id="ae18d243d7a049a3f644c33b73f8a3e25" name="ae18d243d7a049a3f644c33b73f8a3e25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18d243d7a049a3f644c33b73f8a3e25">&#9670;&#160;</a></span>read_r16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t PCA9554::read_r16 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register read, 16 bit</p>
+<p>This 16 bit access may ot be common but it's useful for sensor devices</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>data value </dd></dl>
+
+</div>
+</div>
+<a id="a2d8e0a6eb00975ba63e9ad9b16a543e1" name="a2d8e0a6eb00975ba63e9ad9b16a543e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d8e0a6eb00975ba63e9ad9b16a543e1">&#9670;&#160;</a></span>read_r8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t PCA9554::read_r8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register read, 8 bit</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>data value </dd></dl>
+
+</div>
+</div>
+<a id="a4ae18caec952bcaaf0d285d8ab3afd2d" name="a4ae18caec952bcaaf0d285d8ab3afd2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ae18caec952bcaaf0d285d8ab3afd2d">&#9670;&#160;</a></span>reg_r() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t PCA9554::reg_r </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg_adr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Single register read</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>read data </dd></dl>
+
+</div>
+</div>
+<a id="a00cf873d1b3f75574f902b1f1c0d0718" name="a00cf873d1b3f75574f902b1f1c0d0718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00cf873d1b3f75574f902b1f1c0d0718">&#9670;&#160;</a></span>reg_r() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PCA9554::reg_r </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiple register read</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
+    <tr><td class="paramname">size</td><td>data size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
+
+</div>
+</div>
+<a id="a8266c82f20439e9ccae5b18db4d5a0dc" name="a8266c82f20439e9ccae5b18db4d5a0dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8266c82f20439e9ccae5b18db4d5a0dc">&#9670;&#160;</a></span>reg_w() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PCA9554::reg_w </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiple register write</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
+    <tr><td class="paramname">size</td><td>data size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
+
+</div>
+</div>
+<a id="ab0fe509e8d1a3bd489598fd0be0fd2b1" name="ab0fe509e8d1a3bd489598fd0be0fd2b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0fe509e8d1a3bd489598fd0be0fd2b1">&#9670;&#160;</a></span>reg_w() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PCA9554::reg_w </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Single register write</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
+    <tr><td class="paramname">size</td><td>data size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 </div>
 </div>
@@ -871,6 +1163,79 @@ Additional Inherited Members</h2></td></tr>
     <tr><td class="paramname">w</td><td>Accsess word. This should be choosen from access_word' </td></tr>
     <tr><td class="paramname">value</td><td>Value to be written into a register </td></tr>
     <tr><td class="paramname">port_num</td><td>Option, to specify port number </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a166ab6736a2e8d490267a16bc85e8ce3" name="a166ab6736a2e8d490267a16bc85e8ce3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a166ab6736a2e8d490267a16bc85e8ce3">&#9670;&#160;</a></span>write_r16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCA9554::write_r16 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register write, 16 bit</p>
+<p>This 16 bit access may ot be common but it's useful for sensor devices</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">val</td><td>data value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3cdde4810d5f9e17201704a2ec04d465" name="a3cdde4810d5f9e17201704a2ec04d465"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cdde4810d5f9e17201704a2ec04d465">&#9670;&#160;</a></span>write_r8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCA9554::write_r8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register write, 8 bit</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">val</td><td>data value </td></tr>
   </table>
   </dd>
 </dl>

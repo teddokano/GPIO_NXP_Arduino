@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.2</span>
+   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;0.4.3</span>
    </div>
    <div id="projectbrief">GPIO device operation sample code for Arduino</div>
   </td>
@@ -250,6 +250,29 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4e8c22fb9f525210e8781e3319fd8531"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4223f01f1ebd4265da2c2454ac89e332"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#a4223f01f1ebd4265da2c2454ac89e332">read_port16</a> (access_word w, int port_num=0)</td></tr>
 <tr class="separator:a4223f01f1ebd4265da2c2454ac89e332"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8a61ffa0e839be524667097bfd02448"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#ad8a61ffa0e839be524667097bfd02448">ping</a> (void)</td></tr>
+<tr class="separator:ad8a61ffa0e839be524667097bfd02448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13682a4e3f2f764ff66f2a56c9068d19"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#a13682a4e3f2f764ff66f2a56c9068d19">reg_w</a> (uint8_t reg_adr, uint8_t *data, uint16_t size)</td></tr>
+<tr class="separator:a13682a4e3f2f764ff66f2a56c9068d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe15b1fccd6f285fa9f4e87f83dfbc53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#abe15b1fccd6f285fa9f4e87f83dfbc53">reg_w</a> (uint8_t reg_adr, uint8_t data)</td></tr>
+<tr class="separator:abe15b1fccd6f285fa9f4e87f83dfbc53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fa75e560ea7e0951c1a72f21d3bd9dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#a5fa75e560ea7e0951c1a72f21d3bd9dc">reg_r</a> (uint8_t reg_adr, uint8_t *data, uint16_t size)</td></tr>
+<tr class="separator:a5fa75e560ea7e0951c1a72f21d3bd9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a241ae482e70e6114eec128dbe49382b4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#a241ae482e70e6114eec128dbe49382b4">reg_r</a> (uint8_t reg_adr)</td></tr>
+<tr class="separator:a241ae482e70e6114eec128dbe49382b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58d42653b81318908b63cc351cf89cc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#a58d42653b81318908b63cc351cf89cc1">write_r8</a> (uint8_t reg, uint8_t val)</td></tr>
+<tr class="separator:a58d42653b81318908b63cc351cf89cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11dccae21a42673e25990e7f7eacd564"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#a11dccae21a42673e25990e7f7eacd564">write_r16</a> (uint8_t reg, uint16_t val)</td></tr>
+<tr class="separator:a11dccae21a42673e25990e7f7eacd564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e4e6435a9ced50f6d81723e2795de38"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#a6e4e6435a9ced50f6d81723e2795de38">read_r8</a> (uint8_t reg)</td></tr>
+<tr class="separator:a6e4e6435a9ced50f6d81723e2795de38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f08376e5e966b0da679817f61fd1d6d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#a6f08376e5e966b0da679817f61fd1d6d">read_r16</a> (uint8_t reg)</td></tr>
+<tr class="separator:a6f08376e5e966b0da679817f61fd1d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcccd3a3495c2ecffce528f738e3b9f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6534.html#afcccd3a3495c2ecffce528f738e3b9f6">bit_op8</a> (uint8_t reg, uint8_t mask, uint8_t value)</td></tr>
+<tr class="separator:afcccd3a3495c2ecffce528f738e3b9f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421f51e97b80e9c48436cb3e298db33d"><td class="memItemLeft" align="right" valign="top"><a id="a421f51e97b80e9c48436cb3e298db33d" name="a421f51e97b80e9c48436cb3e298db33d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bit_op16</b> (uint8_t reg, uint16_t mask, uint16_t value)</td></tr>
+<tr class="separator:a421f51e97b80e9c48436cb3e298db33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_p_c_a_l6xxx__base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_p_c_a_l6xxx__base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_p_c_a_l6xxx__base.html">PCAL6xxx_base</a></td></tr>
 <tr class="memitem:a212fc093cd9ce0c181730c324bc48477 inherit pub_methods_class_p_c_a_l6xxx__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_c_a_l6xxx__base.html#a212fc093cd9ce0c181730c324bc48477">PCAL6xxx_base</a> (uint8_t i2c_address, const int nbits, const uint8_t arp[], uint8_t ai)</td></tr>
 <tr class="separator:a212fc093cd9ce0c181730c324bc48477 inherit pub_methods_class_p_c_a_l6xxx__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -319,7 +342,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_p_c_a_l6534.html">PCAL6534</a> class </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01306">1306</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01721">1721</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="af4afa9fcaa78e99bf02ed5193a02e5c2" name="af4afa9fcaa78e99bf02ed5193a02e5c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af4afa9fcaa78e99bf02ed5193a02e5c2">&#9670;&#160;</a></span>board</h2>
@@ -334,7 +357,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Constants for <a class="el" href="class_p_c_a_l6534.html#a5f3dbd5673a265f940c91a1fc294bf12">begin()</a> method </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01370">1370</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01785">1785</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -351,7 +374,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Name of the <a class="el" href="class_p_c_a_l6534.html">PCAL6534</a> registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01310">1310</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01725">1725</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -471,6 +494,50 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">env</td><td>This argument can be given as "PCAL6534::NONE" ot "PCAL6534::ARDUINO_SHIELD" </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afcccd3a3495c2ecffce528f738e3b9f6" name="afcccd3a3495c2ecffce528f738e3b9f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcccd3a3495c2ecffce528f738e3b9f6">&#9670;&#160;</a></span>bit_op8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6534::bit_op8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register overwriting with bit-mask</p>
+<p>Register can be updated by bit level</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">mask</td><td>bit-mask to protect overwriting </td></tr>
+    <tr><td class="paramname">value</td><td>value to overwrite </td></tr>
   </table>
   </dd>
 </dl>
@@ -671,6 +738,26 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ad8a61ffa0e839be524667097bfd02448" name="ad8a61ffa0e839be524667097bfd02448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8a61ffa0e839be524667097bfd02448">&#9670;&#160;</a></span>ping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PCAL6534::ping </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ping the device</p>
+<dl class="section return"><dt>Returns</dt><dd>true when ACK </dd></dl>
+
+</div>
+</div>
 <a id="a4e8c22fb9f525210e8781e3319fd8531" name="a4e8c22fb9f525210e8781e3319fd8531"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e8c22fb9f525210e8781e3319fd8531">&#9670;&#160;</a></span>read_port() <span class="overload">[1/2]</span></h2>
 
@@ -820,6 +907,211 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to vp </dd></dl>
+
+</div>
+</div>
+<a id="a6f08376e5e966b0da679817f61fd1d6d" name="a6f08376e5e966b0da679817f61fd1d6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f08376e5e966b0da679817f61fd1d6d">&#9670;&#160;</a></span>read_r16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t PCAL6534::read_r16 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register read, 16 bit</p>
+<p>This 16 bit access may ot be common but it's useful for sensor devices</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>data value </dd></dl>
+
+</div>
+</div>
+<a id="a6e4e6435a9ced50f6d81723e2795de38" name="a6e4e6435a9ced50f6d81723e2795de38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4e6435a9ced50f6d81723e2795de38">&#9670;&#160;</a></span>read_r8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t PCAL6534::read_r8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register read, 8 bit</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>data value </dd></dl>
+
+</div>
+</div>
+<a id="a241ae482e70e6114eec128dbe49382b4" name="a241ae482e70e6114eec128dbe49382b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a241ae482e70e6114eec128dbe49382b4">&#9670;&#160;</a></span>reg_r() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t PCAL6534::reg_r </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg_adr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Single register read</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>read data </dd></dl>
+
+</div>
+</div>
+<a id="a5fa75e560ea7e0951c1a72f21d3bd9dc" name="a5fa75e560ea7e0951c1a72f21d3bd9dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fa75e560ea7e0951c1a72f21d3bd9dc">&#9670;&#160;</a></span>reg_r() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PCAL6534::reg_r </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiple register read</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
+    <tr><td class="paramname">size</td><td>data size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
+
+</div>
+</div>
+<a id="a13682a4e3f2f764ff66f2a56c9068d19" name="a13682a4e3f2f764ff66f2a56c9068d19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13682a4e3f2f764ff66f2a56c9068d19">&#9670;&#160;</a></span>reg_w() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PCAL6534::reg_w </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiple register write</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
+    <tr><td class="paramname">size</td><td>data size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
+
+</div>
+</div>
+<a id="abe15b1fccd6f285fa9f4e87f83dfbc53" name="abe15b1fccd6f285fa9f4e87f83dfbc53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe15b1fccd6f285fa9f4e87f83dfbc53">&#9670;&#160;</a></span>reg_w() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PCAL6534::reg_w </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Single register write</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
+    <tr><td class="paramname">size</td><td>data size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 </div>
 </div>
@@ -985,6 +1277,79 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a11dccae21a42673e25990e7f7eacd564" name="a11dccae21a42673e25990e7f7eacd564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11dccae21a42673e25990e7f7eacd564">&#9670;&#160;</a></span>write_r16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6534::write_r16 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register write, 16 bit</p>
+<p>This 16 bit access may ot be common but it's useful for sensor devices</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">val</td><td>data value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a58d42653b81318908b63cc351cf89cc1" name="a58d42653b81318908b63cc351cf89cc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58d42653b81318908b63cc351cf89cc1">&#9670;&#160;</a></span>write_r8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCAL6534::write_r8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register write, 8 bit</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">val</td><td>data value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="acee301f9780b8abad13f1a76b0742c8d" name="acee301f9780b8abad13f1a76b0742c8d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acee301f9780b8abad13f1a76b0742c8d">&#9670;&#160;</a></span>access_ref</h2>
@@ -1019,7 +1384,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">        Output_port_configuration_register,             </div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01354">1354</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01769">1769</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -1036,7 +1401,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of IO bits </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01376">1376</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01791">1791</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1418,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of IO ports </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01379">1379</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_p_i_o___n_x_p_8h_source.html#l01794">1794</a> of file <a class="el" href="_g_p_i_o___n_x_p_8h_source.html">GPIO_NXP.h</a>.</p>
 
 </div>
 </div>
