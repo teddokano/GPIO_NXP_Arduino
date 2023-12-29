@@ -2,7 +2,7 @@
 
 /* ******** GPIO_base ******** */
 
-GPIO_base::GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* ar, uint8_t ai  ) :
+GPIO_base::GPIO_base( uint8_t i2c_address, int nbits, const uint8_t* ar, uint8_t ai  ) :
 	I2C_device( i2c_address ), 
 	n_bits( nbits ),
 	n_ports( (nbits + 7) / 8 ),
@@ -12,7 +12,7 @@ GPIO_base::GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* ar, u
 	init();
 }
 
-GPIO_base::GPIO_base( TwoWire& wire, uint8_t i2c_address, const int nbits, const uint8_t* ar, uint8_t ai  ) :
+GPIO_base::GPIO_base( TwoWire& wire, uint8_t i2c_address, int nbits, const uint8_t* ar, uint8_t ai  ) :
 	I2C_device( wire, i2c_address ), 
 	n_bits( nbits ),
 	n_ports( (nbits + 7) / 8 ),
@@ -60,7 +60,7 @@ void GPIO_base::output( int port, uint8_t value, uint8_t mask )
 	write_r8( *(arp + OUT) + port, value );
 }
 
-void GPIO_base::output( uint8_t *vp )
+void GPIO_base::output( const uint8_t *vp )
 {
 	write_port( OUT, vp );
 }
@@ -85,12 +85,12 @@ void GPIO_base::config( int port, uint8_t config, uint8_t mask )
 	write_r8( *(arp + CONFIG) + port, config );
 }
 
-void GPIO_base::config( uint8_t* vp )
+void GPIO_base::config( const uint8_t* vp )
 {
 	write_port( CONFIG, vp );
 }
 
-void GPIO_base::write_port( access_word w, uint8_t* vp )
+void GPIO_base::write_port( access_word w, const uint8_t* vp )
 {
 	if ( auto_increment ) {
 		reg_w( auto_increment | *(arp + w), vp, n_ports );		
@@ -101,24 +101,29 @@ void GPIO_base::write_port( access_word w, uint8_t* vp )
 	}
 }
 
-void GPIO_base::write_port16( access_word w, uint16_t* vp )
+void GPIO_base::write_port16( access_word w, const uint16_t* vp )
 {
+	uint16_t	b[ n_ports ];
+	
 	if ( endian ) {
 		uint16_t	temp;
 		for ( int i = 0; i < n_ports; i++ ) {
 			temp	= vp[ i ] << 8;
-			vp[ i ]	= temp | vp[ i ] >> 8;			
+			b[ i ]	= temp | vp[ i ] >> 8;			
 		}
+	}
+	else {
+		memcpy( b, vp, n_ports << 1 );
 	}
 	
 	int	n_bytes	= (n_bits * 2 + 7) / 8;
 
 	if ( auto_increment ) {
-		reg_w( auto_increment | *(arp + w), (uint8_t*)vp, n_bytes );		
+		reg_w( auto_increment | *(arp + w), (uint8_t*)b, n_bytes );		
 	}
 	else {
 		for ( int i = 0; i < n_bytes; i++ )
-			write_r8( *(arp + w) + i, *vp++ );
+			write_r8( *(arp + w) + i, b[ i ] );
 	}
 }
 

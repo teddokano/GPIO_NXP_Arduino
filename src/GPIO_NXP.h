@@ -62,7 +62,7 @@ public:
 	 * @param arp	Pointer to register access reference table
 	 * @param ai	Auto-increment flag
 	 */
-	GPIO_base( uint8_t i2c_address, const int nbits, const uint8_t* arp, uint8_t ai );
+	GPIO_base( uint8_t i2c_address, int nbits, const uint8_t* arp, uint8_t ai );
 
 	/** Constractor
 	 * 
@@ -72,7 +72,7 @@ public:
 	 * @param arp	Pointer to register access reference table
 	 * @param ai	Auto-increment flag
 	 */
-	GPIO_base( TwoWire& wire, uint8_t i2c_address, const int nbits, const uint8_t* arp, uint8_t ai );
+	GPIO_base( TwoWire& wire, uint8_t i2c_address, int nbits, const uint8_t* arp, uint8_t ai );
 
 	/** Destractor */
 	virtual ~GPIO_base();
@@ -104,7 +104,7 @@ public:
 	 *
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		output( uint8_t *vp );
+	void		output( const uint8_t *vp );
 	
 	/** Input, single port
 	 * 
@@ -140,7 +140,7 @@ public:
 	 *
 	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
 	 */
-	void		config( uint8_t* vp );
+	void		config( const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -149,7 +149,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port( access_word w, uint8_t* vp );
+	void		write_port( access_word w, const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -158,7 +158,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port16( access_word w, uint16_t* vp );
+	void		write_port16( access_word w, const uint16_t* vp );
 
 	/** Read all port method
 	 * 
@@ -318,7 +318,7 @@ public:
 	 *
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		output( uint8_t *vp );
+	void		output( const uint8_t *vp );
 	
 	/** Input, single port
 	 * 
@@ -354,7 +354,7 @@ public:
 	 *
 	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
 	 */
-	void		config( uint8_t* vp );
+	void		config( const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -363,7 +363,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port( access_word w, uint8_t* vp );
+	void		write_port( access_word w, const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -372,7 +372,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port16( access_word w, uint16_t* vp );
+	void		write_port16( access_word w, const uint16_t* vp );
 
 	/** Read all port method
 	 * 
@@ -447,7 +447,7 @@ public:
 	 * @param size data size
 	 * @return transferred data size
 	 */
-	int reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size );
+	int reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size );
 
 	/** Single register write
 	 * 
@@ -605,7 +605,7 @@ public:
 	 *
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		output( uint8_t *vp );
+	void		output( const uint8_t *vp );
 	
 	/** Input, single port
 	 * 
@@ -641,7 +641,7 @@ public:
 	 *
 	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
 	 */
-	void		config( uint8_t* vp );
+	void		config( const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -650,7 +650,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port( access_word w, uint8_t* vp );
+	void		write_port( access_word w, const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -659,7 +659,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port16( access_word w, uint16_t* vp );
+	void		write_port16( access_word w, const uint16_t* vp );
 
 	/** Read all port method
 	 * 
@@ -734,7 +734,7 @@ public:
 	 * @param size data size
 	 * @return transferred data size
 	 */
-	int reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size );
+	int reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size );
 
 	/** Single register write
 	 * 
@@ -915,7 +915,7 @@ public:
 	 *
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		output( uint8_t *vp );
+	void		output( const uint8_t *vp );
 	
 	/** Input, single port
 	 * 
@@ -951,7 +951,7 @@ public:
 	 *
 	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
 	 */
-	void		config( uint8_t* vp );
+	void		config( const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -960,7 +960,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port( access_word w, uint8_t* vp );
+	void		write_port( access_word w, const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -969,7 +969,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port16( access_word w, uint16_t* vp );
+	void		write_port16( access_word w, const uint16_t* vp );
 
 	/** Read all port method
 	 * 
@@ -1044,7 +1044,7 @@ public:
 	 * @param size data size
 	 * @return transferred data size
 	 */
-	int reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size );
+	int reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size );
 
 	/** Single register write
 	 * 
@@ -1209,7 +1209,7 @@ public:
 	 *
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		output( uint8_t *vp );
+	void		output( const uint8_t *vp );
 	
 	/** Input, single port
 	 * 
@@ -1245,7 +1245,7 @@ public:
 	 *
 	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
 	 */
-	void		config( uint8_t* vp );
+	void		config( const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -1254,7 +1254,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port( access_word w, uint8_t* vp );
+	void		write_port( access_word w, const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -1263,7 +1263,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port16( access_word w, uint16_t* vp );
+	void		write_port16( access_word w, const uint16_t* vp );
 
 	/** Read all port method
 	 * 
@@ -1338,7 +1338,7 @@ public:
 	 * @param size data size
 	 * @return transferred data size
 	 */
-	int reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size );
+	int reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size );
 
 	/** Single register write
 	 * 
@@ -1513,7 +1513,7 @@ public:
 	 *
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		output( uint8_t *vp );
+	void		output( const uint8_t *vp );
 	
 	/** Input, single port
 	 * 
@@ -1549,7 +1549,7 @@ public:
 	 *
 	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
 	 */
-	void		config( uint8_t* vp );
+	void		config( const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -1558,7 +1558,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port( access_word w, uint8_t* vp );
+	void		write_port( access_word w, const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -1567,7 +1567,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port16( access_word w, uint16_t* vp );
+	void		write_port16( access_word w, const uint16_t* vp );
 
 	/** Read all port method
 	 * 
@@ -1642,7 +1642,7 @@ public:
 	 * @param size data size
 	 * @return transferred data size
 	 */
-	int reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size );
+	int reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size );
 
 	/** Single register write
 	 * 
@@ -1820,7 +1820,7 @@ public:
 	 *
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		output( uint8_t *vp );
+	void		output( const uint8_t *vp );
 	
 	/** Input, single port
 	 * 
@@ -1856,7 +1856,7 @@ public:
 	 *
 	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
 	 */
-	void		config( uint8_t* vp );
+	void		config( const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -1865,7 +1865,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port( access_word w, uint8_t* vp );
+	void		write_port( access_word w, const uint8_t* vp );
 
 	/** Write all port method
 	 * 
@@ -1874,7 +1874,7 @@ public:
 	 * @param w		Accsess word. This should be choosen from access_word'
 	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
 	 */
-	void		write_port16( access_word w, uint16_t* vp );
+	void		write_port16( access_word w, const uint16_t* vp );
 
 	/** Read all port method
 	 * 
@@ -1949,7 +1949,7 @@ public:
 	 * @param size data size
 	 * @return transferred data size
 	 */
-	int reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size );
+	int reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size );
 
 	/** Single register write
 	 * 
