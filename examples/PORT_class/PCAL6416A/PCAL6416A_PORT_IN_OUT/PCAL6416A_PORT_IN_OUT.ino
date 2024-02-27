@@ -29,12 +29,6 @@ void setup() {
 
   Serial.println("\n***** Hello, PCAL6416A! *****");
 
-  uint8_t io_config_and_pull_up[] = {
-    0x00,  // Configure port0 as OUTPUT
-    0xFF,  // Configure port1 as INTPUT
-  };
-
-
   port[0].config(0x00);  //  Configure port0 as OUTPUT
   port[1].config(0xFF);  //  Configure port1 as INPUT
 
@@ -44,9 +38,10 @@ void setup() {
   port[0].set(PULL_UD_SEL, 0x00);  //
   port[1].set(PULL_UD_SEL, 0xFF);  //  Pull-up selected
 }
+
 void loop() {
   int input1 = port[1];  //  Read port0 input
-  port[0] = 0x55;      //  Output to port0. Higher 4 bits are input. Those are shifted to lower 4 bits
+  port[0] = input1;      //  Output to port0
 
   GPIO_base::print_bin(input1);  //  Show the data on serial terminal
   Serial.println("");

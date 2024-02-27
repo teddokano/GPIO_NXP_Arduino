@@ -36,9 +36,9 @@ void setup() {
 }
 void loop() {
   int input1 = gpio.input(1); //  Read port0 input
-  gpio.output(0, input1);     //  Output to port0. Higher 4 bits are input. Those are shifted to lower 4 bits
+  gpio.output(0, input1);     //  Output to port0
 
-  GPIO_base::print_bin(input1); //  Show the data on serial terminal
+//  GPIO_base::print_bin(input1); //  Show the data on serial terminal
   Serial.println("");
 
   delay(100);

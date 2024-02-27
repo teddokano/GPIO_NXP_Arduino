@@ -79,6 +79,49 @@ PCA9555_port0_OUT				|PCA9555	|**Simple** sample for **just output** counter val
 PCA9555_port0_OUT_and_port1_IN	|PCA9555	|To check **output** and **input**
 PCA9555_interrupt_on_port1		|PCA9555	|**Interrupt** check
 
+#### For `PORT` class usage samples
+
+As an option, the `PORT` class can be used for GPIO devices.  
+Each port on GPIO devices can be an instance to operate by `=` operator.  
+
+```cpp
+#include <PCAL6416A.h>
+#include <PORT.h>
+
+PCAL6416A gpio;
+PORT port[] = { PORT(gpio, 0),
+                PORT(gpio, 1) };
+
+void setup() {
+  Wire.begin();
+
+  port[0].config(0x00);  //  Configure port0 as OUTPUT
+  port[1].config(0xFF);  //  Configure port1 as INPUT
+}
+
+void loop() {
+  int input1 = port[1];  //  Read port0 input
+  port[0] = input1;      //  Output to port0
+  
+  // if you want to do like port[0] = port[1], cast the port instance. It should be like..
+  // port[0] = (int)port[1];	
+
+  delay(100);
+}
+```
+
+Sketch|Folder/Target|Feature
+---|---|---
+PCAL6408A_PORT_OUT		|PORT_class/PCAL6408A/	|**Simple** sample for **just output** counter value using PORT class
+PCAL6408A_PORT_IN_OUT	|PORT_class/PCAL6408A	|Blink LED to show which buton pressed. Read value shown on serial terminal also using PORT class
+PCAL6416A_PORT_OUT		|PORT_class/PCAL6416A	|**Simple** sample for **just output** counter value using PORT class
+PCAL6416A_PORT_IN_OUT	|PORT_class/PCAL6416A	|Blink LED to show which buton pressed. Read value shown on serial terminal also using PORT class
+PCAL6524A_PORT_OUT		|PORT_class/PCAL6524	|**Simple** sample for **just output** counter value using PORT class
+PCAL6524_PORT_IN_OUT	|PORT_class/PCAL6524	|Blink LED to show which buton pressed. Read value shown on serial terminal also using PORT class
+PCAL6534_PORT_OUT		|PORT_class/PCAL6534	|**Simple** sample for **just output** counter value using PORT class
+PCAL6534_PORT_IN_OUT	|PORT_class/PCAL6534	|Blink LED to show which buton pressed. Read value shown on serial terminal also using PORT class
+
+
 ### TIPS
 If you need to use different I²C bus on Arduino, it can be done like this. This sample shows how the `Wire1` on Arduino Due can be operated.  
 ```cpp
