@@ -18,19 +18,13 @@
  */
 class PORT {
 public:
-	/** Mask setting
-	 * 
-	 * 	Bit mask for output. This is being initialized to 0 if _mask is not given to constructor
-	 */
-	uint8_t	mask;
-
 	/** Constractor
 	 * 
-	 * @param gpio_ptr 	Pointer to GPIO device instance
+	 * @param gpio 	Pointer to GPIO device instance
 	 * @param port_num	Port number
 	 * @param mask		(option) bit mask for output
 	 */
-	PORT( GPIO_base* gpio_ptr, int port_num, uint8_t _mask = 0x00 );
+	PORT( GPIO_base& gpio, int port_num, uint8_t _mask = 0x00 );
 
 	/** Config port
 	 * 
@@ -39,6 +33,7 @@ public:
 	 * @param config	8 bit value. 0 for output, 1 for input
 	 */
 	void	config( uint8_t config );
+	void	set( access_word wd, uint8_t value );
 	
 	/** A short hand for setting pins
 	 */
@@ -50,14 +45,20 @@ public:
 	operator	int();
 	
 private:
-	GPIO_base	*devp;
+	GPIO_base&	dev;
 	int			pn;
+public:
+	/** Mask setting
+	 * 
+	 * 	Bit mask for output. This is being initialized to 0 if _mask is not given to constructor
+	 */
+	uint8_t	mask;
 };
 
 class GPIO_PORT : public PORT {
 public:
 	using PORT::operator=;
-	GPIO_PORT( GPIO_base* gpio_ptr, int port_num, uint8_t _mask = 0x00 );
+	GPIO_PORT( GPIO_base& gpio, int port_num, uint8_t _mask = 0x00 );
 };
 
 #endif //	ARDUINO_GPIO_NXP_ARD_PORT_H

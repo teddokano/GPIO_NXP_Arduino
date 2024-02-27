@@ -1,20 +1,23 @@
 #include "PORT.h"
 
-PORT::PORT( GPIO_base* gpio_ptr, int port_num, uint8_t _mask )
+PORT::PORT( GPIO_base& gpio, int port_num, uint8_t _mask )
+	: dev( gpio ), pn( port_num ), mask( _mask )
 {
-	devp	= gpio_ptr;
-	pn		= port_num;
-	mask	= _mask;
 }
 
 void PORT::config( uint8_t config )
 {
-	devp->config( pn, config );
+	dev.config( pn, config );
+}
+
+void PORT::set( access_word wd, uint8_t value )
+{
+	dev.write_port( wd, value, pn );
 }
 
 PORT& PORT::operator=( uint8_t v )
 {
-	devp->output( pn, v );
+	dev.output( pn, v );
 	return *this;
 }
 
@@ -25,7 +28,7 @@ PORT& PORT::operator=( PORT& )
 
 PORT::operator int()
 {
-	return devp->input( pn );
+	return dev.input( pn );
 }
 
-GPIO_PORT::GPIO_PORT( GPIO_base* gpio_ptr, int port_num, uint8_t _mask ) : PORT( gpio_ptr, port_num, _mask ){}
+GPIO_PORT::GPIO_PORT( GPIO_base& gpio, int port_num, uint8_t _mask ) : PORT( gpio, port_num, _mask ){}

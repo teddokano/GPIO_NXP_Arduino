@@ -14,7 +14,7 @@
 #include <PORT.h>
 
 PCAL6408A gpio;
-PORT port(&gpio, 0);
+PORT port(gpio, 0);
 
 void setup() {
   gpio.begin(GPIO_base::ARDUINO_SHIELD);  //  Force ADR pin (@D8) LOW and reset to give right target address
