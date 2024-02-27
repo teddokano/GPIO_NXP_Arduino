@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['this_0',['What is this?',['../md__r_e_a_d_m_e.html#autotoc_md1',1,'']]],
-  ['tips_1',['TIPS',['../md__r_e_a_d_m_e.html#autotoc_md10',1,'']]],
-  ['to_20use_2',['How to use?',['../md__r_e_a_d_m_e.html#autotoc_md6',1,'']]]
+  ['s_20inside_0',['What&apos;s inside?',['../md__r_e_a_d_m_e.html#autotoc_md4',1,'']]],
+  ['sample_20code_1',['List of sample code',['../md__r_e_a_d_m_e.html#autotoc_md7',1,'']]],
+  ['samples_2',['For &lt;tt&gt;PORT&lt;/tt&gt; class usage samples',['../md__r_e_a_d_m_e.html#autotoc_md10',1,'']]],
+  ['shield_20evaluation_20boards_3',['For PCAL6xxx GPIO Arduino® Shield evaluation boards',['../md__r_e_a_d_m_e.html#autotoc_md8',1,'']]],
+  ['started_4',['Getting started',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
+  ['supported_20devices_5',['Supported devices',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]]
 ];
