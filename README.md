@@ -8,9 +8,12 @@ This library works with [`I2C_device`](https://github.com/teddokano/I2C_device_A
 _PCAL6416AEV-ARD (on Arduino), PCAL6534EV-ARD, PCAL6524EV-ARD and PCAL6408A-ARD (far side from left to right) : Arduino® Shield Evaluation Boards for GPIO_
 
 ## What is this?
+
 An Arduino library for I²C GPIO-expander with sample code.  
 This library provides simple API to control GPIO device IO bits
 Include device name header file (`PCAL6408A.h`, `PCAL6416A.h`, `PCAL6424.h`, `PCAL6434.h`, `PCA9554.h`, and/or `PCA9555.h`) to use those class libraries. 
+
+### Basic operation
 
 With `GPIO_NXP_Arduino` library, parallel output can be controlled by next sample code. 
 ```cpp
@@ -28,6 +31,62 @@ void loop() {
   static int count = 0;
   gpio.output(0, count++);  //  Output to port0 
   delay(10);
+}
+```
+
+To operate the port for input, the IO pins can be configured bit by bit.  
+The config bit for output is `0` and input is `1`. When the bit 0 to 4 on port 0 are configured as input and rest are output, the configuration can be done as..
+```cpp
+gpio.config(0, 0x0F); // bit 0 to 4 are '1' to set those bits are input
+``` 
+
+For multiple port setting, the configuration can be done with array.  
+Following is a sample to set 2 port in PCAL6416A as port0=output, port1=input.  
+```cpp
+#include <PCAL6416A.h>
+PCAL6416A gpio;
+
+void setup() {
+  uint8_t io_config_and_pull_up[] = {
+    0x00,  // Configure port0 as OUTPUT
+    0xFF,  // Configure port1 as INTPUT
+  };
+
+  gpio.config(io_config_and_pull_up);                   //  Port0 as OUTPUT, port1 as INPUT
+}
+
+void loop() {
+  int input1 = gpio.input(1); //  Read port0 input
+  gpio.output(0, input1);     //  Output to port0
+}
+```
+
+### Option: Operation with `PORT` class
+As an option, `PORT` class is available to operate the GPIO port independently. With this class, each port input and output can be done with `=` operator.  
+
+```cpp
+#include <PCAL6416A.h>
+#include <PORT.h>
+
+PCAL6416A gpio;
+PORT port[] = { PORT(gpio, 0),
+                PORT(gpio, 1) };
+
+void setup() {
+  Wire.begin();
+
+  port[0].config(0x00);  //  Configure port0 as OUTPUT
+  port[1].config(0xFF);  //  Configure port1 as INPUT
+}
+
+void loop() {
+  int input1 = port[1];  //  Read port0 input
+  port[0] = input1;      //  Output to port0
+  
+  // if you want to do like port[0] = port[1], cast the port instance. It should be like..
+  // port[0] = (int)port[1];	
+
+  delay(100);
 }
 ```
 
@@ -83,32 +142,6 @@ PCA9555_interrupt_on_port1		|PCA9555	|**Interrupt** check
 
 As an option, the `PORT` class can be used for GPIO devices.  
 Each port on GPIO devices can be an instance to operate by `=` operator.  
-
-```cpp
-#include <PCAL6416A.h>
-#include <PORT.h>
-
-PCAL6416A gpio;
-PORT port[] = { PORT(gpio, 0),
-                PORT(gpio, 1) };
-
-void setup() {
-  Wire.begin();
-
-  port[0].config(0x00);  //  Configure port0 as OUTPUT
-  port[1].config(0xFF);  //  Configure port1 as INPUT
-}
-
-void loop() {
-  int input1 = port[1];  //  Read port0 input
-  port[0] = input1;      //  Output to port0
-  
-  // if you want to do like port[0] = port[1], cast the port instance. It should be like..
-  // port[0] = (int)port[1];	
-
-  delay(100);
-}
-```
 
 Sketch|Folder/Target|Feature
 ---|---|---
