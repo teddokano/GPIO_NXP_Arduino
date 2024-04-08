@@ -330,24 +330,10 @@ GPIO_SPI::GPIO_SPI( uint8_t dev_address, int nbits, const uint8_t* arp, uint8_t 
 	: GPIO_base( dev_address, nbits, arp, ai )
 {
 	spi_setting	= SPISettings( 1000000, MSBFIRST, SPI_MODE0 );
-	Serial.println("GPIO_SPI");
 }
 
 GPIO_SPI::~GPIO_SPI()
 {
-}
-
-void GPIO_SPI::txrx( const uint8_t *w_data, uint8_t *r_data, uint16_t size )
-{
-	memcpy( r_data, w_data, size );
-	
-	SPI.beginTransaction( spi_setting );
-	
-	digitalWrite( SS, LOW );
-	SPI.transfer( r_data, size );
-	digitalWrite( SS, HIGH );
-	
-	SPI.endTransaction();
 }
 
 int GPIO_SPI::reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size )

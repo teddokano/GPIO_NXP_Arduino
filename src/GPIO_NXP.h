@@ -10,7 +10,6 @@
 
 #include	<Arduino.h>
 #include	<stdint.h>
-#include	<SPI.h>
 
 #include	<I2C_device.h>
 
@@ -2073,10 +2072,6 @@ public:
 	 * @return read data size
 	 */
 	virtual uint8_t	reg_r( uint8_t reg_adr );
-
-private:
-	void txrx( const uint8_t *w_data, uint8_t *r_data, uint16_t size );
-	SPISettings	spi_setting;
 };
 
 /** PCAL97xx_base class
