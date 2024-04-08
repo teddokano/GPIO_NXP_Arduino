@@ -35,7 +35,7 @@ void setup() {
   gpio.write_port(PULL_UD_SEL, io_config_and_pull_up);  //  Port1 Pull-up/down are as pull-up
 }
 void loop() {
-  int input1 = gpio.input(1); //  Read port0 input
+  int input1 = gpio.input(1); //  Read port1 input
   gpio.output(0, input1);     //  Output to port0
 
 //  GPIO_base::print_bin(input1); //  Show the data on serial terminal
