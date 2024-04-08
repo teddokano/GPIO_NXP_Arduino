@@ -42,7 +42,7 @@ void loop() {
   static int count = 0;
 
   int input2 = gpio.input(2);     //  Read port2 input
-  gpio.output(0, (input2 | 0xC0) & led_pat[ count++ % sizeof( led_pat ) ]);  //  Output to port0. Higher 2 bites are masked
+  gpio.output(0, (input2 | 0xC0) & led_pat[ count++ % sizeof( led_pat ) ]);
   gpio.output(1, num_pat[find_bit(input2, 0)]);
 
   GPIO_base::print_bin(input2);  //  Show the data on serial terminal
