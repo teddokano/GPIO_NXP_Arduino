@@ -1,4 +1,4 @@
-#include "GPIO_NXP.h"
+#include	"GPIO_NXP.h"
 
 /* ******** GPIO_base ******** */
 
@@ -322,3 +322,119 @@ PCAL6534::~PCAL6534()
 }
 
 constexpr uint8_t PCAL6534::access_ref[];
+
+
+/* ******** PCAL9722 ******** */
+
+GPIO_SPI::GPIO_SPI( uint8_t dev_address, int nbits, const uint8_t* arp, uint8_t ai )
+	: GPIO_base( dev_address, nbits, arp, ai )
+{
+	spi_setting	= SPISettings( 1000000, MSBFIRST, SPI_MODE0 );
+	Serial.println("GPIO_SPI");
+}
+
+GPIO_SPI::~GPIO_SPI()
+{
+}
+
+void GPIO_SPI::txrx( const uint8_t *w_data, uint8_t *r_data, uint16_t size )
+{
+	memcpy( r_data, w_data, size );
+	
+	SPI.beginTransaction( spi_setting );
+	
+	digitalWrite( SS, LOW );
+	SPI.transfer( r_data, size );
+	digitalWrite( SS, HIGH );
+	
+	SPI.endTransaction();
+}
+
+int GPIO_SPI::reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size )
+{
+	uint8_t	w_data[ size + 2 ];
+	uint8_t	r_data[ size + 2 ];
+	
+	w_data[ 0 ]	= (i2c_addr << 1);
+	w_data[ 1 ]	= reg_adr | auto_increment;
+	memcpy( w_data + 2, data, size );
+	
+	txrx( w_data, r_data, size + 2 );
+	
+	return size;
+}
+
+int GPIO_SPI::reg_w( uint8_t reg_adr, uint8_t data )
+{
+	uint8_t	w_data[ 3 ];
+	uint8_t	r_data[ 3 ];
+	
+	w_data[ 0 ]	= i2c_addr << 1;
+	w_data[ 1 ]	= reg_adr;
+	w_data[ 2 ]	= data;
+	
+	txrx( w_data, r_data, 3 );
+	
+	return 1;
+}
+
+int GPIO_SPI::reg_r( uint8_t reg_adr, uint8_t *data, uint16_t size )
+{
+	uint8_t	w_data[ size + 2 ]	= { 0 };
+	uint8_t	r_data[ size + 2 ];
+
+	w_data[ 0 ]	= (i2c_addr << 1) | 0x1;
+	w_data[ 1 ]	= reg_adr | auto_increment;
+
+	txrx( w_data, r_data, size + 2 );
+	
+	memcpy( data, r_data + 2, size );
+
+	return size;
+}
+
+uint8_t GPIO_SPI::reg_r( uint8_t reg_adr )
+{
+	uint8_t	w_data[ 3 ];
+	uint8_t	r_data[ 3 ];
+	
+	w_data[ 0 ]	= (i2c_addr << 1) | 0x1;
+	w_data[ 1 ]	= reg_adr;
+	w_data[ 2 ]	= 0;
+	
+	txrx( w_data, r_data, 3 );
+	
+	return r_data[ 2 ];
+} 
+
+PCAL97xx_base::PCAL97xx_base( uint8_t dev_address, const int nbits, const uint8_t arp[], uint8_t ai ) :
+	GPIO_SPI( dev_address, nbits, arp, ai )
+{
+}
+
+PCAL97xx_base::~PCAL97xx_base()
+{
+}
+
+
+PCAL9722::PCAL9722( uint8_t dev_address ) :
+	PCAL97xx_base( dev_address, 24, access_ref, 0x80 )
+{
+}
+
+PCAL9722::~PCAL9722()
+{
+}
+
+void PCAL9722::begin( board env )
+{
+	if ( env ) {
+		pinMode( RESET_PIN_PCAL9722, OUTPUT );
+		digitalWrite( RESET_PIN_PCAL9722, 0 );
+		delay( 1 );
+		digitalWrite( RESET_PIN_PCAL9722, 1 );
+	}
+}
+
+constexpr uint8_t PCAL9722::access_ref[];
+
