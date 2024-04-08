@@ -40,7 +40,7 @@ void setup() {
 }
 
 void loop() {
-  int input1 = port[1];  //  Read port0 input
+  int input1 = port[1];  //  Read port1 input
   port[0] = input1;      //  Output to port0
 
   GPIO_base::print_bin(input1);  //  Show the data on serial terminal

@@ -43,7 +43,7 @@ void setup() {
 }
 
 void loop() {
-  int input2 = port[2];   //  Read port0 input
+  int input2 = port[2];   //  Read port2 input
   port[2] = input2 >> 4;  //  Output to port2. Higher 4 bits are input. Those are shifted to lower 4 bits
 
   GPIO_base::print_bin(input2);  //  Show the data on serial terminal

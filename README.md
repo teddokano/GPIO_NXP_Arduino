@@ -97,6 +97,7 @@ Type#|Header file|IO bits|Features|Interface|Evaluation board
 [PCAL6416A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/low-voltage-translating-16-bit-ic-bus-smbus-i-o-expander:PCAL6416A)						|`PCAL6416A.h`		|16	|Low-Voltage Translating 16-Bit I²C-Bus/SMBus I/O Expander				|I²C Fast-mode Plus (1MHz)	|[PCAL6416A 16-bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6416a-16-bit-gpio-arduino-shield-evaluation-board:PCAL6416AEV-ARD)
 [PCAL6424](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/ic-bus-controller-and-bridge-ics/ultra-low-voltage-translating-24-bit-fm-plus-ic-bus-smbus-i-o-expander:PCAL6524)	|`PCAL6424.h`		|24	|Ultra-Low-Voltage Translating 24-Bit Fm+ I²C-Bus/SMBus I/O Expander	|I²C Fast-mode Plus (1MHz)	|[PCAL6524EV 24-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6524ev-24-bit-gpio-arduino-shield:PCAL6524EV-ARD)
 [PCAL6434](https://www.nxp.jp/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534)				|`PCAL6434.h`		|34	|Ultra-Low-Voltage, Level Translating, 34-Bit I2C-Bus/SMBus I/O Expander|I²C Fast-mode Plus (1MHz)	|[PCAL6534EV 34-Bit GPIO Arduino® Shield](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcal6534ev-34-bit-gpio-arduino-shield:PCAL6534EV-ARD)
+[PCAL9722](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/22-bit-spi-i-o-expander-with-agile-i-o-features:PCAL9722)									|`PCAL9722.h`		|22	|22-Bit SPI I/O Expander with Agile I/O Features						|SPI (5MHz)	|[PCAL6534HV 22-Bit GPIO Arduino® Shield]()
 [PCA9554](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/8-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9554_PCA9554A)<br /> **not tested**		|`PCA9554.h`		|8	|8-Bit I²C-Bus and SMBus I/O Port with Interrupt	|I²C Fast-mode (400Hz)	|---
 [PCA9555](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/16-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9555)									|`PCA9555.h`		|16	|16-Bit I²C-Bus and SMBus I/O Port with Interrupt	|I²C Fast-mode (400Hz)	|---
 
@@ -130,6 +131,9 @@ PCAL6524_interrupt			|PCAL6524	|IO demo with **interrupt**
 PCAL6534_simple_OUT			|PCAL6534	|**Simple** sample for **just output** counter value
 PCAL6534_simple_IN_OUT		|PCAL6534	|Blink LED to show which buton pressed. Read value shown on serial terminal also
 PCAL6534_interrupt			|PCAL6534	|IO demo with **interrupt**
+PCAL9722_simple_OUT			|PCAL9722	|**Simple** sample for **just output** counter value
+PCAL9722_simple_IN_OUT		|PCAL9722	|Blink LED to show which buton pressed. Read value shown on serial terminal also
+PCAL9722_interrupt			|PCAL9722	|IO demo with **interrupt**
 
 #### For non-ARD boards
 Sketch|Folder/Target|Feature
