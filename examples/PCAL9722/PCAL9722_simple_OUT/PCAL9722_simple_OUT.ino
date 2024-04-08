@@ -31,11 +31,12 @@ void setup() {
     0x3F,  // Configure port2 bit 7~4 as INTPUT
   };
 
-  gpio.config(io_config_and_pull_up); //  Port0, 1 and port2 bit 3~0 are configured as output
+  gpio.config(io_config_and_pull_up);  //  Port0, 1 and port2 bit 3~0 are configured as output
 }
 
 void loop() {
   static int count = 0;
   gpio.output(0, count++);  //  Output to port2
+  gpio.output(1, 1 << (count & 0x7));  //  Output to port2
   delay(50);
 }
