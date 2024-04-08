@@ -32,6 +32,7 @@ void setup() {
     ;
 
   SPI.begin();
+  pinMode(SS, OUTPUT);  //  Required for UNO R4
 
   Serial.println("\n***** Hello, PCAL9722! *****");
 
@@ -88,7 +89,6 @@ void loop() {
   gpio.output(0, (input2 | 0xC0) & led_pat[count++ % sizeof(led_pat)]);
   delay(80);
 }
-
 
 int find_bit(int v, bool pol) {
   v = pol ? v : ~v;

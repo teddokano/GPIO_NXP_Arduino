@@ -22,13 +22,14 @@ void setup() {
     ;
 
   SPI.begin();
-
+  pinMode(SS, OUTPUT);  //  Required for UNO R4
+  
   Serial.println("\n***** Hello, PCAL9722! *****");
 
   uint8_t io_config_and_pull_up[] = {
     0x00,  // Configure port0 as OUTPUT
     0x00,  // Configure port1 as OUTPUT
-    0x3F,  // Configure port2 bit 7~4 as INTPUT
+    0x3F,  // Configure port2 bit 5~0 as INTPUT
   };
 
   gpio.config(io_config_and_pull_up);  //  Port0, 1 and port2 bit 3~0 are configured as output

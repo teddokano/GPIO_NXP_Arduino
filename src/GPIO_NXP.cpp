@@ -6,8 +6,8 @@ GPIO_base::GPIO_base( uint8_t i2c_address, int nbits, const uint8_t* ar, uint8_t
 	I2C_device( i2c_address ), 
 	n_bits( nbits ),
 	n_ports( (nbits + 7) / 8 ),
-	arp( ar ),
-	auto_increment( ai )
+	auto_increment( ai ),
+	arp( ar )
 {
 	init();
 }
@@ -16,8 +16,8 @@ GPIO_base::GPIO_base( TwoWire& wire, uint8_t i2c_address, int nbits, const uint8
 	I2C_device( wire, i2c_address ), 
 	n_bits( nbits ),
 	n_ports( (nbits + 7) / 8 ),
-	arp( ar ),
-	auto_increment( ai )
+	auto_increment( ai ),
+	arp( ar )
 {
 	init();
 }

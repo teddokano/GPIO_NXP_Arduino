@@ -22,7 +22,8 @@ void setup() {
     ;
 
   SPI.begin();
-
+  pinMode(SS, OUTPUT);  //  Required for UNO R4
+  
   Serial.println("\n***** Hello, PCAL9722! *****");
 
   uint8_t io_config_and_pull_up[] = {
