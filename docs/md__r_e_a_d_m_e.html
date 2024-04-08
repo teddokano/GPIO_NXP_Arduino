@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;1.0.2</span>
+   <div id="projectname">GPIO_NXP_Arduino<span id="projectnumber">&#160;1.1.0</span>
    </div>
    <div id="projectbrief">GPIO device operation sample code for Arduino</div>
   </td>
@@ -86,6 +86,8 @@ $(function() {
 What is this?</h1>
 <p>An Arduino library for I²C GPIO-expander with sample code. <br  />
  This library provides simple API to control GPIO device IO bits Include device name header file (<code><a class="el" href="_p_c_a_l6408_a_8h_source.html">PCAL6408A.h</a></code>, <code><a class="el" href="_p_c_a_l6416_a_8h_source.html">PCAL6416A.h</a></code>, <code>PCAL6424.h</code>, <code>PCAL6434.h</code>, <code><a class="el" href="_p_c_a9554_8h_source.html">PCA9554.h</a></code>, and/or <code><a class="el" href="_p_c_a9555_8h_source.html">PCA9555.h</a></code>) to use those class libraries.</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Basic operation</h2>
 <p>With <code>GPIO_NXP_Arduino</code> library, parallel output can be controlled by next sample code. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;PCAL6416A.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="class_p_c_a_l6416_a.html">PCAL6416A</a> gpio;</div>
@@ -101,11 +103,61 @@ What is this?</h1>
 <div class="line">  gpio.<a class="code hl_function" href="class_p_c_a_l6416_a.html#a55b967aae8a35bfde2d266a53062ba6d">output</a>(0, count++);  <span class="comment">//  Output to port0 </span></div>
 <div class="line">  delay(10);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_p_c_a_l6416_a_html"><div class="ttname"><a href="class_p_c_a_l6416_a.html">PCAL6416A</a></div><div class="ttdef"><b>Definition</b> <a href="_g_p_i_o___n_x_p_8h_source.html#l01123">GPIO_NXP.h:1124</a></div></div>
+<div class="ttc" id="aclass_p_c_a_l6416_a_html"><div class="ttname"><a href="class_p_c_a_l6416_a.html">PCAL6416A</a></div><div class="ttdef"><b>Definition</b> <a href="_g_p_i_o___n_x_p_8h_source.html#l01125">GPIO_NXP.h:1126</a></div></div>
 <div class="ttc" id="aclass_p_c_a_l6416_a_html_a55b967aae8a35bfde2d266a53062ba6d"><div class="ttname"><a href="class_p_c_a_l6416_a.html#a55b967aae8a35bfde2d266a53062ba6d">PCAL6416A::output</a></div><div class="ttdeci">void output(int port, uint8_t value, uint8_t mask=0)</div></div>
 <div class="ttc" id="aclass_p_c_a_l6416_a_html_a6f0a5c545e76d934e16812cd629a8291"><div class="ttname"><a href="class_p_c_a_l6416_a.html#a6f0a5c545e76d934e16812cd629a8291">PCAL6416A::begin</a></div><div class="ttdeci">void begin(board env=NONE)</div></div>
 <div class="ttc" id="aclass_p_c_a_l6416_a_html_ab50a1e3bda91898d08cef486c591248f"><div class="ttname"><a href="class_p_c_a_l6416_a.html#ab50a1e3bda91898d08cef486c591248f">PCAL6416A::config</a></div><div class="ttdeci">void config(int port, uint8_t config, uint8_t mask=0)</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+</div><!-- fragment --><p>To operate the port for input, the IO pins can be configured bit by bit. <br  />
+ The config bit for output is <code>0</code> and input is <code>1</code>. When the bit 0 to 4 on port 0 are configured as input and rest are output, the configuration can be done as.. </p><div class="fragment"><div class="line">gpio.<a class="code hl_function" href="class_p_c_a_l6416_a.html#ab50a1e3bda91898d08cef486c591248f">config</a>(0, 0x0F); <span class="comment">// bit 0 to 4 are &#39;1&#39; to set those bits are input</span></div>
+</div><!-- fragment --><p>For multiple port setting, the configuration can be done with array. <br  />
+ Following is a sample to set 2 port in <a class="el" href="class_p_c_a_l6416_a.html">PCAL6416A</a> as port0=output, port1=input. <br  />
+ </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;PCAL6416A.h&gt;</span></div>
+<div class="line"><a class="code hl_class" href="class_p_c_a_l6416_a.html">PCAL6416A</a> gpio;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup() {</div>
+<div class="line">  uint8_t io_config_and_pull_up[] = {</div>
+<div class="line">    0x00,  <span class="comment">// Configure port0 as OUTPUT</span></div>
+<div class="line">    0xFF,  <span class="comment">// Configure port1 as INTPUT</span></div>
+<div class="line">  };</div>
+<div class="line"> </div>
+<div class="line">  gpio.<a class="code hl_function" href="class_p_c_a_l6416_a.html#ab50a1e3bda91898d08cef486c591248f">config</a>(io_config_and_pull_up);                   <span class="comment">//  Port0 as OUTPUT, port1 as INPUT</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop() {</div>
+<div class="line">  <span class="keywordtype">int</span> input1 = gpio.<a class="code hl_function" href="class_p_c_a_l6416_a.html#aa596b71a764e484ce1c9f0206627fb93">input</a>(1); <span class="comment">//  Read port0 input</span></div>
+<div class="line">  gpio.<a class="code hl_function" href="class_p_c_a_l6416_a.html#a55b967aae8a35bfde2d266a53062ba6d">output</a>(0, input1);     <span class="comment">//  Output to port0</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_p_c_a_l6416_a_html_aa596b71a764e484ce1c9f0206627fb93"><div class="ttname"><a href="class_p_c_a_l6416_a.html#aa596b71a764e484ce1c9f0206627fb93">PCAL6416A::input</a></div><div class="ttdeci">uint8_t input(int port)</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+Option: Operation with <code>PORT</code> class</h2>
+<p>As an option, <code><a class="el" href="class_p_o_r_t.html">PORT</a></code> class is available to operate the GPIO port independently. With this class, each port input and output can be done with <code>=</code> operator. <br  />
+</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;PCAL6416A.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;PORT.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="class_p_c_a_l6416_a.html">PCAL6416A</a> gpio;</div>
+<div class="line"><a class="code hl_class" href="class_p_o_r_t.html">PORT</a> port[] = { <a class="code hl_class" href="class_p_o_r_t.html">PORT</a>(gpio, 0),</div>
+<div class="line">                <a class="code hl_class" href="class_p_o_r_t.html">PORT</a>(gpio, 1) };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup() {</div>
+<div class="line">  Wire.begin();</div>
+<div class="line"> </div>
+<div class="line">  port[0].<a class="code hl_function" href="class_p_o_r_t.html#a056ffb12f9f86a8e67045057b8bce1b7">config</a>(0x00);  <span class="comment">//  Configure port0 as OUTPUT</span></div>
+<div class="line">  port[1].<a class="code hl_function" href="class_p_o_r_t.html#a056ffb12f9f86a8e67045057b8bce1b7">config</a>(0xFF);  <span class="comment">//  Configure port1 as INPUT</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop() {</div>
+<div class="line">  <span class="keywordtype">int</span> input1 = port[1];  <span class="comment">//  Read port0 input</span></div>
+<div class="line">  port[0] = input1;      <span class="comment">//  Output to port0</span></div>
+<div class="line">  </div>
+<div class="line">  <span class="comment">// if you want to do like port[0] = port[1], cast the port instance. It should be like..</span></div>
+<div class="line">  <span class="comment">// port[0] = (int)port[1];    </span></div>
+<div class="line"> </div>
+<div class="line">  delay(100);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_p_o_r_t_html"><div class="ttname"><a href="class_p_o_r_t.html">PORT</a></div><div class="ttdef"><b>Definition</b> <a href="_p_o_r_t_8h_source.html#l00019">PORT.h:19</a></div></div>
+<div class="ttc" id="aclass_p_o_r_t_html_a056ffb12f9f86a8e67045057b8bce1b7"><div class="ttname"><a href="class_p_o_r_t.html#a056ffb12f9f86a8e67045057b8bce1b7">PORT::config</a></div><div class="ttdeci">void config(uint8_t config)</div><div class="ttdef"><b>Definition</b> <a href="_p_o_r_t_8cpp_source.html#l00008">PORT.cpp:8</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Supported devices</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -124,20 +176,20 @@ Supported devices</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a href="https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/16-bit-ic-bus-and-smbus-i-o-port-with-interrupt:PCA9555">PCA9555</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="_p_c_a9555_8h_source.html">PCA9555.h</a></code>   </td><td class="markdownTableBodyNone">16   </td><td class="markdownTableBodyNone">16-Bit I²C-Bus and SMBus I/O Port with Interrupt   </td><td class="markdownTableBodyNone">I²C Fast-mode (400Hz)   </td><td class="markdownTableBodyNone">&mdash;   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Getting started</h1>
 <p>Use Library manager in Arduino IDE for easy install</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 What's inside?</h1>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Examples</h2>
 <p>Examples are provided as scketch files.</p>
-<h3><a class="anchor" id="autotoc_md6"></a>
+<h3><a class="anchor" id="autotoc_md8"></a>
 How to use?</h3>
 <p>After library install, Choose menu on Arduino-IDE: <code>File</code>→<code>Examples</code>→<code>GPIO_NXP_Arduino</code>→ <b>sketch for your try</b></p>
-<h3><a class="anchor" id="autotoc_md7"></a>
+<h3><a class="anchor" id="autotoc_md9"></a>
 List of sample code</h3>
-<h4><a class="anchor" id="autotoc_md8"></a>
+<h4><a class="anchor" id="autotoc_md10"></a>
 For PCAL6xxx GPIO Arduino® Shield evaluation boards</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -167,7 +219,7 @@ For PCAL6xxx GPIO Arduino® Shield evaluation boards</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">PCAL6534_interrupt   </td><td class="markdownTableBodyNone"><a class="el" href="class_p_c_a_l6534.html">PCAL6534</a>   </td><td class="markdownTableBodyNone">IO demo with <b>interrupt</b>   </td></tr>
 </table>
-<h4><a class="anchor" id="autotoc_md9"></a>
+<h4><a class="anchor" id="autotoc_md11"></a>
 For non-ARD boards</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -179,37 +231,12 @@ For non-ARD boards</h4>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">PCA9555_interrupt_on_port1   </td><td class="markdownTableBodyNone"><a class="el" href="class_p_c_a9555.html">PCA9555</a>   </td><td class="markdownTableBodyNone"><b>Interrupt</b> check   </td></tr>
 </table>
-<h4><a class="anchor" id="autotoc_md10"></a>
+<h4><a class="anchor" id="autotoc_md12"></a>
 For <code>PORT</code> class usage samples</h4>
 <p>As an option, the <code><a class="el" href="class_p_o_r_t.html">PORT</a></code> class can be used for GPIO devices. <br  />
  Each port on GPIO devices can be an instance to operate by <code>=</code> operator. <br  />
 </p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;PCAL6416A.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;PORT.h&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><a class="code hl_class" href="class_p_c_a_l6416_a.html">PCAL6416A</a> gpio;</div>
-<div class="line"><a class="code hl_class" href="class_p_o_r_t.html">PORT</a> port[] = { <a class="code hl_class" href="class_p_o_r_t.html">PORT</a>(gpio, 0),</div>
-<div class="line">                <a class="code hl_class" href="class_p_o_r_t.html">PORT</a>(gpio, 1) };</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> setup() {</div>
-<div class="line">  Wire.begin();</div>
-<div class="line"> </div>
-<div class="line">  port[0].<a class="code hl_function" href="class_p_o_r_t.html#a056ffb12f9f86a8e67045057b8bce1b7">config</a>(0x00);  <span class="comment">//  Configure port0 as OUTPUT</span></div>
-<div class="line">  port[1].<a class="code hl_function" href="class_p_o_r_t.html#a056ffb12f9f86a8e67045057b8bce1b7">config</a>(0xFF);  <span class="comment">//  Configure port1 as INPUT</span></div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> loop() {</div>
-<div class="line">  <span class="keywordtype">int</span> input1 = port[1];  <span class="comment">//  Read port0 input</span></div>
-<div class="line">  port[0] = input1;      <span class="comment">//  Output to port0</span></div>
-<div class="line">  </div>
-<div class="line">  <span class="comment">// if you want to do like port[0] = port[1], cast the port instance. It should be like..</span></div>
-<div class="line">  <span class="comment">// port[0] = (int)port[1];    </span></div>
-<div class="line"> </div>
-<div class="line">  delay(100);</div>
-<div class="line">}</div>
-<div class="ttc" id="aclass_p_o_r_t_html"><div class="ttname"><a href="class_p_o_r_t.html">PORT</a></div><div class="ttdef"><b>Definition</b> <a href="_p_o_r_t_8h_source.html#l00019">PORT.h:19</a></div></div>
-<div class="ttc" id="aclass_p_o_r_t_html_a056ffb12f9f86a8e67045057b8bce1b7"><div class="ttname"><a href="class_p_o_r_t.html#a056ffb12f9f86a8e67045057b8bce1b7">PORT::config</a></div><div class="ttdeci">void config(uint8_t config)</div><div class="ttdef"><b>Definition</b> <a href="_p_o_r_t_8cpp_source.html#l00008">PORT.cpp:8</a></div></div>
-</div><!-- fragment --><table class="markdownTable">
+<table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Sketch   </th><th class="markdownTableHeadNone">Folder/Target   </th><th class="markdownTableHeadNone">Feature    </th></tr>
 <tr class="markdownTableRowOdd">
@@ -229,7 +256,7 @@ For <code>PORT</code> class usage samples</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">PCAL6534_PORT_IN_OUT   </td><td class="markdownTableBodyNone">PORT_class/PCAL6534   </td><td class="markdownTableBodyNone">Blink LED to show which buton pressed. Read value shown on serial terminal also using <a class="el" href="class_p_o_r_t.html">PORT</a> class   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md11"></a>
+<h3><a class="anchor" id="autotoc_md13"></a>
 TIPS</h3>
 <p>If you need to use different I²C bus on Arduino, it can be done like this. This sample shows how the <code>Wire1</code> on Arduino Due can be operated. <br  />
  </p><div class="fragment"><div class="line">include &lt;<a class="code hl_class" href="class_p_c_a_l6408_a.html">PCAL6408A</a>.h&gt;</div>
@@ -238,13 +265,13 @@ TIPS</h3>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">  Wire1.begin();</div>
-<div class="ttc" id="aclass_p_c_a_l6408_a_html"><div class="ttname"><a href="class_p_c_a_l6408_a.html">PCAL6408A</a></div><div class="ttdef"><b>Definition</b> <a href="_g_p_i_o___n_x_p_8h_source.html#l00829">GPIO_NXP.h:830</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
+<div class="ttc" id="aclass_p_c_a_l6408_a_html"><div class="ttname"><a href="class_p_c_a_l6408_a.html">PCAL6408A</a></div><div class="ttdef"><b>Definition</b> <a href="_g_p_i_o___n_x_p_8h_source.html#l00831">GPIO_NXP.h:832</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
 Document</h1>
 <p>For details of the library, please find descriptions in <a href="https://teddokano.github.io/GPIO_NXP_Arduino/annotated.html">this document</a>.</p>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 References</h1>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Related libraries</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">

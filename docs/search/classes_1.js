@@ -7,5 +7,7 @@ var searchData=
   ['pcal6524_4',['PCAL6524',['../class_p_c_a_l6524.html',1,'']]],
   ['pcal6534_5',['PCAL6534',['../class_p_c_a_l6534.html',1,'']]],
   ['pcal6xxx_5fbase_6',['PCAL6xxx_base',['../class_p_c_a_l6xxx__base.html',1,'']]],
-  ['port_7',['PORT',['../class_p_o_r_t.html',1,'']]]
+  ['pcal9722_7',['PCAL9722',['../class_p_c_a_l9722.html',1,'']]],
+  ['pcal97xx_5fbase_8',['PCAL97xx_base',['../class_p_c_a_l97xx__base.html',1,'']]],
+  ['port_9',['PORT',['../class_p_o_r_t.html',1,'']]]
 ];

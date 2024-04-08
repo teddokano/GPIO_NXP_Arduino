@@ -2158,6 +2158,230 @@ public:
 
 private:
 	static constexpr int RESET_PIN_PCAL9722	= 6;
+
+public:	
+#if DOXYGEN_ONLY
+	/** Constants for begin() method */
+	enum board {
+		NONE,
+		ARDUINO_SHIELD,
+	};
+
+	/** Number of IO bits */
+	const int	n_bits;
+
+	/** Number of IO ports */
+	const int	n_ports;
+
+	/** Output, single port
+	 * 
+	 *	Basic GPIO port access function for single port output
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be output
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		output( int port, uint8_t value, uint8_t mask = 0 );
+
+	/** Output, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports output
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		output( const uint8_t *vp );
+	
+	/** Input, single port
+	 * 
+	 *	Basic GPIO port access function for single port input
+	 *
+	 * @param port	Port number
+	 * @return Port read value
+	 */
+	uint8_t		input( int port );
+
+	/** Input, all ports
+	 * 
+	 *	Basic GPIO port access function for all ports input
+	 *
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return Pointer to vp
+	 */
+	uint8_t*	input( uint8_t *vp );
+
+	/** Config, single port
+	 * 
+	 *	Basic GPIO port access function for single port configuration
+	 *
+	 * @param port	Port number
+	 * @param value	Value to be written into configuration register
+	 * @param mask	Bit mask. Value will not be changed in bit positions '1' in mask
+	 */
+	void		config( int port, uint8_t config, uint8_t mask = 0 );
+
+	/** Config, all ports
+	 * 
+	 *	Basic GPIO port access function for all port configuration
+	 *
+	 * @param vp	Pointer to array of configuration values. The array should have 'n_ports' length
+	 */
+	void		config( const uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port( access_word w, const uint8_t* vp );
+
+	/** Write all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 */
+	void		write_port16( access_word w, const uint16_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint8_t*	read_port( access_word w, uint8_t* vp );
+
+	/** Read all port method
+	 * 
+	 *	All port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w		Accsess word. This should be choosen from access_word'
+	 * @param vp	Pointer to an array of values. The array should have 'n_ports' length
+	 * @return	Pointer to vp
+	 */
+	uint16_t*	read_port16( access_word w, uint16_t* vp );
+
+	/** Write single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port( access_word w, uint8_t value, int port_num = 0 );
+
+	/** Write single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param value		Value to be written into a register
+	 * @param port_num	Option, to specify port number
+	 */
+	void		write_port16( access_word w, uint16_t value, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint8_t		read_port( access_word w, int port_num = 0 );
+
+	/** Read single port method
+	 * 
+	 *	Single port 16 bit register access function using word of 'access_word'
+	 *
+	 * @param w			Accsess word. This should be choosen from access_word'
+	 * @param port_num	Option, to specify port number
+	 * @return Register read value
+	 */
+	uint16_t	read_port16( access_word w, int port_num = 0 );
+
+	/** Multiple register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	int reg_w( uint8_t reg_adr, const uint8_t *data, uint16_t size );
+
+	/** Single register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	int reg_w( uint8_t reg_adr, uint8_t data );
+
+	/** Multiple register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	int reg_r( uint8_t reg_adr, uint8_t *data, uint16_t size );
+
+	/** Single register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @return read data
+	 */
+	uint8_t	reg_r( uint8_t reg_adr );
+
+	/** Register write, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r8( uint8_t reg, uint8_t val );
+
+	/** Register write, 16 bit
+	 * 
+	 *	This 16 bit access may ot be common but it's useful for sensor devices
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r16( uint8_t reg, uint16_t val );
+
+	/** Register read, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint8_t read_r8( uint8_t reg );
+
+	/** Register read, 16 bit
+	 *	
+	 *	This 16 bit access may ot be common but it's useful for sensor devices
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint16_t read_r16( uint8_t reg );
+
+	/** Register overwriting with bit-mask
+	 *	
+	 *	Register can be updated by bit level
+	 *
+	 * @param reg register index/address/pointer
+	 * @param mask bit-mask to protect overwriting
+	 * @param value value to overwrite
+	 */
+	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
+	void bit_op16( uint8_t reg, uint16_t mask, uint16_t value );
+#endif	//	DOXYGEN_ONLY
 };
 
 
