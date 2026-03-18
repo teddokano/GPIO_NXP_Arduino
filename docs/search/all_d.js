@@ -12,6 +12,6 @@ var searchData=
   ['pcal97xx_5fbase_9',['PCAL97xx_base',['../class_p_c_a_l97xx__base.html',1,'']]],
   ['ping_10',['ping',['../class_p_c_a9554.html#ae615d6c7c8c1e69d2be1c27df8941bce',1,'PCA9554::ping()'],['../class_p_c_a9555.html#af5c620f2ea055fb9f03144339de8b394',1,'PCA9555::ping()'],['../class_p_c_a_l6408_a.html#a6c31dd0e8a1bfeb244f65edc350f178d',1,'PCAL6408A::ping()'],['../class_p_c_a_l6416_a.html#a1496c608f5ea0f9c888b201de087a2a4',1,'PCAL6416A::ping()'],['../class_p_c_a_l6524.html#ab18b5f715f966448a3aa65df7aa39ac8',1,'PCAL6524::ping()'],['../class_p_c_a_l6534.html#ad8a61ffa0e839be524667097bfd02448',1,'PCAL6534::ping()']]],
   ['port_11',['PORT',['../class_p_o_r_t.html',1,'PORT'],['../class_p_o_r_t.html#a99891f79c624a2ca7139ced4c1a999c9',1,'PORT::PORT()']]],
-  ['port_20tt_20class_12',['Option: Operation with &lt;tt&gt;PORT&lt;/tt&gt; class',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
-  ['port_20tt_20class_20usage_20samples_13',['For &lt;tt&gt;PORT&lt;/tt&gt; class usage samples',['../md__r_e_a_d_m_e.html#autotoc_md12',1,'']]]
+  ['port_20class_12',['Option: Operation with &lt;span class=&quot;tt&quot;&gt;PORT&lt;/span&gt; class',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
+  ['port_20class_20usage_20samples_13',['For &lt;span class=&quot;tt&quot;&gt;PORT&lt;/span&gt; class usage samples',['../md__r_e_a_d_m_e.html#autotoc_md12',1,'']]]
 ];
