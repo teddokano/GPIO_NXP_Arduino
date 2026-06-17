@@ -18,7 +18,7 @@
  */
 class PORT {
 public:
-	/** Constractor
+	/** Constructor
 	 * 
 	 * @param gpio 	Pointer to GPIO device instance
 	 * @param port_num	Port number
@@ -33,6 +33,12 @@ public:
 	 * @param config	8 bit value. 0 for output, 1 for input
 	 */
 	void	config( uint8_t config );
+
+	/** Write a value using an access_word register selector
+	 *
+	 * @param wd	Access word to select the target register
+	 * @param value	Value to write
+	 */
 	void	set( access_word wd, uint8_t value );
 	
 	/** A short hand for setting pins
@@ -55,9 +61,22 @@ public:
 	uint8_t	mask;
 };
 
+/** GPIO_PORT class
+ *
+ *  @class GPIO_PORT
+ *
+ *	Alias of PORT with `operator=` inherited for convenient assignment syntax
+ */
 class GPIO_PORT : public PORT {
 public:
 	using PORT::operator=;
+
+	/** Constructor
+	 *
+	 * @param gpio		Reference to GPIO device instance
+	 * @param port_num	Port number
+	 * @param _mask		Optional bit mask for output
+	 */
 	GPIO_PORT( GPIO_base& gpio, int port_num, uint8_t _mask = 0x00 );
 };
 
